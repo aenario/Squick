@@ -1,0 +1,6 @@
+D:\kinectDev\Squick\Squick\Squick\bin\x86\Debug\Squick.exe
+D:\kinectDev\Squick\Squick\Squick\bin\x86\Debug\Squick.pdb
+D:\kinectDev\Squick\Squick\Squick\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\kinectDev\Squick\Squick\Squick\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\kinectDev\Squick\Squick\Squick\obj\x86\Debug\Squick.exe
+D:\kinectDev\Squick\Squick\Squick\obj\x86\Debug\Squick.pdb
