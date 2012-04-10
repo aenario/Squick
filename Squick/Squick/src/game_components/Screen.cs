@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.GamerServices; 
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -15,12 +15,16 @@ namespace Squick
     /// <summary>
     /// This is a game component that implements IUpdateable.
     /// </summary>
-    public class Screen : Microsoft.Xna.Framework.DrawableGameComponent
+    public abstract class Screen : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        public Screen(Game game)
-            : base(game)
+
+        private bool _screenFinished;
+        private Screen _nextScreen;
+        
+        public Screen(Game game) : base(game)
         {
-            // TODO: Construct any child components here
+            this._screenFinished = false;
+            this._nextScreen = null;
         }
 
         /// <summary>
@@ -50,5 +54,22 @@ namespace Squick
             
             base.Draw(gameTime);
         }
+
+        public Screen GetNextScreen()
+        {
+            return this._nextScreen;
+        }
+
+        public void SetNextScreen(Screen screen)
+        {
+            this._screenFinished = true;
+            this._nextScreen = screen;
+        }
+
+        public bool IsScreenFinished()
+        {
+            return this._screenFinished;
+        }
+
     }
 }

@@ -18,11 +18,11 @@ namespace Squick
     public class Squick : Microsoft.Xna.Framework.Game
     {
         public static String version = "0.1";
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        Texture2D kinectRGBVideo;
-        KinectsManager kinectsManager;
-        Screen currentLevel;
+        private GraphicsDeviceManager graphics;
+        // SpriteBatch spriteBatch;
+        // Texture2D _kinectRGBVideo;
+        private KinectManager _kinectsManager;
+        private Screen _currentLevel { get; set; }
 
         public Squick()
         {
@@ -30,7 +30,7 @@ namespace Squick
 
             Content.RootDirectory = "Content";
             
-            
+           
         }
 
         /// <summary>
@@ -48,14 +48,14 @@ namespace Squick
             graphics.ApplyChanges();
             
             // get kinect
-            kinectsManager = new KinectsManager();
-            if (kinectsManager.kinectSensor != null)
+            _kinectsManager = new KinectManager();
+            if (_kinectsManager.kinectSensor != null)
             {
-                kinectsManager.kinectSensor.ColorStream.Enable();
-                kinectsManager.startSensor();
+                _kinectsManager.kinectSensor.ColorStream.Enable();
+                _kinectsManager.startSensor();
             }
 
-            currentLevel = new Menu(this);
+            _currentLevel = new Menu(this);
             base.Initialize();
         }
 
@@ -66,7 +66,7 @@ namespace Squick
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            // spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -90,7 +90,11 @@ namespace Squick
             // Allows the game to exit
             
 
-            // TODO: Add your update logic here
+            /* Update logic */
+            // Screen change?
+            if (this._currentLevel.IsScreenFinished())
+                this._currentLevel = this._currentLevel.GetNextScreen();
+
 
             base.Update(gameTime);
         }

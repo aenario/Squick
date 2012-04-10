@@ -6,13 +6,13 @@ using Microsoft.Kinect;
 
 namespace Squick
 {
-    class KinectsManager
+    class KinectManager
     {
 
         public KinectSensor kinectSensor;
         public string connectedStatus = "Not connected";
 
-        public KinectsManager()
+        public KinectManager()
         {
             KinectSensor.KinectSensors.StatusChanged += new EventHandler<StatusChangedEventArgs>(KinectSensors_StatusChanged);
             this.DiscoverKinectSensor();
