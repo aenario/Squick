@@ -11,7 +11,7 @@ namespace Squick
         // protected Sprite _sprite;
         
 
-        public Entity(Game game,Player player) : base(game)
+        public Entity(Game game, Player player) : base(game)
         {
             this._player = player;
         }

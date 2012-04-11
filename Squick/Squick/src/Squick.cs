@@ -19,17 +19,14 @@ namespace Squick
     {
         public static String version = "0.1";
         private GraphicsDeviceManager graphics;
-        // SpriteBatch spriteBatch;
-        // Texture2D _kinectRGBVideo;
+        private SpriteBatch spriteBatch;
         private KinectManager _kinectsManager;
         private Screen _currentLevel { get; set; }
 
         public Squick()
         {
             graphics = new GraphicsDeviceManager(this);
-
             Content.RootDirectory = "Content";
-            
            
         }
 
@@ -66,7 +63,8 @@ namespace Squick
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            // spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
 
             // TODO: use this.Content to load your game content here
         }
