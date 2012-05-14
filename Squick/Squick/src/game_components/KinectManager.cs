@@ -6,11 +6,17 @@ using Microsoft.Kinect;
 
 namespace Squick
 {
+
+    
+
     class KinectManager
     {
 
-        public KinectSensor kinectSensor;
+        public delegate void StatusChangedEventHandler(object sender, EventArgs e);
+
+        private KinectSensor kinectSensor;
         public string connectedStatus = "Not connected";
+        public event StatusChangedEventHandler SensorChanged;
 
         public KinectManager()
         {
@@ -33,6 +39,7 @@ namespace Squick
             if (!this.hasSensor()) return false;
             try
             {
+                if (kinectSensor.IsRunning) return true;
                 kinectSensor.Start();
                 kinectSensor.ElevationAngle = 0;
                 return true;
@@ -100,11 +107,8 @@ namespace Squick
                     }
             }
 
-            // Init the found and connected device
-            if (kinectSensor.Status == KinectStatus.Connected)
-            {
-                kinectSensor.Start();
-            }
+
+            if(SensorChanged != null) SensorChanged(this, EventArgs.Empty);
         }
     }
 }

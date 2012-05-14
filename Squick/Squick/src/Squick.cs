@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Kinect;
 
+
 namespace Squick
 {
     /// <summary>
@@ -21,7 +22,9 @@ namespace Squick
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private KinectManager _kinectsManager;
+        private KinectInterface _kinectInterface;
         private Screen _currentLevel { get; set; }
+        private SpriteFont baseFont;
 
         public Squick()
         {
@@ -41,17 +44,14 @@ namespace Squick
             // set graphic options
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 600;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
-            
+
             // get kinect
             _kinectsManager = new KinectManager();
-            if (_kinectsManager.kinectSensor != null)
-            {
-                _kinectsManager.kinectSensor.ColorStream.Enable();
-                _kinectsManager.startSensor();
-            }
+            _kinectInterface = new KinectInterface(_kinectsManager, KinectInterface.modeHands);
 
+            
             _currentLevel = new Menu(this);
             base.Initialize();
         }
@@ -64,7 +64,7 @@ namespace Squick
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            baseFont = Content.Load<SpriteFont>("baseFont");
 
             // TODO: use this.Content to load your game content here
         }
@@ -104,9 +104,24 @@ namespace Squick
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
+
+            DepthImagePoint[] dip =  _kinectInterface.getLatestCoordinates();
+
+            String left = "["+dip[KinectInterface.leftHand].X.ToString() + ","
+                + dip[KinectInterface.leftHand].Y.ToString() + " ] ";
+            Vector2 vLeft = new Vector2(dip[KinectInterface.leftHand].X, dip[KinectInterface.leftHand].Y);
+            String right = "[" + dip[KinectInterface.rightHand].X.ToString() + ","
+                + dip[KinectInterface.rightHand].Y.ToString() + "]";
+            Vector2 vRight = new Vector2(dip[KinectInterface.rightHand].X, dip[KinectInterface.rightHand].Y);
+
+            spriteBatch.DrawString(baseFont, left, vLeft, Color.White);
+            spriteBatch.DrawString(baseFont, right, vRight, Color.Yellow);
+            spriteBatch.DrawString(baseFont, _kinectsManager.connectedStatus, new Vector2(10.0f), Color.Red);
 
             // TODO: Add your drawing code here
 
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

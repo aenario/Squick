@@ -119,6 +119,7 @@
     <Compile Include="src\game_components\KinectManager.cs" />
     <Compile Include="src\game_components\screens\menu\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\KinectInterface.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="src\Squick.cs" />
   </ItemGroup>

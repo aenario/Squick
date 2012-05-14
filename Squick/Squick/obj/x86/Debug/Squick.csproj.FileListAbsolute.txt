@@ -10,3 +10,10 @@ D:\Projects\IC06\Squick\Squick\Squick\obj\x86\Debug\ResolveAssemblyReference.cac
 D:\Projects\IC06\Squick\Squick\Squick\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\Projects\IC06\Squick\Squick\Squick\obj\x86\Debug\Squick.exe
 D:\Projects\IC06\Squick\Squick\Squick\obj\x86\Debug\Squick.pdb
+D:\Squick\Squick\Squick\bin\x86\Debug\Squick.exe
+D:\Squick\Squick\Squick\bin\x86\Debug\Squick.pdb
+D:\Squick\Squick\Squick\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Squick\Squick\Squick\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Squick\Squick\Squick\obj\x86\Debug\Squick.exe
+D:\Squick\Squick\Squick\obj\x86\Debug\Squick.pdb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\baseFont.xnb
