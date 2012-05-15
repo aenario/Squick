@@ -42,16 +42,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="gameplay1\" />
-    <Folder Include="gameplay2\" />
-    <Folder Include="gameplay3\" />
-    <Folder Include="menu\" />
+    <Folder Include="Sounds\" />
+    <Folder Include="UI\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="baseFont.spritefont">
-      <Name>baseFont</Name>
+    <Compile Include="Fonts\MainFont.spritefont">
+      <Name>MainFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GameThumbnail.png">
+      <Name>GameThumbnail</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Background_level_1.png">
+      <Name>Background_level_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Squick_head_normal.png">
+      <Name>Squick_head_normal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

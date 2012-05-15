@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Kinect;
 
-namespace Squick
+namespace Squick.Control
 {
 
-    
-
-    class KinectManager
+    public class KinectManager
     {
 
         public delegate void StatusChangedEventHandler(object sender, EventArgs e);
