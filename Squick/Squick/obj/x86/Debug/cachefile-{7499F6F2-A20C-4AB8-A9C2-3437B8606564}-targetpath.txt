@@ -1,4 +1,0 @@
-Content\GameThumbnail.xnb
-Content\Fonts\MainFont.xnb
-Content\Textures\Background_Level_1.xnb
-Content\Textures\Squick_head_normal.xnb

@@ -17,13 +17,3 @@ D:\Squick\Squick\Squick\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\Squick\Squick\Squick\obj\x86\Debug\Squick.exe
 D:\Squick\Squick\Squick\obj\x86\Debug\Squick.pdb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\baseFont.xnb
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\bin\x86\Debug\Squick.exe
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\bin\x86\Debug\Squick.pdb
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\obj\x86\Debug\Squick.exe
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\obj\x86\Debug\Squick.pdb
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\bin\x86\Debug\Content\GameThumbnail.xnb
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\bin\x86\Debug\Content\Fonts\MainFont.xnb
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\Background_Level_1.xnb
-D:\Projects\Desktop\Games\IC06\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\Squick_head_normal.xnb
