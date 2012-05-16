@@ -9,12 +9,15 @@ namespace Squick.src.Scene.Levels
     static class Level1Spawn
     {
 
-        private static TimeSpan LastSpawn;
+        private static double LastSpawn = 0;
         private static TimeSpan baseTime;
 
         private static SpawnEntry[] spawn = new SpawnEntry[]{
-            new SpawnEntry(7.5, SpawnEntry.nut, 300), /* spawn nut after 7.5s at X= 300*/
-            new SpawnEntry(8.3, SpawnEntry.pine, 300)
+            new SpawnEntry(3.0, SpawnEntry.nut, 100), /* spawn nut after 7.5s at X= 300*/
+            new SpawnEntry(3.5, SpawnEntry.pine, 200),
+            new SpawnEntry(4.0, SpawnEntry.nut, 300), 
+            new SpawnEntry(4.5, SpawnEntry.pine, 400),
+            new SpawnEntry(5.0, SpawnEntry.nut, 500),
         };
 
         public static List<SpawnEntry> getSpawnAt(GameTime gameTime){
@@ -23,22 +26,20 @@ namespace Squick.src.Scene.Levels
 
             var query = 
                 from n in spawn 
-                where n.time <= spawnTime.TotalSeconds && n.time > LastSpawn.TotalSeconds
-                select n as SpawnEntry;
+                where n.time <= spawnTime.TotalSeconds && n.time > LastSpawn
+                select n;
 
             List<SpawnEntry> spawnNow = query.ToList<SpawnEntry>();
+            LastSpawn = spawnTime.TotalSeconds;
+
+            //if(spawnNow.Count > 0) Console.Write("spawn "+spawnNow.Count+" items | base="+baseTime.TotalSeconds+" now ="+spawnTime.TotalSeconds);
 
             return spawnNow;
-
-
-            LastSpawn = gameTime.TotalGameTime;
-
         }
 
         public static void startNow(GameTime gameTime)
         {
             baseTime = gameTime.TotalGameTime;
-            LastSpawn = baseTime;
         }
         
     }

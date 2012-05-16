@@ -20,6 +20,10 @@ namespace Squick.Scene
 {
     public class Level1 : Scene{
 
+        private static int GravitySpeed = 50;
+        private static int leftBound = 35;
+        private static int rightBound = 700;
+
         private Texture2D _levelBackground;
         private dizzySquick squick;
         private List<Entity> items = new List<Entity>();
@@ -47,22 +51,22 @@ namespace Squick.Scene
             foreach (SpawnEntry se in Level1Spawn.getSpawnAt(gameTime))
             {
                 Entity item = se.asEntity();
-                item.Speed = new Vector2(0, 5);
+                item.Speed = new Vector2(0, GravitySpeed);
                 items.Add(item);
             }
 
             /* destroy items below screen */
-            foreach (Entity item in items)
+            foreach (SimpleEntity item in items) // quick & dirty
             {
-                if (item.Pos.Y > 600) items.Remove(item);
+                item.Update(gameTime);
+                //if (item.Pos.Y > 600) items.Remove(item);
             }
 
             /* Make squick bump */
-            if ((squick.Pos.X < 0 && squick.Speed.X < 0)
-                 || (squick.Pos.X + squick.Width > 800 && squick.Speed.X > 0))
+            if ((squick.Pos.X < 36 && squick.Speed.X < leftBound)
+                 || (squick.Pos.X + squick.Width > rightBound && squick.Speed.X > 0))
                         squick.Speed = Vector2.Negate(squick.Speed);
              
-
             squick.Update(gameTime);
         }
 
@@ -70,13 +74,11 @@ namespace Squick.Scene
         {
             RenderManager.Draw2DTexture(_levelBackground, _levelBackground.Bounds, Color.White);
             RenderManager.DrawEntity(squick);
-            foreach (Entity item in items)
+            foreach (SimpleEntity item in items)
             {
                RenderManager.DrawEntity(item);
             }
         }
-
-
 
 
     }

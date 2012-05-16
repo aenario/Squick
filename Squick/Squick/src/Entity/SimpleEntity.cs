@@ -33,7 +33,6 @@ namespace Squick.src.Entity
             base.Update(gameTime);
             _boundingBox.X = (int) _pos.X;
             _boundingBox.Y = (int) _pos.Y;
-            //Console.WriteLine("Taille = (" + Width + ";" + Height + ") ");
         }
         override public void Render(SpriteBatch spriteBatch){
             spriteBatch.Draw(_texture, _boundingBox, Color.White);  

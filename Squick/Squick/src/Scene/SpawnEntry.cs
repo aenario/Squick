@@ -42,6 +42,12 @@ namespace Squick.src.Scene
             {
                 e = new SimpleEntity(ResourceManager.tex_squick_rightArm);
             }
+
+            
+            e.Pos = pos;
+            Console.WriteLine("creating " + type + " at (" + e.Pos.X + ";" + e.Pos.Y + ")");
+
+
             return e;
         }
         

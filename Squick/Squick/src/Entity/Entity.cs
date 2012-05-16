@@ -38,7 +38,6 @@ namespace Squick.src.Entity
         public void Update(GameTime gameTime){
             var t = gameTime.ElapsedGameTime.Milliseconds / 1000f;
             if (!_speed.Equals(Vector2.Zero)) _pos = Vector2.Add(_pos, (new Vector2(_speed.X * t, _speed.Y * t)));
-            //Console.WriteLine("Speed = ("+ _speed.X +";" + _speed.Y + ") | Pos=(" + _pos.X +";" + _pos.Y+")");
         }
         public abstract void Render(SpriteBatch spriteBatch);
 

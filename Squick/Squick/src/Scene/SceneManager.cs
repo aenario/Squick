@@ -18,7 +18,7 @@ namespace Squick.Scene
         {
             _game = game;
             _gameInput = gameInput;
-            _currentScene = new Menu();
+            _currentScene = new Menu(); 
         }
 
         public void Update(GameTime gameTime)

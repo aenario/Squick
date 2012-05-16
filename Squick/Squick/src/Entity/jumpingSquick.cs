@@ -40,7 +40,7 @@ namespace Squick.src.Entity
         {
             base.Update(gameTime);
 
-            _speed.Y -= 3;
+            _speed.Y += 3;
 
             _boundingBox.X = (int) _pos.X;
             _boundingBox.Y = (int) _pos.Y;

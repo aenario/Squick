@@ -12,31 +12,28 @@ namespace Squick.src.Entity
 {
     class dizzySquick : Entity
     {
-        /* PLUS COMPLEXE, gestion des bras */
+
+        /* GAMLEPLAY CONSTANTS */
+        private static float maxAngle = MathHelper.Pi / 3;
+        private static float coefAcc = 7;
+
+        /* ANIMATION CONSTANTS */
+        private static float coefTailAngle = 0.001f;
+        private static Vector2 leftOrigin = new Vector2(56, 21);
+        private static Vector2 tailOrigin = new Vector2(85, 130);
+        private static Vector2 rightOrigin = new Vector2(15, 21);
 
         private Rectangle _boundingBox;
         private KinectInterface _gameInput;
         private float armAngle;
-        private float maxAngle = MathHelper.Pi / 3; 
-        private static float coefAcc = 7;
-
-        private static Vector2 leftOrigin = new Vector2(56, 21) ;
-        private static Vector2 rightOrigin = new Vector2(15, 21);
-      
-        public int Width
-        {
-            get { return _boundingBox.Width; }
-        }
-        public int Height
-        {
-            get { return _boundingBox.Height; }
-        }
+        public int Width { get { return _boundingBox.Width; } }
+        public int Height { get { return _boundingBox.Height; } }
 
         public dizzySquick(KinectInterface gameInput)
             : base()
         {
             _gameInput = gameInput;
-            _boundingBox = new Rectangle(0, 0, ResourceManager.tex_squick_tail.Width, ResourceManager.tex_squick_tail.Height);
+            _boundingBox = new Rectangle(0, 0, ResourceManager.tex_squick_body.Width, ResourceManager.tex_squick_body.Height);
         }
 
         new public void Update(GameTime gameTime)
@@ -54,24 +51,33 @@ namespace Squick.src.Entity
 
             _speed.X += armAngle * coefAcc;
 
+            // add maxSpeed
+
             // frottement
             if (_speed.X > 0) _speed.X -= 2;
             if (_speed.X < 0) _speed.X += 2;
 
-            /*_speed.X += ComputeSpeed(_gameInput); // NOTE SURE IF THIS SHOULD NOT BE IN LEVEL*/
+            
             _boundingBox.X = (int) _pos.X;
             _boundingBox.Y = (int) _pos.Y;
-            //Console.WriteLine("Taille = (" + Width + ";" + Height + ") ");
+            
         }
         override public void Render(SpriteBatch spriteBatch){
-            spriteBatch.Draw(ResourceManager.tex_squick_tail, _boundingBox, Color.White);
+            
+            
+            Vector2 tailPos = new Vector2(_boundingBox.X + 90, _boundingBox.Y + 135);
+            float tailAngle = - Speed.X*coefTailAngle;
+            if (tailAngle > 0) tailAngle = Math.Min(tailAngle, maxAngle / 2);
+            if (tailAngle < 0) tailAngle = Math.Max(tailAngle, - maxAngle / 2);
+            spriteBatch.Draw(ResourceManager.tex_squick_tail, tailPos, null, Color.White, tailAngle, tailOrigin, 1f, SpriteEffects.None, 0);
 
             Vector2 leftArmPos = new Vector2(_boundingBox.X + 90, _boundingBox.Y + 100);
             Vector2 rightArmPos = new Vector2(_boundingBox.X + 130, _boundingBox.Y + 100);
             
-
             spriteBatch.Draw(ResourceManager.tex_squick_rightArm, rightArmPos, null, Color.White, armAngle, rightOrigin, 1f, SpriteEffects.None, 0);
+            
             spriteBatch.Draw(ResourceManager.tex_squick_body, _boundingBox, Color.White);
+            
             spriteBatch.Draw(ResourceManager.tex_squick_leftArm, leftArmPos, null, Color.White, armAngle, leftOrigin, 1f, SpriteEffects.None, 0);
             
             spriteBatch.Draw(ResourceManager.tex_squick_leftLeg, _boundingBox, Color.White);
