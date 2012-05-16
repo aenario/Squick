@@ -21,11 +21,13 @@ namespace Squick.Scene
     public class Menu : Scene{
 
         private TextButton _startButton;
+        private TextButton _start2Button;
         private TextButton _quitButton;
 
         public Menu()
         {
-            _startButton = new TextButton("Start", new Vector2(100, 100));
+            _startButton = new TextButton("Level1", new Vector2(100, 100));
+            _start2Button = new TextButton("Level2", new Vector2(300, 100));
             _quitButton = new TextButton("Quit", new Vector2(100, 300));
         }
 
@@ -33,12 +35,18 @@ namespace Squick.Scene
         {
             // Update buttons state
             _startButton.Update(gameTime, gameInput);
+            _start2Button.Update(gameTime, gameInput);
             _quitButton.Update(gameTime, gameInput);
 
             // Action
             if (_startButton.IsPressed())
             {
-                _nextScene = new Level1(); // Game will quit
+                _nextScene = new Level1(gameInput); // Game will quit
+                _sceneFinished = true;
+            }
+            else if (_start2Button.IsPressed())
+            {
+                _nextScene = new Level2(gameInput); // Game will quit
                 _sceneFinished = true;
             }
             else if (_quitButton.IsPressed())
@@ -56,6 +64,7 @@ namespace Squick.Scene
 
             // Draw UI
             _startButton.Render(gameTime);
+            _start2Button.Render(gameTime);
             _quitButton.Render(gameTime);
         }
     }

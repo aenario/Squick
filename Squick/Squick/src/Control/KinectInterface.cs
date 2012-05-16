@@ -26,6 +26,10 @@ namespace Squick.Control
         private static KinectSensor _sensor;
         private static int _mode;
         private static int _status;
+        public int Status
+        {
+            get { return _status; }
+        }
 
         private static DepthImagePoint[] handPositions;
 
@@ -96,7 +100,7 @@ namespace Squick.Control
             {
                 if (skeletonFrame != null)
                 {
-                    int skeletonSlot = 0;
+                    
                     Skeleton[] skeletonData = new Skeleton[skeletonFrame.SkeletonArrayLength];
 
                     skeletonFrame.CopySkeletonDataTo(skeletonData);

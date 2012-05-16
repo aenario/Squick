@@ -110,6 +110,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Entity\jumpingSquick.cs" />
+    <Compile Include="src\Entity\Entity.cs" />
+    <Compile Include="src\Entity\dizzySquick.cs" />
+    <Compile Include="src\Entity\SimpleEntity.cs" />
+    <Compile Include="src\Scene\Levels\Level1Spawn.cs" />
+    <Compile Include="src\Scene\Levels\Level2.cs" />
+    <Compile Include="src\Scene\SpawnEntry.cs" />
     <Compile Include="src\UI\TextButton.cs" />
     <Compile Include="src\Utility\ResourceManager.cs" />
     <Compile Include="src\_deprecated\Background.cs" />
@@ -162,9 +169,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\Entity\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="Game.ico" />
   </ItemGroup>

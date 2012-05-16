@@ -16,4 +16,16 @@ D:\Squick\Squick\Squick\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\Squick\Squick\Squick\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\Squick\Squick\Squick\obj\x86\Debug\Squick.exe
 D:\Squick\Squick\Squick\obj\x86\Debug\Squick.pdb
-D:\Squick\Squick\Squick\bin\x86\Debug\Content\baseFont.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Fonts\MainFont.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\GameThumbnail.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\Background_level_1.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\Squick_head_normal.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\teteCut.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\rightArm.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\leftArm.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\body.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\rightLeg.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\leftLeg.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\head.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\tail.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\Background_level_2.xnb

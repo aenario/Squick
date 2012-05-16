@@ -20,6 +20,15 @@ namespace Squick.Utility
         public static Texture2D tex_pixel; // Used to simulate a 1X1 pixel texture
         public static Texture2D tex_squick_head_normal;
         public static Texture2D tex_background_level1;
+        public static Texture2D tex_background_level2;
+
+        public static Texture2D tex_squick_body;
+        public static Texture2D tex_squick_leftArm;
+        public static Texture2D tex_squick_rightArm;
+        public static Texture2D tex_squick_head;
+        public static Texture2D tex_squick_tail;
+        public static Texture2D tex_squick_leftLeg;
+        public static Texture2D tex_squick_rightLeg;
         //public static Texture2D tex_background_level2;
         //public static Texture2D tex_background_level3;
 
@@ -31,10 +40,21 @@ namespace Squick.Utility
 
             // Textures
             // . Global 
-            tex_squick_head_normal = _content.Load<Texture2D>("Textures\\Squick_head_normal");
+            tex_squick_head_normal = _content.Load<Texture2D>("Textures\\teteCut");
+
+            tex_squick_body = _content.Load<Texture2D>("Textures\\body");
+            tex_squick_leftArm = _content.Load<Texture2D>("Textures\\leftArm");
+            tex_squick_rightArm = _content.Load<Texture2D>("Textures\\rightArm");
+            tex_squick_head = _content.Load<Texture2D>("Textures\\head");
+            tex_squick_tail = _content.Load<Texture2D>("Textures\\tail");
+            tex_squick_leftLeg = _content.Load<Texture2D>("Textures\\leftLeg");
+            tex_squick_rightLeg = _content.Load<Texture2D>("Textures\\rightLeg");
 
             // . Level 1
             tex_background_level1 = _content.Load<Texture2D>("Textures\\Background_level_1");
+            
+            // . Level 2
+            tex_background_level2 = _content.Load<Texture2D>("Textures\\Background_level_2");
 
             // . Misc
             tex_pixel = new Texture2D(gfx, 1, 1);

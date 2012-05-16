@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 
-namespace Squick
+namespace Squick.deprecated
 {
     public abstract class Entity :  Microsoft.Xna.Framework.DrawableGameComponent
     {
