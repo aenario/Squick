@@ -41,7 +41,7 @@ namespace Squick.Control
             _mode = mode;
             _status = STATUS_NO_KINECT;
             handPositions = new DepthImagePoint[2];
-           
+
             _manager.SensorChanged += new KinectManager.StatusChangedEventHandler(SensorChanged);
             StartSensor();
             

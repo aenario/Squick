@@ -118,6 +118,33 @@
       <Output>D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\Background_level_2.xnb</Output>
       <Time>2012-05-15T14:57:24.3032242+02:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\pine.png</Source>
+      <Name>Textures\pine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\pine.xnb</Output>
+      <Time>2012-05-17T15:39:00.4793785+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\nut.png</Source>
+      <Name>Textures\nut</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\nut.xnb</Output>
+      <Time>2012-05-17T15:40:43.1728766+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\branch.png</Source>
+      <Name>Textures\branch</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\branch.xnb</Output>
+      <Time>2012-05-17T16:03:15.9998694+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

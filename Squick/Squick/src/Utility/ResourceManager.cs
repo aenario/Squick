@@ -29,6 +29,10 @@ namespace Squick.Utility
         public static Texture2D tex_squick_tail;
         public static Texture2D tex_squick_leftLeg;
         public static Texture2D tex_squick_rightLeg;
+
+        public static Texture2D tex_nut;
+        public static Texture2D tex_pine;
+        public static Texture2D tex_branch;
         //public static Texture2D tex_background_level2;
         //public static Texture2D tex_background_level3;
 
@@ -52,9 +56,12 @@ namespace Squick.Utility
 
             // . Level 1
             tex_background_level1 = _content.Load<Texture2D>("Textures\\Background_level_1");
+            tex_nut = _content.Load<Texture2D>("Textures\\nut");
+            tex_pine = _content.Load<Texture2D>("Textures\\pine");
             
             // . Level 2
             tex_background_level2 = _content.Load<Texture2D>("Textures\\Background_level_2");
+            tex_branch = _content.Load<Texture2D>("Textures\\branch");
 
             // . Misc
             tex_pixel = new Texture2D(gfx, 1, 1);

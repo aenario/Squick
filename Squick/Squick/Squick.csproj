@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Entity\Branch.cs" />
     <Compile Include="src\Entity\jumpingSquick.cs" />
     <Compile Include="src\Entity\Entity.cs" />
     <Compile Include="src\Entity\dizzySquick.cs" />

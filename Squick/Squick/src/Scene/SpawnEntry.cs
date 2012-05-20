@@ -32,11 +32,11 @@ namespace Squick.src.Scene
             Entity.Entity e;
             if (this.type == nut)
             {
-                e = new SimpleEntity(ResourceManager.tex_squick_leftArm);
+                e = new SimpleEntity(ResourceManager.tex_nut);
             }
             else if (this.type == pine)
             {
-                e = new SimpleEntity(ResourceManager.tex_squick_rightArm);
+                e = new SimpleEntity(ResourceManager.tex_pine);
             }
             else
             {

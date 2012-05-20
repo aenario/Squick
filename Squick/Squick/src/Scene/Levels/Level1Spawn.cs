@@ -18,6 +18,22 @@ namespace Squick.src.Scene.Levels
             new SpawnEntry(4.0, SpawnEntry.nut, 300), 
             new SpawnEntry(4.5, SpawnEntry.pine, 400),
             new SpawnEntry(5.0, SpawnEntry.nut, 500),
+            
+            new SpawnEntry(10.0, SpawnEntry.nut, 300), 
+            new SpawnEntry(10.5, SpawnEntry.pine, 400),
+            new SpawnEntry(11.0, SpawnEntry.nut, 500),
+
+            new SpawnEntry(13.0, SpawnEntry.nut, 300), 
+            new SpawnEntry(13.5, SpawnEntry.pine, 400),
+            new SpawnEntry(13.0, SpawnEntry.nut, 500),
+
+            new SpawnEntry(15.0, SpawnEntry.nut, 300), 
+            new SpawnEntry(15.5, SpawnEntry.pine, 400),
+            new SpawnEntry(15.0, SpawnEntry.nut, 500),
+
+            new SpawnEntry(20.0, SpawnEntry.nut, 300), 
+            new SpawnEntry(20.5, SpawnEntry.pine, 400),
+            new SpawnEntry(20.0, SpawnEntry.nut, 500),
         };
 
         public static List<SpawnEntry> getSpawnAt(GameTime gameTime){

@@ -29,3 +29,6 @@ D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\leftLeg.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\head.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\tail.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\Background_level_2.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\pine.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\nut.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\branch.xnb
