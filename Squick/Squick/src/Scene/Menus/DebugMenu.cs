@@ -12,19 +12,20 @@ using Microsoft.Xna.Framework.Media;
 using Squick.Control;
 using Squick.UI;
 using Squick.Utility;
+using Squick.Scene.Levels;
 
-namespace Squick.Scene
+namespace Squick.Scene.Menus
 {
     /// <summary>
     /// This is a game component that implements IUpdateable.
     /// </summary>
-    public class Menu : Scene{
+    public class DebugMenu : Scene{
 
         private TextButton _startButton;
         private TextButton _start2Button;
         private TextButton _quitButton;
 
-        public Menu()
+        public DebugMenu()
         {
             _startButton = new TextButton("Level1", new Vector2(100, 100));
             _start2Button = new TextButton("Level2", new Vector2(300, 100));

@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 
 using Squick.Control;
+using Squick.Scene.Menus;
+using Squick.Utility;
 
 namespace Squick.Scene
 {
@@ -18,7 +20,7 @@ namespace Squick.Scene
         {
             _game = game;
             _gameInput = gameInput;
-            _currentScene = new Menu(); 
+            _currentScene = new DebugMenu(); // For testing purpose
         }
 
         public void Update(GameTime gameTime)
@@ -37,7 +39,9 @@ namespace Squick.Scene
 
         public void Render(GameTime gameTime)
         {
+            RenderManager.StartRendering();
             _currentScene.Render(gameTime);
+            RenderManager.EndRendering();
         }
 
     }

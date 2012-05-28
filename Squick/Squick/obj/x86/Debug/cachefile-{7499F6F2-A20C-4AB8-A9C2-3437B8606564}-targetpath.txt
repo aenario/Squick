@@ -8,8 +8,8 @@ Content\Textures\leftArm.xnb
 Content\Textures\body.xnb
 Content\Textures\rightLeg.xnb
 Content\Textures\leftLeg.xnb
-Content\Textures\head.xnb
 Content\Textures\tail.xnb
+Content\Textures\head.xnb
 Content\Textures\Background_level_2.xnb
 Content\Textures\pine.xnb
 Content\Textures\nut.xnb

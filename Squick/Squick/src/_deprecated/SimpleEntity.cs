@@ -5,8 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Squick.Utility;
 using Microsoft.Xna.Framework.Graphics;
-
-namespace Squick.src.Entity
+/*
+namespace Squick.Entity
 {
     class SimpleEntity : Entity
     {
@@ -28,7 +28,7 @@ namespace Squick.src.Entity
             _boundingBox = new Rectangle(0, 0, _texture.Width, _texture.Height);
         }
 
-        new public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             _boundingBox.X = (int) _pos.X;
@@ -37,5 +37,11 @@ namespace Squick.src.Entity
         override public void Render(SpriteBatch spriteBatch){
             spriteBatch.Draw(_texture, _boundingBox, Color.White);  
         }
+        public Rectangle GetBoundingBox()
+        {
+            return _boundingBox;
+        }
+
     }
 }
+*/

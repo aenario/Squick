@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
-
-namespace Squick
+/*
+namespace Squick.Entity
 {
     public class Background : Microsoft.Xna.Framework.DrawableGameComponent
     {
@@ -36,3 +36,4 @@ namespace Squick
         }
     }
 }
+*/

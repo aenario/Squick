@@ -110,7 +110,6 @@ namespace Squick
 
             // TEST
             spriteBatch.Begin();
-            
             // . Draw hands coordinates
             DepthImagePoint[] dip = _gameInput.GetLatestCoordinates();
             String left = "["+dip[KinectInterface.LEFT_HAND].X.ToString() + ","
@@ -122,16 +121,15 @@ namespace Squick
             spriteBatch.DrawString(baseFont, left, vLeft, Color.White);
             spriteBatch.DrawString(baseFont, right, vRight, Color.Yellow);
             spriteBatch.DrawString(baseFont, _kinectsManager.connectedStatus, new Vector2(10.0f), Color.Red);
+            spriteBatch.End();
 
             // . Draw hand cursors bounding boxes
+            RenderManager.StartRendering();
             Rectangle[] cursors = _gameInput.GetHandCursorsBoundingBoxes();
             RenderManager.DrawBox(cursors[KinectInterface.LEFT_HAND]);
             RenderManager.DrawBox(cursors[KinectInterface.RIGHT_HAND]);
-
+            RenderManager.EndRendering();
             // END TEST
-            spriteBatch.End();
-            
-            // base.Draw(gameTime);
         }
     }
 }

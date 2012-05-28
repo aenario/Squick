@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace Squick.src.Scene.Levels
+using Squick.Component;
+/*
+namespace Squick.Scene.Levels
 {
     static class Level1Spawn
     {
@@ -12,31 +14,31 @@ namespace Squick.src.Scene.Levels
         private static double LastSpawn = 0;
         private static TimeSpan baseTime;
 
-        private static SpawnEntry[] spawn = new SpawnEntry[]{
-            new SpawnEntry(3.0, SpawnEntry.nut, 100), /* spawn nut after 7.5s at X= 300*/
-            new SpawnEntry(3.5, SpawnEntry.pine, 200),
-            new SpawnEntry(4.0, SpawnEntry.nut, 300), 
-            new SpawnEntry(4.5, SpawnEntry.pine, 400),
-            new SpawnEntry(5.0, SpawnEntry.nut, 500),
+        private static EntityFactory[] spawn = new EntityFactory[]{
+            new EntityFactory(3.0, EntityFactory.nut, 100), // spawn nut after 7.5s at X= 300
+            new EntityFactory(3.5, EntityFactory.pine, 200),
+            new EntityFactory(4.0, EntityFactory.nut, 300), 
+            new EntityFactory(4.5, EntityFactory.pine, 400),
+            new EntityFactory(5.0, EntityFactory.nut, 500),
             
-            new SpawnEntry(10.0, SpawnEntry.nut, 300), 
-            new SpawnEntry(10.5, SpawnEntry.pine, 400),
-            new SpawnEntry(11.0, SpawnEntry.nut, 500),
+            new EntityFactory(10.0, EntityFactory.nut, 300), 
+            new EntityFactory(10.5, EntityFactory.pine, 400),
+            new EntityFactory(11.0, EntityFactory.nut, 500),
 
-            new SpawnEntry(13.0, SpawnEntry.nut, 300), 
-            new SpawnEntry(13.5, SpawnEntry.pine, 400),
-            new SpawnEntry(13.0, SpawnEntry.nut, 500),
+            new EntityFactory(13.0, EntityFactory.nut, 300), 
+            new EntityFactory(13.5, EntityFactory.pine, 400),
+            new EntityFactory(13.0, EntityFactory.nut, 500),
 
-            new SpawnEntry(15.0, SpawnEntry.nut, 300), 
-            new SpawnEntry(15.5, SpawnEntry.pine, 400),
-            new SpawnEntry(15.0, SpawnEntry.nut, 500),
+            new EntityFactory(15.0, EntityFactory.nut, 300), 
+            new EntityFactory(15.5, EntityFactory.pine, 400),
+            new EntityFactory(15.0, EntityFactory.nut, 500),
 
-            new SpawnEntry(20.0, SpawnEntry.nut, 300), 
-            new SpawnEntry(20.5, SpawnEntry.pine, 400),
-            new SpawnEntry(20.0, SpawnEntry.nut, 500),
+            new EntityFactory(20.0, EntityFactory.nut, 300), 
+            new EntityFactory(20.5, EntityFactory.pine, 400),
+            new EntityFactory(20.0, EntityFactory.nut, 500),
         };
 
-        public static List<SpawnEntry> getSpawnAt(GameTime gameTime){
+        public static List<EntityFactory> getSpawnAt(GameTime gameTime){
             if (baseTime == null) throw new Exception("shoud call startNow");
             var spawnTime = gameTime.TotalGameTime.Subtract(baseTime);
 
@@ -45,7 +47,7 @@ namespace Squick.src.Scene.Levels
                 where n.time <= spawnTime.TotalSeconds && n.time > LastSpawn
                 select n;
 
-            List<SpawnEntry> spawnNow = query.ToList<SpawnEntry>();
+            List<EntityFactory> spawnNow = query.ToList<EntityFactory>();
             LastSpawn = spawnTime.TotalSeconds;
 
             //if(spawnNow.Count > 0) Console.Write("spawn "+spawnNow.Count+" items | base="+baseTime.TotalSeconds+" now ="+spawnTime.TotalSeconds);
@@ -60,3 +62,4 @@ namespace Squick.src.Scene.Levels
         
     }
 }
+*/

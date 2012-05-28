@@ -11,8 +11,10 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Kinect;
 
 using Squick.Control;
+using Squick.Component;
+using Squick.Component.Player;
+using Squick.Component.Misc;
 using Squick.Utility;
-using Squick.src.Entity;
 
 namespace Squick.Scene
 {
@@ -22,7 +24,7 @@ namespace Squick.Scene
         
 
         private Texture2D _levelBackground;
-        private jumpingSquick squick;
+        private JumpingSquick squick;
         private Branch activeBranch;
         private List<Branch> oldBranches;
 
@@ -39,7 +41,7 @@ namespace Squick.Scene
         public Level2(KinectInterface gameInput)
         {
             _levelBackground = ResourceManager.tex_background_level2;
-            squick = new jumpingSquick(gameInput);
+            squick = new JumpingSquick(gameInput);
             squick.Pos = new Vector2(100, 100);
             squick.Speed = new Vector2(10,0);
 
@@ -105,11 +107,11 @@ namespace Squick.Scene
 
             RenderManager.Draw2DTexture( _levelBackground, back1, Color.White);
             RenderManager.Draw2DTexture(_levelBackground, back2, Color.White);
-            RenderManager.DrawEntity(squick);
-            RenderManager.DrawEntity(activeBranch);
+            squick.Render(gameTime);
+            activeBranch.Render(gameTime);
             RenderManager.DrawBox(new Rectangle((int) squickBottom.X, (int) squickBottom.Y, 3, 3));
 
-            foreach(Branch b in oldBranches) RenderManager.DrawEntity(b);
+            foreach(Branch b in oldBranches) b.Render(gameTime);
             //RenderManager.DrawLine(leftHandPos, rightHandPos);
 
         }

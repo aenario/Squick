@@ -1,3 +1,4 @@
 D:\kinectDev\Squick\Squick\SquickContent\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\Projects\IC06\Squick\Squick\SquickContent\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\Squick\Squick\SquickContent\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Projects\Desktop\Games\IC06\Squick\Squick\SquickContent\obj\x86\Debug\ResolveAssemblyReference.cache
