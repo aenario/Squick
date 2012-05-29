@@ -18,6 +18,12 @@ namespace Squick.Component.Collectible
         protected int _bonus;
         protected int _speedFactor;
         protected int _movementPattern;
+        protected bool _destroyed;
+
+        public Collectible()
+        {
+            _destroyed = false;
+        }
 
         new public void Update(GameTime gameTime)
         {
@@ -33,6 +39,8 @@ namespace Squick.Component.Collectible
         }
 
         public int GetBonus() { return _bonus; }
+
+        public abstract void Destroy();
 
     }
 }
