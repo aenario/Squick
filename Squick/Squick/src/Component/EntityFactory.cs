@@ -41,11 +41,11 @@ namespace Squick.Component
                 }
                 else if (this.type == BONUS_GOLDEN_NUT)
                 {
-                    e = new Nut();
+                    e = new GoldenNut();
                 }
                 else if (this.type == MALUS_PINE)
                 {
-                    e = new Nut();
+                    e = new Pine();
                 }
                 else if (this.type == MALUS_ANVIL)
                 {

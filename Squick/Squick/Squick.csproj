@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Component\Collectible\GoldenNut.cs" />
     <Compile Include="src\Component\Collectible\Nut.cs" />
     <Compile Include="src\Component\Misc\Branch.cs" />
     <Compile Include="src\Component\Collectible\Collectible.cs" />

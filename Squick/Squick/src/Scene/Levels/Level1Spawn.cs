@@ -17,7 +17,7 @@ namespace Squick.Scene.Levels
         private static EntityFactory[] spawn = new EntityFactory[]{
             new EntityFactory(3.0, EntityFactory.BONUS_NUT, 100), // spawn nut after 7.5s at X= 300
             new EntityFactory(3.5, EntityFactory.MALUS_PINE, 200),
-            new EntityFactory(4.0, EntityFactory.BONUS_NUT, 300), 
+            new EntityFactory(4.0, EntityFactory.BONUS_GOLDEN_NUT, 300), 
             new EntityFactory(4.5, EntityFactory.MALUS_PINE, 400),
             new EntityFactory(5.0, EntityFactory.BONUS_NUT, 500),
             
