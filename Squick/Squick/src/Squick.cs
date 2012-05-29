@@ -111,7 +111,8 @@ namespace Squick
             // TEST
             spriteBatch.Begin();
             // . Draw hands coordinates
-            DepthImagePoint[] dip = _gameInput.GetLatestCoordinates();
+            Vector2[] dip = _gameInput.GetLatestCoordinates();
+            
             String left = "["+dip[KinectInterface.LEFT_HAND].X.ToString() + ","
                 + dip[KinectInterface.LEFT_HAND].Y.ToString() + " ] ";
             Vector2 vLeft = new Vector2(dip[KinectInterface.LEFT_HAND].X, dip[KinectInterface.LEFT_HAND].Y);

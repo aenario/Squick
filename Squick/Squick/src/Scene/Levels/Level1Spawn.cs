@@ -16,26 +16,49 @@ namespace Squick.Scene.Levels
 
         private static EntityFactory[] spawn = new EntityFactory[]{
             new EntityFactory(3.0, EntityFactory.BONUS_NUT, 100), // spawn nut after 7.5s at X= 300
-            new EntityFactory(3.5, EntityFactory.MALUS_PINE, 200),
-            new EntityFactory(4.0, EntityFactory.BONUS_GOLDEN_NUT, 300), 
-            new EntityFactory(4.5, EntityFactory.MALUS_PINE, 400),
-            new EntityFactory(5.0, EntityFactory.BONUS_NUT, 500),
+            new EntityFactory(3.5, EntityFactory.MALUS_PINE, 300),
+            new EntityFactory(4.0, EntityFactory.BONUS_GOLDEN_NUT, 400), 
+            new EntityFactory(4.5, EntityFactory.MALUS_PINE, 600),
             
-            new EntityFactory(10.0, EntityFactory.BONUS_NUT, 300), 
+            new EntityFactory(10.0, EntityFactory.BONUS_NUT, 200), 
             new EntityFactory(10.5, EntityFactory.MALUS_PINE, 400),
-            new EntityFactory(11.0, EntityFactory.BONUS_NUT, 500),
+            new EntityFactory(11.0, EntityFactory.BONUS_NUT, 600),
 
-            new EntityFactory(13.0, EntityFactory.BONUS_NUT, 300), 
-            new EntityFactory(13.5, EntityFactory.MALUS_PINE, 400),
+            new EntityFactory(13.0, EntityFactory.BONUS_NUT, 100), 
+            new EntityFactory(13.5, EntityFactory.MALUS_PINE, 250),
             new EntityFactory(13.0, EntityFactory.BONUS_NUT, 500),
 
-            new EntityFactory(15.0, EntityFactory.BONUS_NUT, 300), 
-            new EntityFactory(15.5, EntityFactory.MALUS_PINE, 400),
-            new EntityFactory(15.0, EntityFactory.BONUS_NUT, 500),
+            new EntityFactory(15.0, EntityFactory.BONUS_NUT, 400), 
+            new EntityFactory(15.5, EntityFactory.MALUS_PINE, 550),
+            new EntityFactory(15.0, EntityFactory.BONUS_NUT, 700),
 
             new EntityFactory(20.0, EntityFactory.BONUS_NUT, 300), 
-            new EntityFactory(20.5, EntityFactory.MALUS_PINE, 400),
+            new EntityFactory(21.0, EntityFactory.MALUS_PINE, 400),
             new EntityFactory(20.0, EntityFactory.BONUS_NUT, 500),
+
+            new EntityFactory(22.0, EntityFactory.BONUS_NUT, 100), 
+            new EntityFactory(22.5, EntityFactory.MALUS_PINE, 250),
+            new EntityFactory(22.0, EntityFactory.BONUS_NUT, 500),
+
+            new EntityFactory(26.0, EntityFactory.BONUS_NUT, 400), 
+            new EntityFactory(26.5, EntityFactory.MALUS_PINE, 550),
+            new EntityFactory(26.0, EntityFactory.BONUS_NUT, 700),
+
+            new EntityFactory(29.0, EntityFactory.BONUS_NUT, 300), 
+            new EntityFactory(30.0, EntityFactory.MALUS_PINE, 400),
+            new EntityFactory(29.0, EntityFactory.BONUS_NUT, 500),
+
+            new EntityFactory(31.0, EntityFactory.BONUS_NUT, 100), 
+            new EntityFactory(31.5, EntityFactory.MALUS_PINE, 250),
+            new EntityFactory(31.0, EntityFactory.BONUS_NUT, 500),
+
+            new EntityFactory(35.0, EntityFactory.BONUS_NUT, 400), 
+            new EntityFactory(35.5, EntityFactory.MALUS_PINE, 550),
+            new EntityFactory(35.0, EntityFactory.BONUS_NUT, 700),
+
+            new EntityFactory(41.0, EntityFactory.BONUS_NUT, 300), 
+            new EntityFactory(42.0, EntityFactory.MALUS_PINE, 400),
+            new EntityFactory(41.0, EntityFactory.BONUS_NUT, 500),
         };
 
         public static List<EntityFactory> getSpawnAt(GameTime gameTime){

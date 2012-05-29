@@ -49,11 +49,11 @@ namespace Squick.Component
                 }
                 else if (this.type == MALUS_ANVIL)
                 {
-                    e = new Nut();
+                    e = new Bomb();
                 }
                 else if (this.type == MALUS_BOMB)
                 {
-                    e = new Nut();
+                    e = new Bomb();
                 }
                 else // Certainly a syntax error
                 {

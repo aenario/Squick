@@ -34,7 +34,9 @@ namespace Squick.Component.Misc
         private Vector2 _normal;
         public Vector2 Normal { get { return _normal; } }
 
+        private Vector2 _posM;
         private Vector2 _pos2;
+        public float BounceLength { get { return Vector2.Subtract(_posM, _pos2).Length(); } }
         private Vector2 left = new Vector2(0, 0) ;
         private Vector2 right = new Vector2(0, 0);
 
@@ -52,7 +54,9 @@ namespace Squick.Component.Misc
 
         private bool isAboveOrBelow(Vector2 dot)
         {
-            return _fromLeftTrunk ? dot.X < _pos2.X : dot.X > _pos2.X;
+            return _fromLeftTrunk ? 
+                _posM.X < dot.X && dot.X < _pos2.X :
+                _posM.X > dot.X && dot.X > _pos2.X;
         }
 
         public bool isBelow(Vector2 dot)
@@ -70,9 +74,18 @@ namespace Squick.Component.Misc
             if (!_active) return;
 
 
-            DepthImagePoint[] dip = _gameInput.GetLatestCoordinates();
-            left = new Vector2(dip[KinectInterface.LEFT_HAND].X, dip[KinectInterface.LEFT_HAND].Y);
-            right = new Vector2(dip[KinectInterface.RIGHT_HAND].X, dip[KinectInterface.RIGHT_HAND].Y);
+            Vector2[] hands = _gameInput.GetLatestCoordinates();
+            Vector2 left = hands[KinectInterface.LEFT_HAND];
+            Vector2 right = hands[KinectInterface.RIGHT_HAND];
+
+
+            // cancel hands inversion
+            if (left.X > right.X)
+            {
+                var temp = right;
+                right = left;
+                left = temp;
+            }
 
             _fromLeftTrunk = left.X + right.X < 800;
 
@@ -86,12 +99,14 @@ namespace Squick.Component.Misc
                 _pos.X = 0;
                 _pos.Y = _origin; // y3 = a* 0 + b = b = y1 - a* x1
                 _pos2 = right;
+                _posM = left;
             }
             else
             {
                 _pos.X = 800;
                 _pos.Y = _coefDir * 800 + _origin;
                 _pos2 = left;
+                _posM = right;
             }
 
             _scale = Vector2.Subtract(_pos2, _pos).Length() / branchLength;
@@ -103,7 +118,7 @@ namespace Squick.Component.Misc
         public override void Render(GameTime gameTime){
             float alpha = _active ? 0.5f : 1f;
             RenderManager.Draw2DTexture(_texture, _pos, Color.White * alpha, _angle, branchOrigin, new Vector2(_scale, 1));
-            
+            if(_active) RenderManager.DrawLine(_pos2, _posM, Color.Gold);
 
             /*
 

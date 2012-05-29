@@ -13,7 +13,6 @@ namespace Squick.Component.Player
     class JumpingSquick : Entity
     {
         private KinectInterface _gameInput;
-        private static float terminalVelocity = 50;
 
         private static Vector2 leftOrigin = new Vector2(56, 21) ;
         private static Vector2 rightOrigin = new Vector2(15, 21);

@@ -65,7 +65,7 @@ namespace Squick.Utility
 
             // . Misc
             tex_pixel = new Texture2D(gfx, 1, 1);
-            tex_pixel.SetData(new Color[] { Color.Red });
+            tex_pixel.SetData(new Color[] { Color.White });
         }
 
     }
