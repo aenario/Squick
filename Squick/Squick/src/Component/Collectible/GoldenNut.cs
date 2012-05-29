@@ -23,5 +23,7 @@ namespace Squick.Component.Collectible
         {
             RenderManager.Draw2DTexture(ResourceManager.tex_nut, _boundingBox, Color.Gold);
         }
+
+        public override void Destroy() { }
     }
 }

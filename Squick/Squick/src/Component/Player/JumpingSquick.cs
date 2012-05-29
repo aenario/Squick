@@ -37,8 +37,6 @@ namespace Squick.Component.Player
         {
             base.Update(gameTime);
 
-            _speed.Y = _speed.Y + 2; // gravity
-
         }
         override public void Render(GameTime gameTime)
         {

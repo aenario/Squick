@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 
 using Squick.Control;
 using Squick.Scene.Menus;
+using Squick.Scene.Levels;
 using Squick.Utility;
 
 namespace Squick.Scene
@@ -20,7 +21,7 @@ namespace Squick.Scene
         {
             _game = game;
             _gameInput = gameInput;
-            _currentScene = new DebugMenu(); // For testing purpose
+            _currentScene = new Level1(gameInput); // For testing purpose
         }
 
         public void Update(GameTime gameTime)

@@ -26,14 +26,15 @@ namespace Squick.Component.Player
 
         private KinectInterface _gameInput;
         private float armAngle;
-        public int Width { get { return _boundingBox.Width; } }
-        public int Height { get { return _boundingBox.Height; } }
+        private Rectangle _bodyTexBox;
+        public int Width { get { return _bodyTexBox.Width; } }
+        public int Height { get { return _bodyTexBox.Height; } }
 
         public DizzySquick(KinectInterface gameInput)
             : base()
         {
             _gameInput = gameInput;
-            _boundingBox = new Rectangle(0, 0, ResourceManager.tex_squick_body.Width, ResourceManager.tex_squick_body.Height);
+            _bodyTexBox = new Rectangle(0, 0, ResourceManager.tex_squick_body.Width, ResourceManager.tex_squick_body.Height);
         }
 
         new public void Update(GameTime gameTime)
@@ -58,8 +59,14 @@ namespace Squick.Component.Player
             if (_speed.X < 0) _speed.X += 2;
 
             
-            _boundingBox.X = (int) _pos.X;
-            _boundingBox.Y = (int) _pos.Y;
+            _bodyTexBox.X = (int) _pos.X;
+            _bodyTexBox.Y = (int) _pos.Y;
+
+            // Adjust boundingBox
+            _boundingBox = _bodyTexBox;
+            _boundingBox.Inflate(-60, -60);
+            _boundingBox.X += 20;
+            _boundingBox.Height += 20;
             
         }
 
@@ -67,63 +74,30 @@ namespace Squick.Component.Player
 
         override public void Render(GameTime gameTime)
         {
-            Vector2 tailPos = new Vector2(_boundingBox.X + 90, _boundingBox.Y + 135);
+            Vector2 tailPos = new Vector2(_bodyTexBox.X + 90, _bodyTexBox.Y + 135);
             float tailAngle = - Speed.X*coefTailAngle;
             if (tailAngle > 0) tailAngle = Math.Min(tailAngle, maxAngle / 2);
             if (tailAngle < 0) tailAngle = Math.Max(tailAngle, - maxAngle / 2);
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_tail, tailPos, Color.White, tailAngle, tailOrigin);
 
-            Vector2 leftArmPos = new Vector2(_boundingBox.X + 90, _boundingBox.Y + 100);
-            Vector2 rightArmPos = new Vector2(_boundingBox.X + 130, _boundingBox.Y + 100);
+            Vector2 leftArmPos = new Vector2(_bodyTexBox.X + 90, _bodyTexBox.Y + 100);
+            Vector2 rightArmPos = new Vector2(_bodyTexBox.X + 130, _bodyTexBox.Y + 100);
             
             //spriteBatch.Draw(ResourceManager.tex_squick_rightArm, rightArmPos, null, Color.White, armAngle, rightOrigin, 1f, SpriteEffects.None, 0);
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightArm, rightArmPos, Color.White, armAngle, rightOrigin);
 
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_body, _boundingBox, Color.White);
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_body, _bodyTexBox, Color.White);
 
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftArm, leftArmPos, Color.White, armAngle, leftOrigin);
 
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftLeg, _boundingBox, Color.White);
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightLeg, _boundingBox, Color.White);
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftLeg, _bodyTexBox, Color.White);
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightLeg, _bodyTexBox, Color.White);
 
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_head, _boundingBox, Color.White);
-            
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_head, _bodyTexBox, Color.White);
+
+            // Debug 
+            RenderManager.DrawBox(_boundingBox);
         }
 
-        /* changer : contrôle de l'accélération plutot que de la vitesse */
-        /*
-        public int ComputeSpeed(KinectInterface gameInput)
-        {
-            int horizontalSpeed = 0;
-            const int maxSpeed = 20;
-            const int maxCoefficient = 10;
-
-            // Computes director coefficient of the straight line drawn between each hands
-            // . Raw coefficient
-            float delta, absDelta;
-            if (left.X == right.X)
-                delta = 0;
-            else
-                delta = (right.Y - left.Y) / (right.X - left.X);
-
-            armAngle = delta;
-
-            absDelta = Math.Abs(delta);
-            // . Coefficient sign (if monotonic straight line: +1, else -1)
-            int sign;
-            if (delta == 0)
-                sign = 0;
-            else
-                sign = (int)(delta / absDelta);
-            // . Computes final horizontal speed
-            if (absDelta > maxCoefficient)
-                horizontalSpeed = sign * maxSpeed;
-            else
-                horizontalSpeed = (int)(delta * maxSpeed);
-
-            Console.WriteLine("Delta=" + delta + "|HorizontalSpeed=" + horizontalSpeed);
-
-            return horizontalSpeed;
-        }*/
     }
 }
