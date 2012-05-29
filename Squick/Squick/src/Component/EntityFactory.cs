@@ -5,13 +5,18 @@ using System.Text;
 using Microsoft.Xna.Framework;
 
 using Squick.Utility;
-/*
+
+using Squick.Component.Collectible;
+
 namespace Squick.Component
 {
     class EntityFactory
     {
-        public static int nut = 1;
-        public static int pine = 2;
+        public static int BONUS_NUT = 0;
+        public static int BONUS_GOLDEN_NUT = 1;
+        public static int MALUS_PINE = 2;
+        public static int MALUS_ANVIL = 3;
+        public static int MALUS_BOMB = 4;
 
         private static float defaultY = -50f;
 
@@ -30,19 +35,31 @@ namespace Squick.Component
         public Entity asEntity()
         {
             Entity e;
-                if (this.type == nut)
+                if (this.type == BONUS_NUT)
                 {
-                    e = new SimpleEntity(ResourceManager.tex_nut);
+                    e = new Nut();
                 }
-                else if (this.type == pine)
+                else if (this.type == BONUS_GOLDEN_NUT)
                 {
-                    e = new SimpleEntity(ResourceManager.tex_pine);
+                    e = new Nut();
                 }
-                else
+                else if (this.type == MALUS_PINE)
                 {
-                    e = new SimpleEntity(ResourceManager.tex_squick_rightArm);
+                    e = new Nut();
                 }
-
+                else if (this.type == MALUS_ANVIL)
+                {
+                    e = new Nut();
+                }
+                else if (this.type == MALUS_BOMB)
+                {
+                    e = new Nut();
+                }
+                else // Certainly a syntax error
+                {
+                    e = new Nut();
+                }
+             
             
                 e.Pos = pos;
                 Console.WriteLine("creating " + type + " at (" + e.Pos.X + ";" + e.Pos.Y + ")");
@@ -57,4 +74,3 @@ namespace Squick.Component
 
     }
 }
-*/

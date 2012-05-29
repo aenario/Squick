@@ -10,7 +10,7 @@ namespace Squick.deprecated
 
         protected int _bonusValue;
 
-        public Collectable(Game game,Player player) : base(game,player)
+        public Collectable(Game game) : base(game)
         {
         }
 

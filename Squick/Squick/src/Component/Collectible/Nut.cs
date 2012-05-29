@@ -21,7 +21,7 @@ namespace Squick.Component.Collectible
 
         public override void Render(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            RenderManager.Draw2DTexture(ResourceManager.tex_nut, ResourceManager.tex_nut.Bounds, Color.White);
+            RenderManager.Draw2DTexture(ResourceManager.tex_nut, _boundingBox, Color.White);
         }
     }
 }

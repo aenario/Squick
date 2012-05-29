@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Squick.Utility;
+using Squick.Component.Player;
 
 namespace Squick.Component.Collectible
 {
@@ -22,11 +23,16 @@ namespace Squick.Component.Collectible
         {
             if (_movementPattern == MOVEMENT_NONE)
                 return;
-
+            
             var t = gameTime.ElapsedGameTime.Milliseconds / 1000f;
 
             if (_movementPattern == MOVEMENT_FALL)
                 _pos.Y += t * _speedFactor * _speed.Y;
+            _boundingBox.X = (int)_pos.X;
+            _boundingBox.Y = (int)_pos.Y; 
         }
+
+        public int GetBonus() { return _bonus; }
+
     }
 }

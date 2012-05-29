@@ -7,13 +7,11 @@ namespace Squick.deprecated
 {
     public abstract class Entity :  Microsoft.Xna.Framework.DrawableGameComponent
     {
-        protected Player _player;
         // protected Sprite _sprite;
-        
 
-        public Entity(Game game, Player player) : base(game)
+        public Entity(Game game) : base(game)
         {
-            this._player = player;
+            
         }
 
         public override void Initialize()

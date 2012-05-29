@@ -11,7 +11,7 @@ namespace Squick.deprecated
         protected int _damageValue;
         protected bool _criticalHit;
 
-        public Enemy(Game game,Player player) : base(game,player)
+        public Enemy(Game game) : base(game)
         {
         }
 
