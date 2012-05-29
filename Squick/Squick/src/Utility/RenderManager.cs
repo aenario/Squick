@@ -98,11 +98,12 @@ namespace Squick.Utility
             _spriteBatch.Draw(tex, pos, null, color, armAngle, origin, scale, SpriteEffects.None, 0);
         }
 
-        public static void DrawEntity(Entity entity)
+     /*   public static void DrawEntity(Entity entity)
         {
             //_spriteBatch.Begin();
             //entity.Render(_spriteBatch);
             //_spriteBatch.End();
         }
+      */
     }
 }
