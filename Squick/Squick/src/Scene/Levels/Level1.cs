@@ -16,6 +16,8 @@ using Squick.Component.Player;
 using Squick.Component.Collectible;
 using Squick.Scene;
 using Squick.Utility;
+using Squick.UI;
+using Squick.Scene.Menus;
 
 namespace Squick.Scene.Levels
 {
@@ -26,6 +28,7 @@ namespace Squick.Scene.Levels
         private static int rightBound = 700;
 
         private Texture2D _levelBackground;
+        private TextButton _backToMenu;
         private DizzySquick squick;
         private List<Entity> items = new List<Entity>();
         private bool justStarted = true;// CHANGE TO COMPLEXE ENTITY
@@ -38,6 +41,7 @@ namespace Squick.Scene.Levels
         public Level1(KinectInterface gameInput)
         {
             _levelBackground = ResourceManager.tex_background_level1;
+            _backToMenu = new TextButton("Menu", new Vector2(790, 10));
             squick = new DizzySquick(gameInput);
             squick.Pos = new Vector2(400, 400);
 
@@ -48,6 +52,13 @@ namespace Squick.Scene.Levels
 
         public override void Update(GameTime gameTime, KinectInterface gameInput)
         {
+            _backToMenu.Update(gameTime, gameInput);
+            if (_backToMenu.IsPressed())
+            {
+                _nextScene = new DebugMenu(); 
+                _sceneFinished = true;
+            }
+
             if (justStarted)
             {
                 //Level1Spawn.startNow(gameTime);
@@ -62,14 +73,16 @@ namespace Squick.Scene.Levels
                 items.Add(item);
             }
             
-            // destroy items below screen 
+            // destroy items below screen
+
+            List<Collectible> toBeDestroy = new List<Collectible>();
             foreach (Collectible item in items) // quick & dirty
             {
                 item.Update(gameTime);
 
                 if (item.Pos.Y > 600)
                 {
-                    //TODO items.Remove(item);
+                    toBeDestroy.Add(item);
                     continue;
                 }
 
@@ -86,8 +99,7 @@ namespace Squick.Scene.Levels
                         _chainBonus = 0;
                         _score -= item.GetBonus();
                     }
-
-                    //TODO items.Remove(item);
+                    toBeDestroy.Add(item);
                 }
 
                 
@@ -95,6 +107,8 @@ namespace Squick.Scene.Levels
 
                 
             }
+
+            foreach(Collectible i in toBeDestroy) items.Remove(i);
             
             /* Make squick bump */
             if ((squick.Pos.X < 36 && squick.Speed.X < leftBound)
@@ -108,6 +122,8 @@ namespace Squick.Scene.Levels
         {
             // Background
             RenderManager.Draw2DTexture(_levelBackground, _levelBackground.Bounds, Color.White);
+
+            _backToMenu.Render(gameTime);
 
             // Components
             squick.Render(gameTime);

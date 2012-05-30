@@ -31,7 +31,7 @@ namespace Squick.Control
             get { return _status; }
         }
 
-        private static DepthImagePoint[] handPositions;
+        private static Vector2[] handPositions;
 
 
 
@@ -40,7 +40,10 @@ namespace Squick.Control
             _manager = manager;
             _mode = mode;
             _status = STATUS_NO_KINECT;
-            handPositions = new DepthImagePoint[2];
+            handPositions = new Vector2[2]{
+                new Vector2(0, 0),
+                new Vector2(0, 0)
+            };
 
             _manager.SensorChanged += new KinectManager.StatusChangedEventHandler(SensorChanged);
             StartSensor();
@@ -107,8 +110,14 @@ namespace Squick.Control
                     Skeleton playerSkeleton = (from s in skeletonData where s.TrackingState == SkeletonTrackingState.Tracked select s).FirstOrDefault();
                     if (playerSkeleton != null)
                     {
-                        handPositions[RIGHT_HAND] = _sensor.MapSkeletonPointToDepth(playerSkeleton.Joints[JointType.HandRight].Position, DepthImageFormat.Resolution640x480Fps30);
-                        handPositions[LEFT_HAND] = _sensor.MapSkeletonPointToDepth(playerSkeleton.Joints[JointType.HandLeft].Position, DepthImageFormat.Resolution640x480Fps30);
+                        var pos = playerSkeleton.Joints[JointType.HandRight].Position;
+                        var di = _sensor.MapSkeletonPointToDepth(pos, DepthImageFormat.Resolution640x480Fps30);
+                        handPositions[RIGHT_HAND].X = 800*di.X/640;
+                        handPositions[RIGHT_HAND].Y = 600*di.Y/480;
+                        pos = playerSkeleton.Joints[JointType.HandLeft].Position;
+                        di = _sensor.MapSkeletonPointToDepth(pos, DepthImageFormat.Resolution640x480Fps30);
+                        handPositions[LEFT_HAND].X = 800 * di.X / 640;
+                        handPositions[LEFT_HAND].Y = 600 * di.Y / 480;
                     }
                 }
 
@@ -119,7 +128,7 @@ namespace Squick.Control
             StartSensor();
         }
 
-        public DepthImagePoint[] GetLatestCoordinates(){
+        public Vector2[] GetLatestCoordinates(){
             return handPositions;
         }
 
@@ -127,10 +136,12 @@ namespace Squick.Control
         public Rectangle[] GetHandCursorsBoundingBoxes()
         {
             Rectangle[] cursors = new Rectangle[2];
-            cursors[LEFT_HAND] = new Rectangle(handPositions[LEFT_HAND].X - HAND_CURSOR_WIDTH / 2, handPositions[LEFT_HAND].Y - HAND_CURSOR_WIDTH / 2,
+            cursors[LEFT_HAND] = new Rectangle((int) (handPositions[LEFT_HAND].X - HAND_CURSOR_WIDTH / 2), 
+                                               (int) (handPositions[LEFT_HAND].Y - HAND_CURSOR_WIDTH / 2),
                                                HAND_CURSOR_WIDTH,HAND_CURSOR_WIDTH);
-            cursors[RIGHT_HAND] = new Rectangle(handPositions[RIGHT_HAND].X - HAND_CURSOR_WIDTH / 2, handPositions[RIGHT_HAND].Y - HAND_CURSOR_WIDTH / 2,
-                                                HAND_CURSOR_WIDTH,HAND_CURSOR_WIDTH);
+            cursors[RIGHT_HAND] = new Rectangle((int)(handPositions[RIGHT_HAND].X - HAND_CURSOR_WIDTH / 2),
+                                                (int)(handPositions[RIGHT_HAND].Y - HAND_CURSOR_WIDTH / 2),
+                                               HAND_CURSOR_WIDTH, HAND_CURSOR_WIDTH);
             return cursors;
         }
 

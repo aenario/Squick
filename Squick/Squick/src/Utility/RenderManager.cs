@@ -65,15 +65,20 @@ namespace Squick.Utility
 
         public static void DrawBox(Rectangle box)
         {
-            _spriteBatch.Draw(ResourceManager.tex_pixel, box, Color.Red);
-         }
+            DrawBox(box, Color.Red);
+        }
 
-        public static void DrawLine(Vector2 point1, Vector2 point2)
+        public static void DrawBox(Rectangle box, Color color)
+        {
+            _spriteBatch.Draw(ResourceManager.tex_pixel, box, color);
+        }
+
+        public static void DrawLine(Vector2 point1, Vector2 point2, Color color)
         {
             float angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
             float length = Vector2.Distance(point1, point2);
 
-            _spriteBatch.Draw(ResourceManager.tex_pixel, point1, null, Color.Red,
+            _spriteBatch.Draw(ResourceManager.tex_pixel, point1, null, color,
                        angle, Vector2.Zero, new Vector2(length, 10f),
                        SpriteEffects.None, 0);
         }

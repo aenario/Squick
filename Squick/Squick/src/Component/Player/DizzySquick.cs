@@ -15,7 +15,8 @@ namespace Squick.Component.Player
 
         /* GAMLEPLAY CONSTANTS */
         private static float maxAngle = MathHelper.Pi / 3;
-        private static float coefAcc = 7;
+        private static float maxSpeed = 400;
+        private static float coefAcc = 5;
 
         /* ANIMATION CONSTANTS */
         private static float coefTailAngle = 0.001f;
@@ -40,16 +41,16 @@ namespace Squick.Component.Player
         {
             base.Update(gameTime);
 
-            DepthImagePoint[] dip = _gameInput.GetLatestCoordinates();
-            Vector2 left = new Vector2(dip[KinectInterface.LEFT_HAND].X, dip[KinectInterface.LEFT_HAND].Y);
-            Vector2 right = new Vector2(dip[KinectInterface.RIGHT_HAND].X, dip[KinectInterface.RIGHT_HAND].Y);
+            Vector2[] hands = _gameInput.GetLatestCoordinates();
+            Vector2 left = hands[KinectInterface.LEFT_HAND];
+            Vector2 right = hands[KinectInterface.RIGHT_HAND];
 
 
             if(right.X != left.X) armAngle = (right.Y - left.Y) / (right.X - left.X);
             if (armAngle > 0) armAngle = Math.Min(armAngle, maxAngle);
             if (armAngle < 0) armAngle = Math.Max(armAngle, -maxAngle);
 
-            _speed.X += armAngle * coefAcc;
+            _speed.X = MathHelper.Clamp(_speed.X + armAngle * coefAcc, -maxSpeed, maxSpeed);
 
             // add maxSpeed
 

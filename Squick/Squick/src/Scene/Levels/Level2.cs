@@ -15,28 +15,32 @@ using Squick.Component;
 using Squick.Component.Player;
 using Squick.Component.Misc;
 using Squick.Utility;
+using Squick.Scene.Menus;
+using Squick.Component.Collectible;
 
-namespace Squick.Scene
+namespace Squick.Scene.Levels
 {
     public class Level2 : Scene{
 
         private static Vector2 gravity = new Vector2(0, 3);
-        
+        private static float impactTrigger = 0.05f; // squick will bounce 0.05s before hitting branch
+        private static bool destroyable(Entity b){
+            return b.Pos.Y > 1200;
+        }
+
+
+        private float newSpeed(float oldSpeed, float bounceLength){
+            return Math.Max(700, 5 * oldSpeed / (200 - bounceLength)); }
 
         private Texture2D _levelBackground;
+        private List<Entity> items = new List<Entity>();
         private JumpingSquick squick;
         private Branch activeBranch;
         private List<Branch> oldBranches;
 
-        private float cameraOffset;
-
-        private bool wasAbove;
+        private float cameraOffset = 0;
 
         private Vector2 squickBottom;
-
-        //private Vector2 cameraPos;
-
-        //private Player _squick;
 
         public Level2(KinectInterface gameInput)
         {
@@ -47,7 +51,6 @@ namespace Squick.Scene
 
             activeBranch = new Branch(gameInput);
             oldBranches = new List<Branch>();
-            wasAbove = true;    
         }
 
         public override void Update(GameTime gameTime, KinectInterface gameInput)
@@ -55,20 +58,20 @@ namespace Squick.Scene
 
             activeBranch.Update(gameTime);
             squick.Update(gameTime);
-
+            squick.Speed = Vector2.Add(squick.Speed, gravity);
                         
             squickBottom = Vector2.Add(squick.Pos, new Vector2(squick.Width/2, 0.9f*squick.Height));
-            bool aboutToCross = wasAbove && activeBranch.isAbove(squickBottom);
-            wasAbove = activeBranch.isBelow(squickBottom);
+            var later = Vector2.Add(squickBottom, Vector2.Multiply(squick.Speed, impactTrigger));
+            bool aboutToCross = activeBranch.isBelow(squickBottom) && activeBranch.isAbove(later);
             
             if(aboutToCross){
 
-                /* après 3h à se plonger dans les affres de la trigo,
-                 * découvrir que c'est faisable en une seule goddamn ligne...
-                 * Les joies du C#*/
-                squick.Speed = Vector2.Reflect(squick.Speed, activeBranch.Normal);
-                //var Ysp = squick.Speed.Y;
-                //if(Ysp <0) Ysp = MathHelper.Clamp(Ysp, , -400);
+              
+                float oldSpeed = squick.Speed.Length();
+                Vector2 direction = Vector2.Reflect(squick.Speed, activeBranch.Normal);
+
+                squick.Speed = Vector2.Multiply(Vector2.Normalize(direction), 
+                    newSpeed(oldSpeed, activeBranch.BounceLength));
                 
                 activeBranch.Fix();
                 oldBranches.Add(activeBranch);
@@ -77,17 +80,36 @@ namespace Squick.Scene
 
             }
 
-            if (squick.Pos.Y < 0 && squick.Speed.Y < 0) // squick monte
+            if (squick.Pos.Y < 150 && squick.Speed.Y < 0) // squick monte
             {
                 
-                var delta = squick.Pos.Y;
+                var delta = squick.Pos.Y - 150;
+                var oldOff = cameraOffset;
                 cameraOffset -= delta;
-                squick.Pos = new Vector2(squick.Pos.X, 0);
+                Vector2 offset = new Vector2(0, oldOff);
+                foreach (EntityFactory item in Level2CollectibleFactory.getSpawnBetween((int)oldOff, (int)cameraOffset))
+                {
+                    var i = item.asEntity();
+                    Console.WriteLine("1 (" + i.Pos.X + ":" + i.Pos.Y);
+                    i.Pos = Vector2.Subtract(i.Pos, offset);
+                    Console.WriteLine("2 (" + i.Pos.X + ":" + i.Pos.Y);
+                    items.Add(i);
+                }
+
+
+
+                squick.Pos = new Vector2(squick.Pos.X, 150);
                 foreach (Branch b in oldBranches)
                 {
                     b.Pos = new Vector2(b.Pos.X, b.Pos.Y - delta);
                 }
-                oldBranches.RemoveAll(delegate(Branch b) { return b.Pos.Y > 1200; });
+                oldBranches.RemoveAll(destroyable);
+
+                foreach (Entity i in items)
+                {
+                    i.Pos = new Vector2(i.Pos.X, i.Pos.Y - delta);
+                }
+                items.RemoveAll(destroyable);
             }
 
             
@@ -96,6 +118,13 @@ namespace Squick.Scene
 
             // DEBUG ONLY
             if(squick.Pos.Y > 600) squick.Pos = new Vector2(squick.Pos.X, 0);
+            
+            /*
+            if(squick.Pos.Y > 600){
+                _sceneFinished = true;
+                _nextScene = new DebugMenu();
+            }
+             */
             
         }
 
@@ -107,12 +136,18 @@ namespace Squick.Scene
 
             RenderManager.Draw2DTexture( _levelBackground, back1, Color.White);
             RenderManager.Draw2DTexture(_levelBackground, back2, Color.White);
+            RenderManager.DrawString(ResourceManager.font_UI, "Height : " + cameraOffset, new Vector2(10, 30), Color.Gold);
+
             squick.Render(gameTime);
             activeBranch.Render(gameTime);
             RenderManager.DrawBox(new Rectangle((int) squickBottom.X, (int) squickBottom.Y, 3, 3));
 
             foreach(Branch b in oldBranches) b.Render(gameTime);
-            //RenderManager.DrawLine(leftHandPos, rightHandPos);
+            foreach (Entity i in items)
+            {
+                Console.WriteLine(i.Pos.X + ":" + i.Pos.Y + " 3");
+                i.Render(gameTime);
+            }
 
         }
 

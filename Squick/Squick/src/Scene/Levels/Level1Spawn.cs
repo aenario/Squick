@@ -15,6 +15,7 @@ namespace Squick.Scene.Levels
         private static TimeSpan baseTime;
 
         private static EntityFactory[] spawn = new EntityFactory[]{
+
             // Tutorial waves
             // . Level1
             new EntityFactory(2.0, EntityFactory.BONUS_NUT, 350),
