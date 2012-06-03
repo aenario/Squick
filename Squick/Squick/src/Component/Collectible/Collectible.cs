@@ -16,7 +16,7 @@ namespace Squick.Component.Collectible
         public const int MOVEMENT_FALL = 1;
         
         protected int _bonus;
-        protected int _speedFactor;
+        protected float _speedFactor;
         protected int _movementPattern;
         public int MovementPattern
         {

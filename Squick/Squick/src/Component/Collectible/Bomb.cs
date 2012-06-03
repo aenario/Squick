@@ -13,8 +13,8 @@ namespace Squick.Component.Collectible
         public Bomb()
         {
             // Default properties
-            _bonus = 1;
-            _speedFactor = 1;
+            _bonus = -500;
+            _speedFactor = 0.5f;
             _movementPattern = MOVEMENT_FALL;
             _boundingBox = ResourceManager.tex_pine.Bounds;
         }

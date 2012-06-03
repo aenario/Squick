@@ -13,8 +13,8 @@ namespace Squick.Component.Collectible
         public GoldenNut()
         {
             // Default properties
-            _bonus = 1;
-            _speedFactor = 1;
+            _bonus = 500;
+            _speedFactor = 1.5f;
             _movementPattern = MOVEMENT_FALL;
             _boundingBox = ResourceManager.tex_nut.Bounds;
         }
