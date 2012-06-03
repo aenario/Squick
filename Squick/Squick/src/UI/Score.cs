@@ -19,10 +19,10 @@ namespace Squick.UI
         private Color _textCurrentColor;
 
         // Default values
-        private const Color _textNormalColor = Color.White;
-        private const Color _textScoreDecreased = Color.Red;
-        private const Color _textScoreIncreased = Color.Gold;
-        private const SpriteFont _buttonFont = ResourceManager.font_UI;
+        private Color _textNormalColor = Color.White;
+        private Color _textScoreDecreased = Color.Red;
+        private Color _textScoreIncreased = Color.Gold;
+        private SpriteFont _buttonFont = ResourceManager.font_UI;
 
         public Score(Vector2 location)
         {
@@ -64,8 +64,7 @@ namespace Squick.UI
 
         public void Render(GameTime gameTime)
         {
-            RenderManager.DrawBox(_boundingBox);
-            RenderManager.DrawString(_buttonFont, _buttonText, _location, _textCurrentColor);
+            RenderManager.DrawString(_buttonFont, _value.ToString(), _location, _textCurrentColor);
         }
 
        
