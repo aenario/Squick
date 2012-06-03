@@ -17,14 +17,34 @@ namespace Squick.Component
 
         public Vector2 Pos
         {
-            get{ return _pos;  }
-            set{ _pos = value; }
+            get { return _pos; }
+            set { _pos = value; }
+        }
+        public float PosX
+        {
+            get { return _pos.X; }
+            set { _pos.X = value; }
+        }
+        public float PosY
+        {
+            get { return _pos.Y; }
+            set { _pos.Y = value; }
         }
         protected Vector2 _speed; /** pixels /s **/
         public Vector2 Speed
         {
             get { return _speed; }
             set { _speed = value; }
+        }
+        public float SpeedX
+        {
+            get { return _speed.X; }
+            set { _speed.X = value; }
+        }
+        public float SpeedY
+        {
+            get { return _speed.Y; }
+            set { _speed.Y = value; }
         }
         
         public Entity()

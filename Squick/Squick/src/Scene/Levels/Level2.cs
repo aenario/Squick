@@ -22,15 +22,16 @@ namespace Squick.Scene.Levels
 {
     public class Level2 : Scene{
 
-        private static Vector2 gravity = new Vector2(0, 3);
+        private static float gravity = 3;
         private static float impactTrigger = 0.05f; // squick will bounce 0.05s before hitting branch
-        private static bool destroyable(Entity b){
-            return b.Pos.Y > 1200;
+        private static float distanceToTop = 150;
+        private static bool destroyable(Entity e){
+            return e.Pos.Y > 1200;
         }
 
 
         private float newSpeed(float oldSpeed, float bounceLength){
-            return Math.Max(700, 5 * oldSpeed / (200 - bounceLength)); }
+            return MathHelper.Clamp(2 * oldSpeed + 5*(200 - bounceLength), 300, 1200); }
 
         private Texture2D _levelBackground;
         private List<Entity> items = new List<Entity>();
@@ -46,8 +47,8 @@ namespace Squick.Scene.Levels
         {
             _levelBackground = ResourceManager.tex_background_level2;
             squick = new JumpingSquick(gameInput);
-            squick.Pos = new Vector2(100, 100);
-            squick.Speed = new Vector2(10,0);
+            squick.Pos = new Vector2(400, 100);
+            squick.Speed = new Vector2(0,0);
 
             activeBranch = new Branch(gameInput);
             oldBranches = new List<Branch>();
@@ -58,57 +59,36 @@ namespace Squick.Scene.Levels
 
             activeBranch.Update(gameTime);
             squick.Update(gameTime);
-            squick.Speed = Vector2.Add(squick.Speed, gravity);
+            foreach (Entity i in items) ((Collectible)i).Update(gameTime);
+            squick.SpeedY += gravity;
                         
             squickBottom = Vector2.Add(squick.Pos, new Vector2(squick.Width/2, 0.9f*squick.Height));
             var later = Vector2.Add(squickBottom, Vector2.Multiply(squick.Speed, impactTrigger));
             bool aboutToCross = activeBranch.isBelow(squickBottom) && activeBranch.isAbove(later);
-            
-            if(aboutToCross){
 
-              
-                float oldSpeed = squick.Speed.Length();
-                Vector2 direction = Vector2.Reflect(squick.Speed, activeBranch.Normal);
+            if (aboutToCross) processJump(gameInput, gameTime);
 
-                squick.Speed = Vector2.Multiply(Vector2.Normalize(direction), 
-                    newSpeed(oldSpeed, activeBranch.BounceLength));
-                
-                activeBranch.Fix();
-                oldBranches.Add(activeBranch);
-                activeBranch = new Branch(gameInput);
-                activeBranch.Update(gameTime);
-
-            }
-
-            if (squick.Pos.Y < 150 && squick.Speed.Y < 0) // squick monte
+            if (squick.Pos.Y < distanceToTop && squick.Speed.Y < 0) // squick monte
             {
                 
-                var delta = squick.Pos.Y - 150;
+                var delta = squick.Pos.Y - distanceToTop;
                 var oldOff = cameraOffset;
-                cameraOffset -= delta;
-                Vector2 offset = new Vector2(0, oldOff);
-                foreach (EntityFactory item in Level2CollectibleFactory.getSpawnBetween((int)oldOff, (int)cameraOffset))
+                
+                foreach (EntityFactory item in Level2CollectibleFactory.getSpawnBetween((int) cameraOffset, (int)(cameraOffset-delta)))
                 {
-                    var i = item.asEntity();
-                    Console.WriteLine("1 (" + i.Pos.X + ":" + i.Pos.Y);
-                    i.Pos = Vector2.Subtract(i.Pos, offset);
-                    Console.WriteLine("2 (" + i.Pos.X + ":" + i.Pos.Y);
+                    Collectible i = (Collectible) item.asEntity();
+                    i.MovementPattern = Collectible.MOVEMENT_NONE;
+                    i.PosY -= cameraOffset;
                     items.Add(i);
                 }
 
+                squick.PosY = distanceToTop;
+                foreach (Entity e in oldBranches) e.PosY -= delta;
+                foreach (Entity e in items) e.PosY -= delta;
 
+                cameraOffset -= delta;
 
-                squick.Pos = new Vector2(squick.Pos.X, 150);
-                foreach (Branch b in oldBranches)
-                {
-                    b.Pos = new Vector2(b.Pos.X, b.Pos.Y - delta);
-                }
                 oldBranches.RemoveAll(destroyable);
-
-                foreach (Entity i in items)
-                {
-                    i.Pos = new Vector2(i.Pos.X, i.Pos.Y - delta);
-                }
                 items.RemoveAll(destroyable);
             }
 
@@ -126,6 +106,20 @@ namespace Squick.Scene.Levels
             }
              */
             
+        }
+
+        private void processJump(KinectInterface gameInput, GameTime gameTime )
+        {
+            float oldSpeed = squick.Speed.Length();
+            Vector2 direction = Vector2.Reflect(squick.Speed, activeBranch.Normal);
+
+            squick.Speed = Vector2.Multiply(Vector2.Normalize(direction),
+                newSpeed(oldSpeed, activeBranch.BounceLength));
+
+            activeBranch.Fix();
+            oldBranches.Add(activeBranch);
+            activeBranch = new Branch(gameInput);
+            activeBranch.Update(gameTime);
         }
 
         public override void Render(GameTime gameTime)

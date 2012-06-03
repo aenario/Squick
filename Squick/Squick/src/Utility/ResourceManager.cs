@@ -15,6 +15,7 @@ namespace Squick.Utility
        
         // Fonts
         public static SpriteFont font_UI;
+        public static SpriteFont font_bigUI;
 
         // Textures
         public static Texture2D tex_pixel; // Used to simulate a 1X1 pixel texture
@@ -41,6 +42,7 @@ namespace Squick.Utility
             _content = content;
             // Fonts
             font_UI = _content.Load<SpriteFont>("Fonts\\MainFont");
+            font_bigUI = _content.Load<SpriteFont>("Fonts\\BigFont");
 
             // Textures
             // . Global 

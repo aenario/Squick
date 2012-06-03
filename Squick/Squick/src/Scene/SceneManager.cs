@@ -21,7 +21,7 @@ namespace Squick.Scene
         {
             _game = game;
             _gameInput = gameInput;
-            _currentScene = new Level1(gameInput); // For testing purpose
+            _currentScene = new MainMenu(); // For testing purpose
         }
 
         public void Update(GameTime gameTime)

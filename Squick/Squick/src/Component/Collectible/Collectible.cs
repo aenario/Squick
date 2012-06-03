@@ -18,6 +18,11 @@ namespace Squick.Component.Collectible
         protected int _bonus;
         protected int _speedFactor;
         protected int _movementPattern;
+        public int MovementPattern
+        {
+            get{ return _movementPattern;}
+            set { _movementPattern = value; }
+        }
         protected bool _destroyed;
 
         public Collectible()
@@ -27,13 +32,13 @@ namespace Squick.Component.Collectible
 
         new public void Update(GameTime gameTime)
         {
-            if (_movementPattern == MOVEMENT_NONE)
-                return;
-            
-            var t = gameTime.ElapsedGameTime.Milliseconds / 1000f;
 
             if (_movementPattern == MOVEMENT_FALL)
+            {
+                var t = gameTime.ElapsedGameTime.Milliseconds / 1000f;
                 _pos.Y += t * _speedFactor * _speed.Y;
+            }
+
             _boundingBox.X = (int)_pos.X;
             _boundingBox.Y = (int)_pos.Y; 
         }
