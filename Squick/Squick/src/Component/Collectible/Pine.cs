@@ -13,8 +13,8 @@ namespace Squick.Component.Collectible
         public Pine()
         {
             // Default properties
-            _bonus = 1;
-            _speedFactor = 1;
+            _bonus = -100;
+            _speedFactor = 1.0f;
             _movementPattern = MOVEMENT_FALL;
             _boundingBox = ResourceManager.tex_pine.Bounds;
         }

@@ -120,8 +120,9 @@
     <Compile Include="src\Component\Entity.cs" />
     <Compile Include="src\Component\Player\DizzySquick.cs" />
     <Compile Include="src\Scene\Levels\Level1Spawn.cs" />
-    <Compile Include="src\_deprecated\SimpleEntity.cs" />
     <Compile Include="src\Scene\Levels\Level2Spawn.cs" />
+    <Compile Include="src\UI\Score.cs" />
+    <Compile Include="src\_deprecated\SimpleEntity.cs" />
     <Compile Include="src\Scene\Levels\Level2.cs" />
     <Compile Include="src\Component\EntityFactory.cs" />
     <Compile Include="src\UI\TextButton.cs" />
