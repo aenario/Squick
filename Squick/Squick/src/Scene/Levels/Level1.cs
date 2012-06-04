@@ -49,12 +49,10 @@ namespace Squick.Scene.Levels
         public Level1(KinectInterface gameInput)
         {
             _levelBackground = ResourceManager.tex_background_level1;
-<<<<<<< HEAD
-            _backToMenu = new TextButton("Menu", new Vector2(790, 10));
+
             _HUD_score = new Score(new Vector2(10,10));
-=======
             _backToMenu = new TextButton("Menu", new Vector2(690, 10));
->>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
+
             squick = new DizzySquick(gameInput);
             squick.Pos = new Vector2(400, 400);
 

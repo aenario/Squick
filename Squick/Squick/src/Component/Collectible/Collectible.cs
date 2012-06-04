@@ -32,23 +32,13 @@ namespace Squick.Component.Collectible
 
         new public void Update(GameTime gameTime)
         {
-<<<<<<< HEAD
             if (_movementPattern == MOVEMENT_NONE)
                 return;
             
             //var t = gameTime.ElapsedGameTime.Milliseconds / 1000f;
-
             if (_movementPattern == MOVEMENT_FALL)
                 _pos.Y += _speedFactor * _speed.Y;
-=======
 
-            if (_movementPattern == MOVEMENT_FALL)
-            {
-                var t = gameTime.ElapsedGameTime.Milliseconds / 1000f;
-                _pos.Y += t * _speedFactor * _speed.Y;
-            }
-
->>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
             _boundingBox.X = (int)_pos.X;
             _boundingBox.Y = (int)_pos.Y; 
         }

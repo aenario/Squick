@@ -41,14 +41,10 @@ namespace Squick.UI
             _pressed = false;
 
             // Default values
-<<<<<<< HEAD
+
             _font = ResourceManager.font_UI;
-            _textNormalColor = Color.White;
-=======
-            _buttonFont = ResourceManager.font_UI;
-            textSize = _buttonFont.MeasureString(text);
+            textSize = _font.MeasureString(text);
             _textNormalColor = Color.BurlyWood;
->>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
             _textSelectedColor = Color.Gold;
             _boundingBox = box;
         }
@@ -90,10 +86,7 @@ namespace Squick.UI
 
         public void Render(GameTime gameTime)
         {
-<<<<<<< HEAD
-            RenderManager.DrawBox(_boundingBox);
-            RenderManager.DrawString(_font, _buttonText, _location, _textCurrentColor);
-=======
+
             RenderManager.DrawBox(_boundingBox, _textCurrentColor);
             Rectangle inner = new Rectangle(_boundingBox.X + 5,
                 _boundingBox.Y + 5,
@@ -102,14 +95,13 @@ namespace Squick.UI
             
             RenderManager.DrawBox(inner, Color.Beige);
             
-            RenderManager.DrawString(_buttonFont, 
+            RenderManager.DrawString(_font, 
                 _buttonText, 
                 new Vector2(
                     _boundingBox.X + (_boundingBox.Width - textSize.X)/2,
                     _boundingBox.Y + (_boundingBox.Height - textSize.Y)/2),
                 _textCurrentColor);
->>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
-        }
+       }
 
         public bool IsPressed()
         {

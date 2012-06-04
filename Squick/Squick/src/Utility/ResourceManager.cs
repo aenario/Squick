@@ -15,12 +15,9 @@ namespace Squick.Utility
        
         // Fonts
         public static SpriteFont font_UI;
-<<<<<<< HEAD
         public static SpriteFont font_score;
         public static SpriteFont font_message;
-=======
         public static SpriteFont font_bigUI;
->>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
 
         // Textures
         public static Texture2D tex_pixel; // Used to simulate a 1X1 pixel texture
@@ -48,12 +45,10 @@ namespace Squick.Utility
             _content = content;
             // Fonts
             font_UI = _content.Load<SpriteFont>("Fonts\\MainFont");
-<<<<<<< HEAD
             font_score = _content.Load<SpriteFont>("Fonts\\ScoreFont");
             font_message = _content.Load<SpriteFont>("Fonts\\MessageFont");
-=======
             font_bigUI = _content.Load<SpriteFont>("Fonts\\BigFont");
->>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
+
 
             // Textures
             // . Global 

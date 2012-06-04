@@ -1,4 +1,6 @@
 Content\Fonts\MainFont.xnb
+Content\Fonts\BigFont.xnb
+Content\Fonts\MessageFont.xnb
 Content\Fonts\ScoreFont.xnb
 Content\GameThumbnail.xnb
 Content\Textures\Background_level_1.xnb
@@ -15,9 +17,4 @@ Content\Textures\Background_level_2.xnb
 Content\Textures\pine.xnb
 Content\Textures\nut.xnb
 Content\Textures\branch.xnb
-<<<<<<< HEAD
-Content\Fonts\MessageFont.xnb
 Content\Textures\goldenNut.xnb
-=======
-Content\Fonts\BigFont.xnb
->>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
