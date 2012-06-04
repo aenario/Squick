@@ -22,7 +22,7 @@ namespace Squick.UI
         private Color _textSelectedColor;
         private Color _textCurrentColor;
 
-        private SpriteFont _buttonFont;
+        private SpriteFont _font;
         
         private bool _hover;
         private float _hoverTime;
@@ -41,8 +41,9 @@ namespace Squick.UI
             _pressed = false;
 
             // Default values
-            _buttonFont = ResourceManager.font_UI;
-            textSize = _buttonFont.MeasureString(text);
+
+            _font = ResourceManager.font_UI;
+            textSize = _font.MeasureString(text);
             _textNormalColor = Color.BurlyWood;
             _textSelectedColor = Color.Gold;
             _boundingBox = box;
@@ -85,6 +86,7 @@ namespace Squick.UI
 
         public void Render(GameTime gameTime)
         {
+
             RenderManager.DrawBox(_boundingBox, _textCurrentColor);
             Rectangle inner = new Rectangle(_boundingBox.X + 5,
                 _boundingBox.Y + 5,
@@ -93,13 +95,13 @@ namespace Squick.UI
             
             RenderManager.DrawBox(inner, Color.Beige);
             
-            RenderManager.DrawString(_buttonFont, 
+            RenderManager.DrawString(_font, 
                 _buttonText, 
                 new Vector2(
                     _boundingBox.X + (_boundingBox.Width - textSize.X)/2,
                     _boundingBox.Y + (_boundingBox.Height - textSize.Y)/2),
                 _textCurrentColor);
-        }
+       }
 
         public bool IsPressed()
         {

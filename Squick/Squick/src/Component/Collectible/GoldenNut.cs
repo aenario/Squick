@@ -16,12 +16,12 @@ namespace Squick.Component.Collectible
             _bonus = 500;
             _speedFactor = 1.5f;
             _movementPattern = MOVEMENT_FALL;
-            _boundingBox = ResourceManager.tex_nut.Bounds;
+            _boundingBox = ResourceManager.tex_goldenNut.Bounds;
         }
 
         public override void Render(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            RenderManager.Draw2DTexture(ResourceManager.tex_nut, _boundingBox, Color.Gold);
+            RenderManager.Draw2DTexture(ResourceManager.tex_goldenNut, _boundingBox, Color.Gold);
         }
 
         public override void Destroy() { }
