@@ -15,7 +15,9 @@ namespace Squick.UI
     public class Score
     {
         private int _value;
+        private int _bonusChain;
         private Vector2 _location;
+        private Vector2 _locationBonus;
         private Color _textCurrentColor;
 
         // Default values
@@ -28,13 +30,16 @@ namespace Squick.UI
         {
             // Init
             _value = 0;
+            _bonusChain = 0;
             _location = location;
+            _locationBonus = location;
+            _locationBonus.Y += 70;
         
             // Default values
             _textCurrentColor = _textNormalColor;
         }
 
-        public void Update(int score)
+        public void Update(int score,int bonusChain = 0)
         {
             // Check if the score need to be redrawn
             if (_value != score)
@@ -52,18 +57,21 @@ namespace Squick.UI
                     _textCurrentColor = _textScoreDecreased;
                     _value-=2;
                 }
-        
             }
             // EQUAL
             else
             {
                 _textCurrentColor = _textNormalColor;
             }
+
+            _bonusChain = bonusChain;
+           
         }
 
         public void Render(GameTime gameTime)
         {
             RenderManager.DrawString(_font, _value.ToString(), _location, _textCurrentColor);
+            RenderManager.DrawString(_font, "x"+_bonusChain.ToString(), _locationBonus, _textNormalColor);
         }
 
        

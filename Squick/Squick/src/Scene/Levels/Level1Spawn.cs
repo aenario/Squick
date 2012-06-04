@@ -18,15 +18,44 @@ namespace Squick.Scene.Levels
 
             // Tutorial waves
             // . Level1
-            new EntityFactory(2.0, EntityFactory.BONUS_NUT, 350),
-            new EntityFactory(10.0, EntityFactory.BONUS_NUT, 150), 
-            new EntityFactory(18.0, EntityFactory.BONUS_NUT, 550), 
-            new EntityFactory(25.0, EntityFactory.BONUS_GOLDEN_NUT, 350), 
+            // ~ ReadySetGo (takes 5 seconds to appear)
+            new EntityFactory(7.0, EntityFactory.BONUS_NUT, 350),  
+            new EntityFactory(15.0, EntityFactory.BONUS_NUT, 150), 
+            new EntityFactory(23.0, EntityFactory.BONUS_NUT, 550), 
+            new EntityFactory(30.0, EntityFactory.BONUS_GOLDEN_NUT, 350), 
             // . Level 2
-            /*
-            new EntityFactory(3.5, EntityFactory.MALUS_PINE, 200),
-            new EntityFactory(4.0, EntityFactory.BONUS_NUT, 300), 
-           */
+            // ~ /!\ Warning /!\
+            new EntityFactory(35.0, EntityFactory.MALUS_PINE, 350),  
+
+            new EntityFactory(42.0, EntityFactory.MALUS_PINE, 150), 
+            new EntityFactory(42.0, EntityFactory.MALUS_PINE, 550), 
+
+            new EntityFactory(48.0, EntityFactory.MALUS_PINE, 250),
+            new EntityFactory(48.0, EntityFactory.MALUS_PINE, 450), 
+
+            new EntityFactory(55.0, EntityFactory.MALUS_PINE, 150), 
+            new EntityFactory(55.0, EntityFactory.BONUS_NUT, 350), 
+            new EntityFactory(55.0, EntityFactory.MALUS_PINE, 550), 
+            // . Level 2
+            // ~ /!\ Speed-up /!\
+            new EntityFactory(66.0, EntityFactory.BONUS_NUT, 100),  
+            new EntityFactory(68.0, EntityFactory.BONUS_NUT, 150),  
+            new EntityFactory(70.0, EntityFactory.BONUS_NUT, 200),  
+            new EntityFactory(72.0, EntityFactory.BONUS_NUT, 250),  
+            new EntityFactory(74.0, EntityFactory.BONUS_NUT, 300),  
+            new EntityFactory(76.0, EntityFactory.BONUS_NUT, 350),
+
+            new EntityFactory(80.0, EntityFactory.BONUS_NUT, 600),
+            new EntityFactory(82.0, EntityFactory.BONUS_NUT, 550),
+            new EntityFactory(84.0, EntityFactory.BONUS_NUT, 500),
+            new EntityFactory(86.0, EntityFactory.BONUS_NUT, 450),
+            new EntityFactory(88.0, EntityFactory.BONUS_NUT, 400),
+            new EntityFactory(90.0, EntityFactory.BONUS_NUT, 350),
+
+            new EntityFactory(95.0, EntityFactory.BONUS_GOLDEN_NUT, 150),
+            new EntityFactory(95.0, EntityFactory.BONUS_GOLDEN_NUT, 550),
+            new EntityFactory(97.0, EntityFactory.BONUS_GOLDEN_NUT, 350),
+
         };
 
         public static List<EntityFactory> getSpawnAt(GameTime gameTime){
