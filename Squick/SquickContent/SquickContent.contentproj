@@ -146,12 +146,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Fonts\ScoreFont.spritefont">
       <Name>ScoreFont</Name>
+=======
+    <Compile Include="Fonts\BigFont.spritefont">
+      <Name>BigFont</Name>
+>>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <Compile Include="Fonts\MessageFont.spritefont">
       <Name>MessageFont</Name>
@@ -166,6 +172,8 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+=======
+>>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

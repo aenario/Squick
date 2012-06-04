@@ -112,10 +112,11 @@ namespace Squick
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _sceneManager.Render(gameTime);
 
+            /*
             // TEST
             spriteBatch.Begin();
-            // . Draw hands coordinates
-            Vector2[] dip = _gameInput.GetLatestCoordinates();
+            // Draw hands coordinates
+             Vector2[] dip = _gameInput.GetLatestCoordinates();
             
             String left = "["+dip[KinectInterface.LEFT_HAND].X.ToString() + ","
                 + dip[KinectInterface.LEFT_HAND].Y.ToString() + " ] ";
@@ -127,7 +128,7 @@ namespace Squick
             spriteBatch.DrawString(baseFont, right, vRight, Color.Yellow);
             spriteBatch.DrawString(baseFont, _kinectsManager.connectedStatus, new Vector2(10.0f), Color.Red);
             spriteBatch.End();
-
+            
             // . Draw hand cursors bounding boxes
             RenderManager.StartRendering();
             Rectangle[] cursors = _gameInput.GetHandCursorsBoundingBoxes();
@@ -135,6 +136,7 @@ namespace Squick
             RenderManager.DrawBox(cursors[KinectInterface.RIGHT_HAND]);
             RenderManager.EndRendering();
             // END TEST
+             */
         }
     }
 }

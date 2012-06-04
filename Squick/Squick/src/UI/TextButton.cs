@@ -15,7 +15,7 @@ namespace Squick.UI
     public class TextButton
     {
         private String _buttonText;
-        private Vector2 _location;
+        private Vector2 textSize;
         private Rectangle _boundingBox;
 
         private Color _textNormalColor;
@@ -31,18 +31,26 @@ namespace Squick.UI
         public const float BUTTON_SELECTION_TIME = 3.0f; // Time in seconds before a button press is performed.
 
         public TextButton(String text, Vector2 location)
+            :this(text, new Rectangle((int) location.X,(int) location.Y, 100, 50)){}
+
+        public TextButton(String text, Rectangle box)
         {
             // Init
             _buttonText = text;
-            _location = location;
             _hover = false;
             _pressed = false;
 
             // Default values
+<<<<<<< HEAD
             _font = ResourceManager.font_UI;
             _textNormalColor = Color.White;
+=======
+            _buttonFont = ResourceManager.font_UI;
+            textSize = _buttonFont.MeasureString(text);
+            _textNormalColor = Color.BurlyWood;
+>>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
             _textSelectedColor = Color.Gold;
-            _boundingBox = new Rectangle((int)location.X,(int)location.Y, 100, 50);
+            _boundingBox = box;
         }
 
         public void Update(GameTime gameTime, KinectInterface gameInput)
@@ -82,8 +90,25 @@ namespace Squick.UI
 
         public void Render(GameTime gameTime)
         {
+<<<<<<< HEAD
             RenderManager.DrawBox(_boundingBox);
             RenderManager.DrawString(_font, _buttonText, _location, _textCurrentColor);
+=======
+            RenderManager.DrawBox(_boundingBox, _textCurrentColor);
+            Rectangle inner = new Rectangle(_boundingBox.X + 5,
+                _boundingBox.Y + 5,
+                _boundingBox.Width - 10,
+                _boundingBox.Height - 10);
+            
+            RenderManager.DrawBox(inner, Color.Beige);
+            
+            RenderManager.DrawString(_buttonFont, 
+                _buttonText, 
+                new Vector2(
+                    _boundingBox.X + (_boundingBox.Width - textSize.X)/2,
+                    _boundingBox.Y + (_boundingBox.Height - textSize.Y)/2),
+                _textCurrentColor);
+>>>>>>> a33f3a9a62c94f64d6a8b1f48d8479c96dccd7cd
         }
 
         public bool IsPressed()

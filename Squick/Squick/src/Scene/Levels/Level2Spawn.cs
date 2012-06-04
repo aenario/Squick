@@ -11,9 +11,6 @@ namespace Squick.Scene.Levels
     static class Level2CollectibleFactory
     {
 
-        private static double LastSpawn = 0;
-        private static TimeSpan baseTime;
-
         private static EntityFactory[] spawn = new EntityFactory[]{
             new EntityFactory(3.0, EntityFactory.BONUS_NUT, new Vector2(100, 200)), // spawn nut after 7.5s at X= 300
             new EntityFactory(3.5, EntityFactory.MALUS_PINE, new Vector2(300, 1200)),

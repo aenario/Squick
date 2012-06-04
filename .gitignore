@@ -1,5 +1,6 @@
 .\Squick.suo
 Squick.suo
+*.suo
 .\Squick\Squick\bin\*
 .\Squick\Squick\obj\*
 .\Squick\SquickContent\bin\*
