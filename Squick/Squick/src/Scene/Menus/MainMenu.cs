@@ -27,9 +27,12 @@ namespace Squick.Scene.Menus
         private TextButton _level2Btn;
         private TextButton _quitBtn;
 
+        private HandCursors _hc;
+
         public MainMenu()
         {
             _background = ResourceManager.tex_background_level1;
+            _hc = new HandCursors();
             _aventureBtn = new TextButton("The Epic Quest of Squick", new Rectangle(50, 50, 600, 100));
             _level1Btn = new TextButton("Level 1", new Rectangle(50, 200, 200, 100));
             _level2Btn = new TextButton("Level 2", new Rectangle(50, 350, 200, 100));
@@ -40,6 +43,7 @@ namespace Squick.Scene.Menus
         {
             // Update buttons state
 
+            _hc.Update(gameTime, gameInput);
             _aventureBtn.Update(gameTime, gameInput);
             _level1Btn.Update(gameTime, gameInput);
             _level2Btn.Update(gameTime, gameInput);
@@ -75,6 +79,8 @@ namespace Squick.Scene.Menus
             _level1Btn.Render(gameTime);
             _level2Btn.Render(gameTime);
             _quitBtn.Render(gameTime);
+
+            _hc.Render(gameTime);
         }
     }
 }

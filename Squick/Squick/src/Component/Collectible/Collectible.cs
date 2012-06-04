@@ -32,6 +32,9 @@ namespace Squick.Component.Collectible
 
         new public void Update(GameTime gameTime)
         {
+            _boundingBox.X = (int)_pos.X;
+            _boundingBox.Y = (int)_pos.Y; 
+
             if (_movementPattern == MOVEMENT_NONE)
                 return;
             
@@ -39,8 +42,6 @@ namespace Squick.Component.Collectible
             if (_movementPattern == MOVEMENT_FALL)
                 _pos.Y += t * _speedFactor * _speed.Y;
 
-            _boundingBox.X = (int)_pos.X;
-            _boundingBox.Y = (int)_pos.Y; 
         }
 
         public int GetBonus() { return _bonus; }

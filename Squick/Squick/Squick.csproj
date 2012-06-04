@@ -120,8 +120,11 @@
     <Compile Include="src\Component\Entity.cs" />
     <Compile Include="src\Component\Player\DizzySquick.cs" />
     <Compile Include="src\Scene\Levels\Level2Spawn.cs" />
+    <Compile Include="src\Scene\Menus\VictoryMenu.cs" />
     <Compile Include="src\Scene\Menus\MainMenu.cs" />
     <Compile Include="src\Scene\Menus\GameOverMenu.cs" />
+    <Compile Include="src\UI\HandCursors.cs" />
+    <Compile Include="src\UI\Gauge.cs" />
     <Compile Include="src\UI\Message.cs" />
     <Compile Include="src\Scene\Menus\DebugMenu.cs" />
     <Compile Include="src\UI\TextBox.cs" />
@@ -174,7 +177,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\Scene\Intros\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.ico" />
   </ItemGroup>

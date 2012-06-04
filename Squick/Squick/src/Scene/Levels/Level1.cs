@@ -58,9 +58,9 @@ namespace Squick.Scene.Levels
             squick = new DizzySquick(gameInput);
             squick.Pos = new Vector2(400, 400);
 
-            _message = new Message("Ready?  Set...  Go!", new Vector2(20, 200),2.0f,Message.DISPLAY_LBL,250); 
+            _message = new Message("Ready?  Set...  Go!", new Vector2(20, 200),2.0f,Message.DISPLAY_LBL,250);
 
-
+            
             // Level score
             _score = 0;
             _bonusChain = 0;
@@ -71,14 +71,18 @@ namespace Squick.Scene.Levels
             _backToMenu.Update(gameTime, gameInput);
             if (_backToMenu.IsPressed())
             {
-                _nextScene = new DebugMenu(); 
+                _nextScene = new MainMenu(); 
                 _sceneFinished = true;
             }
 
             if (justStarted)
             {
-                //Level1Spawn.startNow(gameTime);
+                Level1CollectibleFactory.startNow(gameTime);
                 justStarted = false;
+            }
+            if (Level1CollectibleFactory.done(gameTime))
+            {
+                // do the jump
             }
 
             // spawn items 

@@ -19,45 +19,42 @@ namespace Squick.UI
         private float _current;
 
         private Color _gaugeColor;
+        private Color _fillColor;
 
         private Rectangle _gauge;
         private Rectangle _fill;
 
-        private SpriteFont _font;
+        public Vector2 Top
+        {
+            get{ return new Vector2(_fill.X + _fill.Width/2, _fill.Y); }
+        }
 
-        public Gauge(Vector2 pos, float max, Color color)
+        public Gauge(Rectangle pos, float max, Color color, Color fillColor)
         {
             // Init
             _max = max;
             _gaugeColor = color;
-            _position = pos;
+            _fillColor = fillColor;
+            _position = new Vector2(pos.X, pos.Y);
             _current = 0;
-            _gauge = new Rectangle(
+            _gauge = pos;
+            _fill = new Rectangle(pos.X, pos.Y, pos.Width, pos.Height);
+            _fill.Inflate(-2, 0);
         }
 
         public void Update(float current)
         {
             // Cursors positions
             _current = current;
-            
+            _fill.Y = (int) (_gauge.Y + _gauge.Height * (1 - (_current / _max)));
+            _fill.Height = (int) ((_current / _max) * _gauge.Height);
         }
 
         public void Render(GameTime gameTime)
         {
-            RenderManager.DrawBox(_boundingBox, _textColor);
-            Rectangle inner = new Rectangle(_boundingBox.X + 5,
-                _boundingBox.Y + 5,
-                _boundingBox.Width - 10,
-                _boundingBox.Height - 10);
+            RenderManager.DrawBox(_gauge, _gaugeColor);
+            RenderManager.DrawBox(_fill, _fillColor);
             
-            RenderManager.DrawBox(inner, Color.Beige);
-            
-            RenderManager.DrawString(_buttonFont, 
-                _buttonText, 
-                new Vector2(
-                    _boundingBox.X + (_boundingBox.Width - textSize.X)/2,
-                    _boundingBox.Y + (_boundingBox.Height - textSize.Y)/2),
-                _textColor);
         }
     }
 }

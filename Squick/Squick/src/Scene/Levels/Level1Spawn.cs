@@ -13,6 +13,7 @@ namespace Squick.Scene.Levels
 
         private static double LastSpawn = 0;
         private static TimeSpan baseTime;
+        private static double maxTime;
 
         private static EntityFactory[] spawn = new EntityFactory[]{
 
@@ -70,14 +71,20 @@ namespace Squick.Scene.Levels
             List<EntityFactory> spawnNow = query.ToList<EntityFactory>();
             LastSpawn = spawnTime.TotalSeconds;
 
-            //if(spawnNow.Count > 0) Console.Write("spawn "+spawnNow.Count+" items | base="+baseTime.TotalSeconds+" now ="+spawnTime.TotalSeconds);
-
             return spawnNow;
+        }
+
+        public static bool done(GameTime gameTime)
+        {
+            return maxTime < gameTime.TotalGameTime.Subtract(baseTime).TotalSeconds;
+            
         }
 
         public static void startNow(GameTime gameTime)
         {
             baseTime = gameTime.TotalGameTime;
+            maxTime = (from n in spawn
+                        select n.time).Max();
         }
         
     }
