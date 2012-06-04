@@ -58,6 +58,11 @@ namespace Squick.Component
             _speed = speed;
         }
 
+        public bool Collide(Entity e)
+        {
+            return _boundingBox.Intersects(e.GetBoundingBox());
+        }
+
         public void Update(GameTime gameTime){
             var t = gameTime.ElapsedGameTime.Milliseconds / 1000f;
             if (!_speed.Equals(Vector2.Zero)) _pos = Vector2.Add(_pos, (new Vector2(_speed.X * t, _speed.Y * t)));

@@ -27,6 +27,7 @@ namespace Squick.Utility
         public static Texture2D tex_squick_leftArm;
         public static Texture2D tex_squick_rightArm;
         public static Texture2D tex_squick_head;
+        public static Texture2D tex_squick_headCut;
         public static Texture2D tex_squick_tail;
         public static Texture2D tex_squick_leftLeg;
         public static Texture2D tex_squick_rightLeg;
@@ -52,6 +53,7 @@ namespace Squick.Utility
             tex_squick_leftArm = _content.Load<Texture2D>("Textures\\leftArm");
             tex_squick_rightArm = _content.Load<Texture2D>("Textures\\rightArm");
             tex_squick_head = _content.Load<Texture2D>("Textures\\head");
+            tex_squick_headCut = _content.Load<Texture2D>("Textures\\teteCut");
             tex_squick_tail = _content.Load<Texture2D>("Textures\\tail");
             tex_squick_leftLeg = _content.Load<Texture2D>("Textures\\leftLeg");
             tex_squick_rightLeg = _content.Load<Texture2D>("Textures\\rightLeg");

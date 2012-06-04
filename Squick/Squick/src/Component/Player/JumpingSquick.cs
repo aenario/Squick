@@ -16,7 +16,13 @@ namespace Squick.Component.Player
 
         private static Vector2 leftOrigin = new Vector2(56, 21) ;
         private static Vector2 rightOrigin = new Vector2(15, 21);
-      
+        private static Vector2 bottom = new Vector2(100, 180);
+
+        public Vector2 Bottom
+        {
+            get { return Vector2.Add(Pos, bottom); }
+        }
+
         public int Width
         {
             get { return ResourceManager.tex_squick_body.Width; }
@@ -31,12 +37,14 @@ namespace Squick.Component.Player
         {
             _gameInput = gameInput;
             _boundingBox = ResourceManager.tex_squick_body.Bounds;
+            
         }
 
         new public void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
+            // Adjust boundingBox
+            _boundingBox = new Rectangle((int)Pos.X + 80, (int)Pos.Y + 60, Width - 120, Height - 100);
         }
         override public void Render(GameTime gameTime)
         {
