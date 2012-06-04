@@ -155,6 +155,7 @@
       <Name>MessageFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <Compile Include="Fonts\ScoreFont.spritefont">
       <Name>ScoreFont</Name>

@@ -32,6 +32,7 @@ namespace Squick.UI
             _gaugeColor = color;
             _position = pos;
             _current = 0;
+            _gauge = new Rectangle(
         }
 
         public void Update(float current)

@@ -33,3 +33,6 @@ D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\pine.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\nut.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\branch.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Fonts\BigFont.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Fonts\MessageFont.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Fonts\ScoreFont.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\goldenNut.xnb
