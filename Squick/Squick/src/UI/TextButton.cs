@@ -22,7 +22,7 @@ namespace Squick.UI
         private Color _textSelectedColor;
         private Color _textCurrentColor;
 
-        private SpriteFont _buttonFont;
+        private SpriteFont _font;
         
         private bool _hover;
         private float _hoverTime;
@@ -39,7 +39,7 @@ namespace Squick.UI
             _pressed = false;
 
             // Default values
-            _buttonFont = ResourceManager.font_UI;
+            _font = ResourceManager.font_UI;
             _textNormalColor = Color.White;
             _textSelectedColor = Color.Gold;
             _boundingBox = new Rectangle((int)location.X,(int)location.Y, 100, 50);
@@ -83,7 +83,7 @@ namespace Squick.UI
         public void Render(GameTime gameTime)
         {
             RenderManager.DrawBox(_boundingBox);
-            RenderManager.DrawString(_buttonFont, _buttonText, _location, _textCurrentColor);
+            RenderManager.DrawString(_font, _buttonText, _location, _textCurrentColor);
         }
 
         public bool IsPressed()

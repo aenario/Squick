@@ -22,7 +22,7 @@ namespace Squick.UI
         private Color _textNormalColor = Color.White;
         private Color _textScoreDecreased = Color.Red;
         private Color _textScoreIncreased = Color.Gold;
-        private SpriteFont _buttonFont = ResourceManager.font_UI;
+        private SpriteFont _font = ResourceManager.font_score;
 
         public Score(Vector2 location)
         {
@@ -30,9 +30,7 @@ namespace Squick.UI
             _value = 0;
             _location = location;
         
-
             // Default values
-            _buttonFont = ResourceManager.font_UI;
             _textCurrentColor = _textNormalColor;
         }
 
@@ -45,26 +43,27 @@ namespace Squick.UI
                 if (_value < score)
                 {
                     _textCurrentColor = _textScoreIncreased;
-                    _value++;
+                    _value+=2;
 
                 }
                 // Decreasing                   
-                else if (_value > score)
-                {
-                    _textCurrentColor = _textScoreDecreased;
-                    _value--;
-                }
-                // EQUAL
                 else
                 {
-                    _textCurrentColor = _textNormalColor;
+                    _textCurrentColor = _textScoreDecreased;
+                    _value-=2;
                 }
+        
+            }
+            // EQUAL
+            else
+            {
+                _textCurrentColor = _textNormalColor;
             }
         }
 
         public void Render(GameTime gameTime)
         {
-            RenderManager.DrawString(_buttonFont, _value.ToString(), _location, _textCurrentColor);
+            RenderManager.DrawString(_font, _value.ToString(), _location, _textCurrentColor);
         }
 
        

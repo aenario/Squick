@@ -1,4 +1,5 @@
 Content\Fonts\MainFont.xnb
+Content\Fonts\ScoreFont.xnb
 Content\GameThumbnail.xnb
 Content\Textures\Background_level_1.xnb
 Content\Textures\Squick_head_normal.xnb
@@ -14,3 +15,5 @@ Content\Textures\Background_level_2.xnb
 Content\Textures\pine.xnb
 Content\Textures\nut.xnb
 Content\Textures\branch.xnb
+Content\Fonts\MessageFont.xnb
+Content\Textures\goldenNut.xnb

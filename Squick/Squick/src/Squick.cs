@@ -21,6 +21,10 @@ namespace Squick
     /// </summary>
     public class Squick : Microsoft.Xna.Framework.Game
     {
+        public const bool FULLSCREEN_ENABLED = false;
+        public const int SCREEN_WIDTH = 800;
+        public const int SCREEN_HEIGHT = 600;
+
         public static String version = "0.1";
         private GraphicsDeviceManager _graphicsDevice;
         private SpriteBatch spriteBatch;
@@ -28,7 +32,7 @@ namespace Squick
         private KinectInterface _gameInput;
         private SceneManager _sceneManager;
         private SpriteFont baseFont;
-
+        
         public Squick()
         {
             _graphicsDevice = new GraphicsDeviceManager(this);
@@ -45,9 +49,9 @@ namespace Squick
         protected override void Initialize()
         {
             // Set graphic options
-            _graphicsDevice.PreferredBackBufferWidth = 800;
-            _graphicsDevice.PreferredBackBufferHeight = 600;
-            _graphicsDevice.IsFullScreen = false;
+            _graphicsDevice.PreferredBackBufferWidth = SCREEN_WIDTH;
+            _graphicsDevice.PreferredBackBufferHeight = SCREEN_HEIGHT;
+            _graphicsDevice.IsFullScreen = FULLSCREEN_ENABLED;
             _graphicsDevice.ApplyChanges();
 
             // Managers (singleton static classes)

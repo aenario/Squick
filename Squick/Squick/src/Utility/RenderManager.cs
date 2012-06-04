@@ -58,9 +58,9 @@ namespace Squick.Utility
         }
 
 
-        public static void DrawString(SpriteFont font, String content, Vector2 location, Color color)
+        public static void DrawString(SpriteFont font, String content, Vector2 location, Color color,float scale = 1.0f)
         {
-            _spriteBatch.DrawString(font, content, location, color);
+            _spriteBatch.DrawString(font, content, location, color, 0.0f, new Vector2(0,0),scale,SpriteEffects.None,0.0f);
         }
 
         public static void DrawBox(Rectangle box)

@@ -23,27 +23,39 @@ namespace Squick.Scene.Levels
 {
     public class Level1 : Scene{
 
-        private static int GravitySpeed = 50;
+        private static int GravitySpeed = 2;
         private static int leftBound = 35;
         private static int rightBound = 700;
 
-        private Texture2D _levelBackground;
+        // HUD
+        private Score _HUD_score;
         private TextButton _backToMenu;
+        private Message _message;
+        
+        // Game components
+        private Texture2D _levelBackground;
         private DizzySquick squick;
         private List<Entity> items = new List<Entity>();
-        private bool justStarted = true;// CHANGE TO COMPLEXE ENTITY
-
+    
+        // Player score
         private int _score;
         private int _chainBonus;
-
+            
+        // Others
+        private bool justStarted = true;// CHANGE TO COMPLEXE ENTITY
+       
         //private Player _squick;
 
         public Level1(KinectInterface gameInput)
         {
             _levelBackground = ResourceManager.tex_background_level1;
             _backToMenu = new TextButton("Menu", new Vector2(790, 10));
+            _HUD_score = new Score(new Vector2(10,10));
             squick = new DizzySquick(gameInput);
             squick.Pos = new Vector2(400, 400);
+
+            _message = new Message("SALUT JE SUIS un PUTAIN DE \n LONG TEXTE ET JE T'EMMERDE!", new Vector2(20, 200));
+
 
             // Level score
             _score = 0;
@@ -74,7 +86,6 @@ namespace Squick.Scene.Levels
             }
             
             // destroy items below screen
-
             List<Collectible> toBeDestroy = new List<Collectible>();
             foreach (Collectible item in items) // quick & dirty
             {
@@ -97,7 +108,7 @@ namespace Squick.Scene.Levels
                     else
                     {
                         _chainBonus = 0;
-                        _score -= item.GetBonus();
+                        _score += item.GetBonus();
                     }
                     toBeDestroy.Add(item);
                 }
@@ -114,7 +125,11 @@ namespace Squick.Scene.Levels
             if ((squick.Pos.X < 36 && squick.Speed.X < leftBound)
                  || (squick.Pos.X + squick.Width > rightBound && squick.Speed.X > 0))
                         squick.Speed = Vector2.Negate(squick.Speed);
-             
+            
+            // HUD update
+            _HUD_score.Update(_score);
+            _message.Update(gameTime);
+
             squick.Update(gameTime);
         }
 
@@ -133,7 +148,8 @@ namespace Squick.Scene.Levels
             }
 
             // HUD
-            RenderManager.DrawString(ResourceManager.font_UI, _score.ToString(), new Vector2(0, 580), Color.Blue); 
+            _HUD_score.Render(gameTime);
+            _message.Render(gameTime);
             
         }
 

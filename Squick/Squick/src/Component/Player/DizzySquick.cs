@@ -96,7 +96,7 @@ namespace Squick.Component.Player
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_head, _bodyTexBox, Color.White);
 
             // Debug 
-            RenderManager.DrawBox(_boundingBox);
+            // RenderManager.DrawBox(_boundingBox);
         }
 
     }
