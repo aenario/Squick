@@ -23,9 +23,11 @@ namespace Squick.Scene.Levels
 {
     public class Level1 : Scene{
 
-        private static int GravitySpeed = 2;
-        private static int leftBound = 35;
-        private static int rightBound = 700;
+        private const int BONUS_CHAIN_VALUE = 5; // Number of consecutive bonus to collect before getting a score bonus
+
+        private static int GravitySpeed = 50;
+        private static int leftBound = 30;
+        private static int rightBound = 770;
 
         // HUD
         private Score _HUD_score;
@@ -39,7 +41,7 @@ namespace Squick.Scene.Levels
     
         // Player score
         private int _score;
-        private int _chainBonus;
+        private int _bonusChain;
             
         // Others
         private bool justStarted = true;// CHANGE TO COMPLEXE ENTITY
@@ -50,18 +52,18 @@ namespace Squick.Scene.Levels
         {
             _levelBackground = ResourceManager.tex_background_level1;
 
-            _HUD_score = new Score(new Vector2(10,10));
+            _HUD_score = new Score(new Vector2(10,2));
             _backToMenu = new TextButton("Menu", new Vector2(690, 10));
 
             squick = new DizzySquick(gameInput);
             squick.Pos = new Vector2(400, 400);
 
-            _message = new Message("SALUT JE SUIS un PUTAIN DE \n LONG TEXTE ET JE T'EMMERDE!", new Vector2(20, 200));
+            _message = new Message("Ready?  Set...  Go!", new Vector2(20, 200),2.0f,Message.DISPLAY_LBL,250); 
 
 
             // Level score
             _score = 0;
-            _chainBonus = 0;
+            _bonusChain = 0;
         }
 
         public override void Update(GameTime gameTime, KinectInterface gameInput)
@@ -104,12 +106,17 @@ namespace Squick.Scene.Levels
                 {
                     if (item.GetBonus() > 0)
                     {
-                        _chainBonus++;
-                        _score += ((int)_chainBonus / 10 + 1) * item.GetBonus();
+                        _bonusChain++;
+                        _score += this.ComputeBonus(_bonusChain) * item.GetBonus();
+                        
+                        // Display bonus text
+                        if (this._bonusChain % BONUS_CHAIN_VALUE == 0)
+                            _message.SetText(_bonusChain.ToString() + " in a row!");
+
                     }
                     else
                     {
-                        _chainBonus = 0;
+                        _bonusChain = 0;
                         _score += item.GetBonus();
                     }
                     toBeDestroy.Add(item);
@@ -129,7 +136,7 @@ namespace Squick.Scene.Levels
                         squick.Speed = Vector2.Negate(squick.Speed);
             
             // HUD update
-            _HUD_score.Update(_score);
+            _HUD_score.Update(_score,this.ComputeBonus(_bonusChain));
             _message.Update(gameTime);
 
             squick.Update(gameTime);
@@ -155,6 +162,10 @@ namespace Squick.Scene.Levels
             
         }
 
+        public int ComputeBonus(int bonusChain)
+        {
+            return ((int)bonusChain / BONUS_CHAIN_VALUE + 1);
+        }
 
     }
 }
