@@ -183,7 +183,7 @@ namespace Squick.Scene.Levels
             RenderManager.Draw2DTexture( _levelBackground, back1, Color.White);
             RenderManager.Draw2DTexture(_levelBackground, back2, Color.White);
             
-            RenderManager.DrawString(ResourceManager.font_score, cameraOffset.ToString("000 000"), new Vector2(60, 10), Color.Gold);
+            RenderManager.DrawString(ResourceManager.font_score, cameraOffset.ToString("000 000"), new Vector2(70, 0), Color.Gold);
 
             squick.Render(gameTime);
             activeBranch.Render(gameTime);
