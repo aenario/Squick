@@ -25,7 +25,7 @@ namespace Squick.Scene.Levels
 
         private const int BONUS_CHAIN_VALUE = 5; // Number of consecutive bonus to collect before getting a score bonus
 
-        private static int GravitySpeed = 50;
+        //private static int GravitySpeed = 50;
         private static int leftBound = 30;
         private static int rightBound = 770;
 
@@ -89,7 +89,7 @@ namespace Squick.Scene.Levels
             foreach (EntityFactory se in Level1CollectibleFactory.getSpawnAt(gameTime))
             {
                 Entity item = se.asEntity();
-                item.Speed = new Vector2(0, GravitySpeed);
+                //item.Speed = new Vector2(0, GravitySpeed);
                 items.Add(item);
             }
             
