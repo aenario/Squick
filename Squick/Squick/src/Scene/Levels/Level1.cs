@@ -32,7 +32,8 @@ namespace Squick.Scene.Levels
         // HUD
         private Score _HUD_score;
         private TextButton _backToMenu;
-        private Message _message;
+        private Message _gameEventMessage;
+        private Message _gameScoreMessage;
         
         // Game components
         private Texture2D _levelBackground;
@@ -45,6 +46,7 @@ namespace Squick.Scene.Levels
             
         // Others
         private bool justStarted = true;// CHANGE TO COMPLEXE ENTITY
+        private double _eventTimer;
        
         //private Player _squick;
 
@@ -52,13 +54,14 @@ namespace Squick.Scene.Levels
         {
             _levelBackground = ResourceManager.tex_background_level1;
 
-            _HUD_score = new Score(new Vector2(10,2));
+            _HUD_score = new Score(new Vector2(10,0));
             _backToMenu = new TextButton("Menu", new Vector2(690, 10));
 
             squick = new DizzySquick(gameInput);
             squick.Pos = new Vector2(400, 400);
 
-            _message = new Message("Ready?  Set...  Go!", new Vector2(20, 200),2.0f,Message.DISPLAY_LBL,250);
+            _gameEventMessage = new Message("Ready?  Set...  Go!", new Vector2(20, 220),2.0f,Message.DISPLAY_LBL,250);
+            _gameScoreMessage = new Message("",new Vector2(10,160),1.0f,Message.DISPLAY_LBL,400);
 
             
             // Level score
@@ -79,6 +82,7 @@ namespace Squick.Scene.Levels
             {
                 Level1CollectibleFactory.startNow(gameTime);
                 justStarted = false;
+                _eventTimer = gameTime.TotalGameTime.TotalSeconds;
             }
             if (Level1CollectibleFactory.done(gameTime))
             {
@@ -115,7 +119,7 @@ namespace Squick.Scene.Levels
                         
                         // Display bonus text
                         if (this._bonusChain % BONUS_CHAIN_VALUE == 0)
-                            _message.SetText(_bonusChain.ToString() + " in a row!");
+                            _gameScoreMessage.SetText(_bonusChain.ToString() + " in a row!");
 
                     }
                     else
@@ -139,9 +143,31 @@ namespace Squick.Scene.Levels
                  || (squick.Pos.X + squick.Width > rightBound && squick.Speed.X > 0))
                         squick.Speed = Vector2.Negate(squick.Speed);
             
+            /* INGAME EVENTS */
+            double time = gameTime.TotalGameTime.TotalSeconds - _eventTimer;
+            // Wave 1
+            if (time == (double)Level1CollectibleFactory.WAVE_1)
+            {
+                _gameEventMessage.SetText("");
+                _gameEventMessage.SetMode(Message.DISPLAY_BLINK, 250);
+            }
+            // Wave 2
+            if (time == (double)Level1CollectibleFactory.WAVE_2 - 3)
+                _gameEventMessage.SetText("    Warning!!");
+            if (time == (double)Level1CollectibleFactory.WAVE_2)
+                _gameEventMessage.SetText("");
+            // Wave 3
+            if (time == (double)Level1CollectibleFactory.WAVE_3 - 3)
+                _gameEventMessage.SetText("    Speed-up!");
+            if (time == (double)Level1CollectibleFactory.WAVE_3)
+                _gameEventMessage.SetText("");
+            
+
+
             // HUD update
             _HUD_score.Update(_score,this.ComputeBonus(_bonusChain));
-            _message.Update(gameTime);
+            _gameEventMessage.Update(gameTime);
+            _gameScoreMessage.Update(gameTime);
 
             squick.Update(gameTime);
         }
@@ -162,8 +188,8 @@ namespace Squick.Scene.Levels
 
             // HUD
             _HUD_score.Render(gameTime);
-            _message.Render(gameTime);
-            
+            _gameEventMessage.Render(gameTime);
+            _gameScoreMessage.Render(gameTime);
         }
 
         public int ComputeBonus(int bonusChain)

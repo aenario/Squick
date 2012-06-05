@@ -20,6 +20,7 @@ namespace Squick.UI
         
         private String _content;
         private int _lblCounter; // letter by letter counter (internal use)
+        private int _lblStep; // internal use
         private int _lblInterval; // letter by letter time interval
         private double _lblIntervaltmp;
         private Vector2 _location;
@@ -53,6 +54,12 @@ namespace Squick.UI
             _content = content;
         }
 
+        public void SetMode(int mode, int interval)
+        {
+            _displayMode = mode;
+            _lblInterval = interval;
+        }
+
         public void Update(GameTime gameTime)
         {
             // Normal display
@@ -64,7 +71,7 @@ namespace Squick.UI
 
                 // If we reached the final caracter, we stop
                 if (_lblCounter == _content.Length)
-                    return;
+                   return;
                 // We display the next caracter when the time interval is fine
                 if ((gameTime.TotalGameTime.TotalMilliseconds - _lblIntervaltmp) >= _lblInterval)
                 {
@@ -87,8 +94,8 @@ namespace Squick.UI
         public void Render(GameTime gameTime)
         {
             String text;
-            if(_displayMode == Message.DISPLAY_LBL)
-                text = _content.Substring(0,_lblCounter);
+            if (_displayMode == Message.DISPLAY_LBL)
+                text = _content.Substring(0, _lblCounter);
             else
                 text = _content;
 
