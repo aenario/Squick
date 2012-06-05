@@ -18,6 +18,8 @@ namespace Squick.Scene.Levels
         public const double WAVE_1 = 7.0f;
         public const double WAVE_2 = 35.0f;
         public const double WAVE_3 = 68.0f;
+        public const double WAVE_4 = 100.0f;
+        public const double WAVE_5 = 146.0f;
 
         private const int SPEED_1 = 50;
         private const int SPEED_2 = 100;
@@ -45,7 +47,7 @@ namespace Squick.Scene.Levels
             new EntityFactory(WAVE_2 + 20, EntityFactory.MALUS_PINE, 150,SPEED_1), 
             new EntityFactory(WAVE_2 + 20, EntityFactory.BONUS_NUT, 350,SPEED_1), 
             new EntityFactory(WAVE_2 + 20, EntityFactory.MALUS_PINE, 550,SPEED_1), 
-            // . Level 2
+            // . Level 3
             // ~ /!\ Speed-up /!\
             new EntityFactory(WAVE_3 + 0, EntityFactory.BONUS_NUT, 100,SPEED_2),  
             new EntityFactory(WAVE_3 + 2, EntityFactory.BONUS_NUT, 150,SPEED_2),  
@@ -64,6 +66,116 @@ namespace Squick.Scene.Levels
             new EntityFactory(WAVE_3 + 30, EntityFactory.BONUS_GOLDEN_NUT, 150,SPEED_1),
             new EntityFactory(WAVE_3 + 30, EntityFactory.BONUS_GOLDEN_NUT, 550,SPEED_1),
             new EntityFactory(WAVE_3 + 32, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_1),
+
+            // . Level 4
+            // ~ /!\ Stay focused /!\
+
+            // double wall
+            new EntityFactory(WAVE_4 + 0, EntityFactory.BONUS_NUT, 100,SPEED_2),  
+            new EntityFactory(WAVE_4 + 0, EntityFactory.BONUS_NUT, 200,SPEED_2),  
+            new EntityFactory(WAVE_4 + 0, EntityFactory.BONUS_NUT, 300,SPEED_2),  
+            new EntityFactory(WAVE_4 + 3, EntityFactory.MALUS_PINE, 100,SPEED_2),  
+            new EntityFactory(WAVE_4 + 3, EntityFactory.MALUS_PINE, 200,SPEED_2),  
+            new EntityFactory(WAVE_4 + 3, EntityFactory.MALUS_PINE, 300,SPEED_2),
+
+            // double wall
+            new EntityFactory(WAVE_4 + 5, EntityFactory.BONUS_NUT, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 5, EntityFactory.BONUS_NUT, 500,SPEED_2),  
+            new EntityFactory(WAVE_4 + 5, EntityFactory.BONUS_NUT, 600,SPEED_2),  
+            new EntityFactory(WAVE_4 + 8, EntityFactory.MALUS_PINE, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 8, EntityFactory.MALUS_PINE, 500,SPEED_2),  
+            new EntityFactory(WAVE_4 + 8, EntityFactory.MALUS_PINE, 600,SPEED_2),
+
+            // cross
+            new EntityFactory(WAVE_4 + 10, EntityFactory.BONUS_NUT, 100,SPEED_2),  
+            new EntityFactory(WAVE_4 + 10, EntityFactory.BONUS_NUT, 300,SPEED_2),
+            new EntityFactory(WAVE_4 + 11, EntityFactory.MALUS_PINE, 200,SPEED_2),
+            new EntityFactory(WAVE_4 + 12, EntityFactory.BONUS_NUT, 100,SPEED_2),  
+            new EntityFactory(WAVE_4 + 12, EntityFactory.BONUS_NUT, 300,SPEED_2),
+
+            // cross
+            new EntityFactory(WAVE_4 + 13, EntityFactory.BONUS_NUT, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 13, EntityFactory.BONUS_NUT, 600,SPEED_2),
+            new EntityFactory(WAVE_4 + 14, EntityFactory.MALUS_PINE, 500,SPEED_2),
+            new EntityFactory(WAVE_4 + 15, EntityFactory.BONUS_NUT, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 15, EntityFactory.BONUS_NUT, 600,SPEED_2),
+
+            // pine wall
+            new EntityFactory(WAVE_4 + 16, EntityFactory.MALUS_PINE, 250,SPEED_2),
+            new EntityFactory(WAVE_4 + 16, EntityFactory.MALUS_PINE, 300,SPEED_2),
+            new EntityFactory(WAVE_4 + 16, EntityFactory.MALUS_PINE, 400,SPEED_2),
+            new EntityFactory(WAVE_4 + 16, EntityFactory.MALUS_PINE, 450,SPEED_2),
+            new EntityFactory(WAVE_4 + 17, EntityFactory.BONUS_GOLDEN_NUT, 100,SPEED_2),
+            new EntityFactory(WAVE_4 + 17, EntityFactory.BONUS_GOLDEN_NUT, 600,SPEED_2),
+
+            // Progressive ranges >
+            new EntityFactory(WAVE_4 + 19, EntityFactory.BONUS_NUT, 100,SPEED_2),  
+            new EntityFactory(WAVE_4 + 19, EntityFactory.BONUS_NUT, 200,SPEED_2),  
+            new EntityFactory(WAVE_4 + 19, EntityFactory.BONUS_NUT, 300,SPEED_2),  
+            new EntityFactory(WAVE_4 + 19, EntityFactory.MALUS_PINE, 400,SPEED_2), 
+            new EntityFactory(WAVE_4 + 19, EntityFactory.MALUS_PINE, 500,SPEED_2), 
+            new EntityFactory(WAVE_4 + 19, EntityFactory.MALUS_PINE, 600,SPEED_2), 
+
+            new EntityFactory(WAVE_4 + 21, EntityFactory.BONUS_NUT, 200,SPEED_2),  
+            new EntityFactory(WAVE_4 + 21, EntityFactory.BONUS_NUT, 300,SPEED_2),  
+            new EntityFactory(WAVE_4 + 21, EntityFactory.BONUS_NUT, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 21, EntityFactory.MALUS_PINE, 100,SPEED_2), 
+            new EntityFactory(WAVE_4 + 21, EntityFactory.MALUS_PINE, 500,SPEED_2), 
+            new EntityFactory(WAVE_4 + 21, EntityFactory.MALUS_PINE, 600,SPEED_2), 
+
+            new EntityFactory(WAVE_4 + 23, EntityFactory.BONUS_NUT, 300,SPEED_2),  
+            new EntityFactory(WAVE_4 + 23, EntityFactory.BONUS_NUT, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 23, EntityFactory.BONUS_NUT, 500,SPEED_2),  
+            new EntityFactory(WAVE_4 + 23, EntityFactory.MALUS_PINE, 100,SPEED_2), 
+            new EntityFactory(WAVE_4 + 23, EntityFactory.MALUS_PINE, 200,SPEED_2), 
+            new EntityFactory(WAVE_4 + 23, EntityFactory.MALUS_PINE, 600,SPEED_2), 
+
+            new EntityFactory(WAVE_4 + 25, EntityFactory.BONUS_NUT, 300,SPEED_2),  
+            new EntityFactory(WAVE_4 + 25, EntityFactory.BONUS_NUT, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 25, EntityFactory.BONUS_NUT, 500,SPEED_2),  
+            new EntityFactory(WAVE_4 + 25, EntityFactory.MALUS_PINE, 100,SPEED_2), 
+            new EntityFactory(WAVE_4 + 25, EntityFactory.MALUS_PINE, 200,SPEED_2), 
+            new EntityFactory(WAVE_4 + 25, EntityFactory.MALUS_PINE, 600,SPEED_2), 
+
+            new EntityFactory(WAVE_4 + 25, EntityFactory.BONUS_NUT, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 25, EntityFactory.BONUS_NUT, 500,SPEED_2),  
+            new EntityFactory(WAVE_4 + 25, EntityFactory.BONUS_NUT, 600,SPEED_2),  
+            new EntityFactory(WAVE_4 + 25, EntityFactory.MALUS_PINE, 100,SPEED_2), 
+            new EntityFactory(WAVE_4 + 25, EntityFactory.MALUS_PINE, 200,SPEED_2), 
+            new EntityFactory(WAVE_4 + 25, EntityFactory.MALUS_PINE, 300,SPEED_2), 
+
+            // Double cross
+            new EntityFactory(WAVE_4 + 29, EntityFactory.BONUS_NUT, 100,SPEED_2),  
+            new EntityFactory(WAVE_4 + 29, EntityFactory.BONUS_NUT, 300,SPEED_2),
+            new EntityFactory(WAVE_4 + 29, EntityFactory.MALUS_PINE, 200,SPEED_2),
+            new EntityFactory(WAVE_4 + 29, EntityFactory.BONUS_NUT, 100,SPEED_2),  
+            new EntityFactory(WAVE_4 + 29, EntityFactory.BONUS_NUT, 300,SPEED_2),
+            new EntityFactory(WAVE_4 + 29, EntityFactory.BONUS_NUT, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 29, EntityFactory.BONUS_NUT, 600,SPEED_2),
+            new EntityFactory(WAVE_4 + 29, EntityFactory.MALUS_PINE, 500,SPEED_2),
+            new EntityFactory(WAVE_4 + 29, EntityFactory.BONUS_NUT, 400,SPEED_2),  
+            new EntityFactory(WAVE_4 + 29, EntityFactory.BONUS_NUT, 600,SPEED_2),
+
+            // consecutive balus!
+            new EntityFactory(WAVE_4 + 33, EntityFactory.BONUS_NUT, 100,SPEED_2),
+            new EntityFactory(WAVE_4 + 34, EntityFactory.MALUS_PINE, 100,SPEED_2),
+
+            new EntityFactory(WAVE_4 + 34, EntityFactory.BONUS_NUT, 300,SPEED_2),
+            new EntityFactory(WAVE_4 + 35, EntityFactory.MALUS_PINE, 300,SPEED_2),
+
+            new EntityFactory(WAVE_4 + 35, EntityFactory.BONUS_NUT, 500,SPEED_2),
+            new EntityFactory(WAVE_4 + 36, EntityFactory.MALUS_PINE, 500,SPEED_2),
+
+            // pine wall
+            new EntityFactory(WAVE_4 + 38, EntityFactory.MALUS_PINE, 250,SPEED_2),
+            new EntityFactory(WAVE_4 + 38, EntityFactory.MALUS_PINE, 300,SPEED_2),
+            new EntityFactory(WAVE_4 + 38, EntityFactory.MALUS_PINE, 400,SPEED_2),
+            new EntityFactory(WAVE_4 + 38, EntityFactory.MALUS_PINE, 450,SPEED_2),
+            new EntityFactory(WAVE_4 + 40, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_2),
+            new EntityFactory(WAVE_4 + 41, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_2),
+
+            // Wave 5
+            // ~ /!\ Warning /!\
 
         };
 
