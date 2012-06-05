@@ -20,9 +20,17 @@ namespace Squick.Component.Player
 
         /* ANIMATION CONSTANTS */
         private static float coefTailAngle = 0.001f;
-        private static Vector2 leftOrigin = new Vector2(56, 21);
         private static Vector2 tailOrigin = new Vector2(85, 130);
-        private static Vector2 rightOrigin = new Vector2(15, 21);
+        private static Vector2 tailPos = new Vector2(100, 125);
+        private static Vector2 leftArmOrigin = new Vector2(56, 21);
+        private static Vector2 leftArmPos = new Vector2(90, 100);
+        private static Vector2 rightArmOrigin = new Vector2(15, 21);
+        private static Vector2 rightArmPos = new Vector2(125, 100);
+        private static Vector2 leftLegOrigin = new Vector2(48, 6);
+        private static Vector2 leftLegPos = new Vector2(90, 140);
+        private static Vector2 rightLegOrigin = new Vector2(9, 7);
+        private static Vector2 rightLegPos = new Vector2(125, 135);
+
 
         private KinectInterface _gameInput;
         private float armAngle;
@@ -74,24 +82,38 @@ namespace Squick.Component.Player
 
         override public void Render(GameTime gameTime)
         {
-            Vector2 tailPos = new Vector2(_bodyTexBox.X + 90, _bodyTexBox.Y + 135);
-            float tailAngle = - Speed.X*coefTailAngle;
-            if (tailAngle > 0) tailAngle = Math.Min(tailAngle, maxAngle / 2);
-            if (tailAngle < 0) tailAngle = Math.Max(tailAngle, - maxAngle / 2);
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_tail, tailPos, Color.White, tailAngle, tailOrigin);
 
-            Vector2 leftArmPos = new Vector2(_bodyTexBox.X + 90, _bodyTexBox.Y + 100);
-            Vector2 rightArmPos = new Vector2(_bodyTexBox.X + 130, _bodyTexBox.Y + 100);
-            
-            //spriteBatch.Draw(ResourceManager.tex_squick_rightArm, rightArmPos, null, Color.White, armAngle, rightOrigin, 1f, SpriteEffects.None, 0);
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightArm, rightArmPos, Color.White, armAngle, rightOrigin);
+            Vector2 _leftArmPos = Vector2.Add(_pos, leftArmPos);
+            Vector2 _rightArmPos = Vector2.Add(_pos, rightArmPos);
+            Vector2 _leftLegPos = Vector2.Add(_pos, leftLegPos);
+            Vector2 _rightLegPos = Vector2.Add(_pos, rightLegPos);
+            Vector2 _tailPos = Vector2.Add(_pos, tailPos);
+            float tailAngle = MathHelper.Clamp(-maxAngle / 2, -Speed.X * coefTailAngle, maxAngle / 2);
+
+            armAngle = - MathHelper.PiOver4;
+
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_tail, _tailPos, Color.White, 
+                tailAngle, tailOrigin);
+
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftLeg, _leftLegPos, Color.White,
+                0, leftLegOrigin);
+
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightLeg, _rightLegPos, Color.White,
+                0, rightLegOrigin);
+
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightArm, _rightArmPos, Color.White, 
+                armAngle, rightArmOrigin);
 
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_body, _bodyTexBox, Color.White);
 
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftArm, leftArmPos, Color.White, armAngle, leftOrigin);
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftArm, _leftArmPos, Color.White, 
+                armAngle, leftArmOrigin);
 
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftLeg, _bodyTexBox, Color.White);
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightLeg, _bodyTexBox, Color.White);
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftLeg, _leftLegPos, Color.White, 
+                0, leftLegOrigin);
+
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightLeg, _rightLegPos, Color.White, 
+                0, rightLegOrigin);
 
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_head, _bodyTexBox, Color.White);
 

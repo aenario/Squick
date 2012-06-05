@@ -33,7 +33,7 @@ namespace Squick.Scene.Menus
         {
             _background = ResourceManager.tex_background_level1;
             _hc = new HandCursors();
-            _victoryMsg = new TextBox("Victory", new Rectangle(100, 50, 600, 100));
+            _victoryMsg = new TextBox("Thanks for playing", new Rectangle(100, 50, 600, 100));
             _backToMenuBtn = new TextButton("Back to Menu", new Rectangle(100, 250, 200, 100));
             _quitBtn = new TextButton("Quit", new Rectangle(500, 450, 150, 100));
         }
