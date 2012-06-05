@@ -78,15 +78,22 @@ namespace Squick.Scene.Levels
                 _sceneFinished = true;
             }
 
+            /* TODO : Clean up all below (_step ?) */
             if (justStarted)
             {
                 Level1CollectibleFactory.startNow(gameTime);
                 justStarted = false;
                 _eventTimer = gameTime.TotalGameTime.TotalSeconds;
             }
-            if (Level1CollectibleFactory.done(gameTime))
+            if (Level1CollectibleFactory.doneSince(gameTime) > 10 & Level1CollectibleFactory.doneSince(gameTime) < 10.5)
             {
-                // do the jump
+                _gameEventMessage.SetText("LEVEL CLEAR");
+                squick.SpeedY = -600;
+            }
+            if (Level1CollectibleFactory.doneSince(gameTime) > 15)
+            {
+                _sceneFinished = true;
+                _nextScene = new Level2(gameInput);
             }
 
             // spawn items 

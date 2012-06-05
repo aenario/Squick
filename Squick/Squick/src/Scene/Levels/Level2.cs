@@ -51,8 +51,8 @@ namespace Squick.Scene.Levels
         {
             _levelBackground = ResourceManager.tex_background_level2;
             squick = new JumpingSquick(gameInput);
-            squick.Pos = new Vector2(400, 100);
-            squick.Speed = new Vector2(0,0);
+            squick.Pos = new Vector2(400, 800);
+            squick.Speed = new Vector2(0,-600);
             toBeDestroy = new List<Entity>();
 
             activeBranch = new Branch(gameInput);
