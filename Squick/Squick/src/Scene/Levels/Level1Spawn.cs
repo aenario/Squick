@@ -15,9 +15,9 @@ namespace Squick.Scene.Levels
         private static TimeSpan baseTime;
         private static double maxTime;
 
-        private const double WAVE_1 = 7.0f;
-        private const double WAVE_2 = 35.0f;
-        private const double WAVE_3 = 68.0f;
+        public const double WAVE_1 = 7.0f;
+        public const double WAVE_2 = 35.0f;
+        public const double WAVE_3 = 68.0f;
 
         private const int SPEED_1 = 50;
         private const int SPEED_2 = 100;
