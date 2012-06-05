@@ -24,7 +24,7 @@ namespace Squick.Scene.Levels
     public class Level2 : Scene{
 
         private const float goal = 50000;
-        private static int nbOfLives = 3; 
+        private int nbOfLives = 3; 
 
         private static float gravity = 85;
         private static float impactTrigger = 0.05f; // squick will bounce 0.05s before hitting branch
@@ -127,7 +127,6 @@ namespace Squick.Scene.Levels
                     }
                     else
                     {
-                        //if (squick.SpeedY < 0) impact = -impact;
                         squick.SpeedY = Math.Min(squick.SpeedY - 5 * impact, 0);
                     }
                     toBeDestroy.Add(i);
