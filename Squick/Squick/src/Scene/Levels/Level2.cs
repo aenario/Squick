@@ -23,15 +23,30 @@ namespace Squick.Scene.Levels
 {
     public class Level2 : Scene{
 
-        private const float goal = 50000;
-        private int nbOfLives = 5;
-        private int _level1Score;
-
-        private TimeSpan beginLevel = new TimeSpan();
-
+        /* GAMEPLAY */
+        private const float goal = 30000;
         private static float gravity = 85;
+        private static double friction = 0.9d;
         private static float impactTrigger = 0.05f; // squick will bounce 0.05s before hitting branch
         private static float distanceToTop = 150;
+        private int nbOfLives = 5;
+        private float newSpeed(float oldSpeed, float bounceLength)
+        {
+            return MathHelper.Clamp(2 * oldSpeed + 7 * (200 - bounceLength), 300, 1200);
+        }
+        private float score(float time)
+        {
+            return MathHelper.Clamp(9999f - 40f * (time - 30f), 0, 9999);
+        }
+
+
+        /* MISC */
+        private int _level1Score;
+        private float cameraOffset = 0;
+        private TimeSpan beginLevel = new TimeSpan();
+
+        
+        /* DESTROYABLE FUNCTIONS */
         private static bool destroyable(Entity e)
         {
             return e.Pos.Y > 1200;
@@ -41,9 +56,8 @@ namespace Squick.Scene.Levels
             return b.Destroyable || b.Pos.Y > 1200;
         }
 
-
-        private float newSpeed(float oldSpeed, float bounceLength){
-            return MathHelper.Clamp(2 * oldSpeed + 7*(200 - bounceLength), 300, 1200); }
+        
+        
 
         private Texture2D _levelBackground;
         private List<Entity> items = new List<Entity>();
@@ -52,8 +66,9 @@ namespace Squick.Scene.Levels
         private List<Branch> oldBranches;
         private List<Entity> toBeDestroy;
         private Gauge gauge;
+        private HandCursors hc;
 
-        private float cameraOffset = 0;
+        
 
         public Level2(KinectInterface gameInput, int level1Score = -1)
         {
@@ -66,25 +81,37 @@ namespace Squick.Scene.Levels
 
             activeBranch = new Branch(gameInput);
             oldBranches = new List<Branch>();
+            cameraOffset = 0;
 
             gauge = new Gauge(new Rectangle(30, 50, 10, 500), goal, Color.BurlyWood, Color.Gold);
+            hc = new HandCursors();
         }
 
         public override void Update(GameTime gameTime, KinectInterface gameInput)
         {
+            hc.Update(gameTime, gameInput);
             if(beginLevel.TotalMilliseconds == 0) beginLevel = gameTime.TotalGameTime;
+            
+            // 10s with the branch only, for the user to test
+            if (gameTime.TotalGameTime.Subtract(beginLevel).TotalSeconds < 10d)
+            {
+                activeBranch.Update(gameTime);
+                return;
+            }
             /* Update everything */
             squick.Update(gameTime);
             gauge.Update(cameraOffset);
             activeBranch.Update(gameTime);
-            foreach (Entity i in items) ((Collectible)i).Update(gameTime);
+            foreach (Collectible i in items) i.Update(gameTime);
+            oldBranches.RemoveAll(destroyable);
             foreach (Branch b in oldBranches) b.Update(gameTime);
 
-            /* gravity & friction */
+            /* gravity & friction & bounce */
             squick.SpeedY += gravity * (float) gameTime.ElapsedGameTime.TotalSeconds;
-            squick.SpeedX *= (float) Math.Pow(0.90d, gameTime.ElapsedGameTime.TotalSeconds);
+            squick.SpeedX *= (float) Math.Pow(friction, gameTime.ElapsedGameTime.TotalSeconds);
             bounceAgainstWalls(squick);
             
+            /* make squick jump on branches */
             processJump(gameInput, gameTime, activeBranch);
             foreach (Branch b in oldBranches) processJump(gameInput, gameTime, b);
 
@@ -110,7 +137,6 @@ namespace Squick.Scene.Levels
                 foreach (Entity e in items) e.PosY -= delta;
 
                 // destroy everything under screen
-                oldBranches.RemoveAll(destroyable);
                 items.RemoveAll(destroyable);
 
                 cameraOffset -= delta;
@@ -118,11 +144,9 @@ namespace Squick.Scene.Levels
                 if (cameraOffset > goal)
                 {
                     _sceneFinished = true;
-                    float level2Score = 9999f-40f*((float) gameTime.TotalGameTime.Subtract(beginLevel).TotalSeconds-30f);
-                    level2Score = MathHelper.Clamp(level2Score, 0, 9999);
+                    float level2Score = score((float) gameTime.TotalGameTime.Subtract(beginLevel).TotalSeconds);
                     _nextScene = new VictoryMenu(_level1Score, level2Score);
                 }
-
 
             }
 
@@ -140,9 +164,12 @@ namespace Squick.Scene.Levels
                     }
                     toBeDestroy.Add(i);
                 }
-            
-            items.RemoveAll(toBeDestroy.Contains);
-            toBeDestroy.Clear();            
+
+            if (toBeDestroy.Count > 0)
+            {
+                items.RemoveAll(toBeDestroy.Contains);
+                toBeDestroy.Clear();
+            }
 
             if (squick.Speed.Y > 0 && squick.Pos.Y > 600)
             {
@@ -156,7 +183,6 @@ namespace Squick.Scene.Levels
                 squick.PosY = -200;
                 squick.Speed = Vector2.Zero;
             }
-            
             
         }
 
@@ -186,7 +212,7 @@ namespace Squick.Scene.Levels
         private void bounceAgainstWalls(Entity e)
         {
             Rectangle b = e.GetBoundingBox();
-            if (b.X < 40 || b.X + b.Width > 700) e.SpeedX = -e.SpeedX;
+            if (b.X < 40 && e.SpeedX < 0 || b.X + b.Width > 700 && e.SpeedX > 0) e.SpeedX = -e.SpeedX;
         }
 
         public override void Render(GameTime gameTime)

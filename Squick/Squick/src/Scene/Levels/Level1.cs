@@ -141,6 +141,7 @@ namespace Squick.Scene.Levels
                     else
                     {
                         _bonusChain = 0;
+                        _gameScoreMessage.SetText("");
                         _score += item.GetBonus();
                     }
                     toBeDestroy.Add(item);
@@ -183,11 +184,12 @@ namespace Squick.Scene.Levels
             if (time == (double)Level1CollectibleFactory.WAVE_4)
                 _gameEventMessage.SetText("");
             // Wave 5
+            /* TO UNCOMMENT IF WAVE 5 ADDED
             if (time == (double)Level1CollectibleFactory.WAVE_5 - 3)
                 _gameEventMessage.SetText("     Warning!!");
             if (time == (double)Level1CollectibleFactory.WAVE_5)
                 _gameEventMessage.SetText("");
-            
+            */
 
 
             // HUD update

@@ -57,9 +57,18 @@ namespace Squick.Component.Misc
 
         private bool isAboveOrBelow(Vector2 dot)
         {
-            return _fromLeftTrunk ? 
-                _posM.X < dot.X && dot.X < _pos2.X :
-                _posM.X > dot.X && dot.X > _pos2.X;
+            if (_active)
+            {
+                return _fromLeftTrunk ?
+                    _posM.X < dot.X && dot.X < _pos2.X :
+                    _posM.X > dot.X && dot.X > _pos2.X;
+            }
+            else
+            {
+                return _fromLeftTrunk ?
+                    dot.X < _pos2.X :
+                    dot.X > _pos2.X;
+            }
         }
 
         public bool isBelow(Vector2 dot)
