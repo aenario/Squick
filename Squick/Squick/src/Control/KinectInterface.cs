@@ -33,6 +33,8 @@ namespace Squick.Control
 
         private static Vector2[] handPositions;
 
+        short[] depthImage;
+
 
 
         public KinectInterface(KinectManager manager, int mode)
@@ -94,7 +96,12 @@ namespace Squick.Control
 
         void Sensor_DepthFrameReady(object sender, DepthImageFrameReadyEventArgs e)
         {
-            throw new NotImplementedException();
+            DepthImageFrame image = e.OpenDepthImageFrame();
+            if (depthImage == null) depthImage = new short[image.PixelDataLength];
+            image.CopyPixelDataTo(depthImage);
+            image.Dispose();
+
+            //new EdgeDetector(image);
         }
 
         void Sensor_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)

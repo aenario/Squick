@@ -21,7 +21,7 @@ namespace Squick
     /// </summary>
     public class Squick : Microsoft.Xna.Framework.Game
     {
-        public const bool FULLSCREEN_ENABLED = false;
+        public const bool FULLSCREEN_ENABLED = true;
         public const int SCREEN_WIDTH = 800;
         public const int SCREEN_HEIGHT = 600;
 

@@ -47,12 +47,14 @@ namespace Squick.Scene.Levels
         // Others
         private bool justStarted = true;// CHANGE TO COMPLEXE ENTITY
         private double _eventTimer;
+        private bool _modeAdventure;
        
         //private Player _squick;
 
-        public Level1(KinectInterface gameInput)
+        public Level1(KinectInterface gameInput, bool modeAdventure = false)
         {
             _levelBackground = ResourceManager.tex_background_level1;
+            _modeAdventure = modeAdventure;
 
             _HUD_score = new Score(new Vector2(10,0));
             _backToMenu = new TextButton("Menu", new Vector2(690, 10));
@@ -88,12 +90,19 @@ namespace Squick.Scene.Levels
             if (Level1CollectibleFactory.doneSince(gameTime) > 10 & Level1CollectibleFactory.doneSince(gameTime) < 10.5)
             {
                 _gameEventMessage.SetText("LEVEL CLEAR");
-                squick.SpeedY = -600;
+                if(_modeAdventure) squick.SpeedY = -600;
             }
             if (Level1CollectibleFactory.doneSince(gameTime) > 15)
             {
+                if (_modeAdventure)
+                {
+                    _nextScene = new Level2(gameInput, _score);
+                }
+                else
+                {
+                    _nextScene = new VictoryMenu(_score);
+                }
                 _sceneFinished = true;
-                _nextScene = new Level2(gameInput);
             }
 
             // spawn items 
@@ -148,10 +157,10 @@ namespace Squick.Scene.Levels
             /* Make squick bump */
             if ((squick.Pos.X < 36 && squick.Speed.X < leftBound)
                  || (squick.Pos.X + squick.Width > rightBound && squick.Speed.X > 0))
-                        squick.Speed = Vector2.Negate(squick.Speed);
+                        squick.SpeedX *= -1;
             
             /* INGAME EVENTS */
-            double time = gameTime.TotalGameTime.TotalSeconds - _eventTimer;
+            double time = Math.Round(gameTime.TotalGameTime.TotalSeconds - _eventTimer, 2);
             // Wave 1
             if (time == (double)Level1CollectibleFactory.WAVE_1)
             {

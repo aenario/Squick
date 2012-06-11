@@ -52,12 +52,12 @@ namespace Squick.Scene.Menus
             // Action
             if (_level1Btn.IsPressed() || _aventureBtn.IsPressed())
             {
-                _nextScene = new Level1(gameInput); // Game will quit
+                _nextScene = new Level1(gameInput, _aventureBtn.IsPressed()); 
                 _sceneFinished = true;
             }
             else if (_level2Btn.IsPressed())
             {
-                _nextScene = new Level2(gameInput); // Game will quit
+                _nextScene = new Level2(gameInput);
                 _sceneFinished = true;
             }
             else if (_quitBtn.IsPressed())

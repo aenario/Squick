@@ -28,12 +28,21 @@ namespace Squick.Scene.Menus
 
         private HandCursors _hc;
 
+        private int _level1Score;
+        private TextBox _level1Box;
+        private double _level2Score;
+        private TextBox _level2Box;
 
-        public VictoryMenu()
+
+        public VictoryMenu(int level1Score = -1, double level2Score= -1d)
         {
+            _level1Score = level1Score;
+            _level2Score = level2Score;
             _background = ResourceManager.tex_background_level1;
             _hc = new HandCursors();
             _victoryMsg = new TextBox("Thanks for playing", new Rectangle(100, 50, 600, 100));
+            if(_level1Score != -1) _level1Box = new TextBox("Level 1 : " + _level1Score.ToString(), new Rectangle(350, 250, 350, 50));
+            if(_level2Score != -1d) _level2Box = new TextBox("Level 2 : " + _level2Score.ToString("0000"), new Rectangle(350, 350, 350, 50));
             _backToMenuBtn = new TextButton("Back to Menu", new Rectangle(100, 250, 200, 100));
             _quitBtn = new TextButton("Quit", new Rectangle(500, 450, 150, 100));
         }
@@ -45,6 +54,9 @@ namespace Squick.Scene.Menus
             _victoryMsg.Update(gameTime, gameInput);
             _backToMenuBtn.Update(gameTime, gameInput);
             _quitBtn.Update(gameTime, gameInput);
+
+            if (_level1Score != -1) _level1Box.Update(gameTime, gameInput);
+            if (_level2Score != -1d) _level2Box.Update(gameTime, gameInput);
 
             _hc.Update(gameTime, gameInput);
         
@@ -72,6 +84,9 @@ namespace Squick.Scene.Menus
             _victoryMsg.Render(gameTime);
             _backToMenuBtn.Render(gameTime);
             _quitBtn.Render(gameTime);
+
+            if (_level1Score != -1) _level1Box.Render(gameTime);
+            if (_level2Score != -1d) _level2Box.Render(gameTime);
 
             _hc.Render(gameTime);
         }
