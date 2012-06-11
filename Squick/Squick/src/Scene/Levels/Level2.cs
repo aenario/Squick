@@ -24,7 +24,7 @@ namespace Squick.Scene.Levels
     public class Level2 : Scene{
 
         private const float goal = 50000;
-        private int nbOfLives = 3;
+        private int nbOfLives = 5;
         private int _level1Score;
 
         private TimeSpan beginLevel = new TimeSpan();
