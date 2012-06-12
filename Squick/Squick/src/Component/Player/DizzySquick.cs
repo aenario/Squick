@@ -90,8 +90,6 @@ namespace Squick.Component.Player
             Vector2 _tailPos = Vector2.Add(_pos, tailPos);
             float tailAngle = MathHelper.Clamp(-maxAngle / 2, -Speed.X * coefTailAngle, maxAngle / 2);
 
-            armAngle = - MathHelper.PiOver4;
-
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_tail, _tailPos, Color.White, 
                 tailAngle, tailOrigin);
 

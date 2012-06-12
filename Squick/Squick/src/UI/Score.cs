@@ -48,14 +48,13 @@ namespace Squick.UI
                 if (_value < score)
                 {
                     _textCurrentColor = _textScoreIncreased;
-                    _value+=2;
-
+                    _value += Math.Max(4, (score - _value) / 20);
                 }
                 // Decreasing                   
                 else
                 {
                     _textCurrentColor = _textScoreDecreased;
-                    _value-=2;
+                    _value += Math.Min(-4, (score - _value) / 20);
                 }
             }
             // EQUAL

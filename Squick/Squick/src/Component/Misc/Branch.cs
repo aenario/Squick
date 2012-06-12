@@ -20,7 +20,9 @@ namespace Squick.Component.Misc
         private KinectInterface _gameInput;
 
         private bool _fromLeftTrunk = true;
-        private bool _active;
+        private bool _active = true;
+        private bool firstHit = true;
+        public bool Destroyable { get { return !firstHit; } }
         private float _coefDir;
         public float CoefDir { get { return _coefDir; } }
 
@@ -43,20 +45,30 @@ namespace Squick.Component.Misc
         public Branch(KinectInterface gameInput) : base()
         {
             _gameInput = gameInput;
-            _active = true;
             _texture = ResourceManager.tex_branch;
         }
 
-        public void Fix()
+        public bool HitAndBreak()
         {
-            _active = false;
+            if(_active) return _active = false;
+            if (firstHit) return firstHit = false;
+            return true;
         }
 
         private bool isAboveOrBelow(Vector2 dot)
         {
-            return _fromLeftTrunk ? 
-                _posM.X < dot.X && dot.X < _pos2.X :
-                _posM.X > dot.X && dot.X > _pos2.X;
+            if (_active)
+            {
+                return _fromLeftTrunk ?
+                    _posM.X < dot.X && dot.X < _pos2.X :
+                    _posM.X > dot.X && dot.X > _pos2.X;
+            }
+            else
+            {
+                return _fromLeftTrunk ?
+                    dot.X < _pos2.X :
+                    dot.X > _pos2.X;
+            }
         }
 
         public bool isBelow(Vector2 dot)
@@ -71,7 +83,12 @@ namespace Squick.Component.Misc
         new public void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (!_active) return;
+            if (!_active)
+            {
+                if(_fromLeftTrunk) _origin = _pos.Y;
+                else _origin = _pos.Y - _coefDir * 800;
+                return;
+            }
 
 
             Vector2[] hands = _gameInput.GetLatestCoordinates();
@@ -116,15 +133,10 @@ namespace Squick.Component.Misc
         }
         
         public override void Render(GameTime gameTime){
-            float alpha = _active ? 0.5f : 1f;
+            float alpha = _active ? 0f : 1f;
+            if (_active) RenderManager.DrawLine(_pos2, _posM, Color.Gold);
             RenderManager.Draw2DTexture(_texture, _pos, Color.White * alpha, _angle, branchOrigin, new Vector2(_scale, 1));
-            if(_active) RenderManager.DrawLine(_pos2, _posM, Color.Gold);
-
-            /*
-
-            spriteBatch.Draw(ResourceManager.tex_pixel, new Rectangle((int) left.X, (int) left.Y, 10, 10), Color.Red);
-            spriteBatch.Draw(ResourceManager.tex_pixel, new Rectangle((int) right.X, (int) right.Y, 10, 10), Color.Red);
-             * */
+            
         }
     }
 }

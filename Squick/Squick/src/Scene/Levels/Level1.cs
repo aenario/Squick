@@ -47,12 +47,14 @@ namespace Squick.Scene.Levels
         // Others
         private bool justStarted = true;// CHANGE TO COMPLEXE ENTITY
         private double _eventTimer;
+        private bool _modeAdventure;
        
         //private Player _squick;
 
-        public Level1(KinectInterface gameInput)
+        public Level1(KinectInterface gameInput, bool modeAdventure = false)
         {
             _levelBackground = ResourceManager.tex_background_level1;
+            _modeAdventure = modeAdventure;
 
             _HUD_score = new Score(new Vector2(10,0));
             _backToMenu = new TextButton("Menu", new Vector2(690, 10));
@@ -78,15 +80,29 @@ namespace Squick.Scene.Levels
                 _sceneFinished = true;
             }
 
+            /* TODO : Clean up all below (_step ?) */
             if (justStarted)
             {
                 Level1CollectibleFactory.startNow(gameTime);
                 justStarted = false;
                 _eventTimer = gameTime.TotalGameTime.TotalSeconds;
             }
-            if (Level1CollectibleFactory.done(gameTime))
+            if (Level1CollectibleFactory.doneSince(gameTime) > 10 & Level1CollectibleFactory.doneSince(gameTime) < 10.5)
             {
-                // do the jump
+                _gameEventMessage.SetText("LEVEL CLEAR");
+                if(_modeAdventure) squick.SpeedY = -600;
+            }
+            if (Level1CollectibleFactory.doneSince(gameTime) > 15)
+            {
+                if (_modeAdventure)
+                {
+                    _nextScene = new Level2(gameInput, _score);
+                }
+                else
+                {
+                    _nextScene = new VictoryMenu(_score);
+                }
+                _sceneFinished = true;
             }
 
             // spawn items 
@@ -125,6 +141,7 @@ namespace Squick.Scene.Levels
                     else
                     {
                         _bonusChain = 0;
+                        _gameScoreMessage.SetText("");
                         _score += item.GetBonus();
                     }
                     toBeDestroy.Add(item);
@@ -141,10 +158,10 @@ namespace Squick.Scene.Levels
             /* Make squick bump */
             if ((squick.Pos.X < 36 && squick.Speed.X < leftBound)
                  || (squick.Pos.X + squick.Width > rightBound && squick.Speed.X > 0))
-                        squick.Speed = Vector2.Negate(squick.Speed);
+                        squick.SpeedX *= -1;
             
             /* INGAME EVENTS */
-            double time = gameTime.TotalGameTime.TotalSeconds - _eventTimer;
+            double time = Math.Round(gameTime.TotalGameTime.TotalSeconds - _eventTimer, 2);
             // Wave 1
             if (time == (double)Level1CollectibleFactory.WAVE_1)
             {
@@ -167,11 +184,12 @@ namespace Squick.Scene.Levels
             if (time == (double)Level1CollectibleFactory.WAVE_4)
                 _gameEventMessage.SetText("");
             // Wave 5
+            /* TO UNCOMMENT IF WAVE 5 ADDED
             if (time == (double)Level1CollectibleFactory.WAVE_5 - 3)
                 _gameEventMessage.SetText("     Warning!!");
             if (time == (double)Level1CollectibleFactory.WAVE_5)
                 _gameEventMessage.SetText("");
-            
+            */
 
 
             // HUD update

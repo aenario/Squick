@@ -194,9 +194,9 @@ namespace Squick.Scene.Levels
             return spawnNow;
         }
 
-        public static bool done(GameTime gameTime)
+        public static double doneSince(GameTime gameTime)
         {
-            return maxTime < gameTime.TotalGameTime.Subtract(baseTime).TotalSeconds;
+            return gameTime.TotalGameTime.Subtract(baseTime).TotalSeconds - maxTime;
             
         }
 
