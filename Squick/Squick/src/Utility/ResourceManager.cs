@@ -37,6 +37,7 @@ namespace Squick.Utility
         public static Texture2D tex_nut;
         public static Texture2D tex_goldenNut;
         public static Texture2D tex_pine;
+        public static Texture2D tex_anvil;
         public static Texture2D tex_branch;
         public static Texture2D tex_bomb1;
         public static Texture2D tex_bomb2;
@@ -80,6 +81,7 @@ namespace Squick.Utility
             tex_nut = _content.Load<Texture2D>("Textures\\nut");
             tex_goldenNut = _content.Load<Texture2D>("Textures\\goldenNut");
             tex_pine = _content.Load<Texture2D>("Textures\\pine");
+            tex_anvil = _content.Load<Texture2D>("Textures\\anvil");
             tex_bomb1 = _content.Load<Texture2D>("Textures\\bomb1");
             tex_bomb2 = _content.Load<Texture2D>("Textures\\bomb2");
             tex_bomb3 = _content.Load<Texture2D>("Textures\\bomb3");

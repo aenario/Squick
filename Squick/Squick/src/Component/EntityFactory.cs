@@ -52,7 +52,7 @@ namespace Squick.Component
                 }
                 else if (this.type == MALUS_ANVIL)
                 {
-                    e = new Bomb();
+                    e = new Anvil();
                 }
                 else if (this.type == MALUS_BOMB)
                 {

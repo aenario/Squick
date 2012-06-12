@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Component\Collectible\Bomb.cs" />
+    <Compile Include="src\Component\Collectible\Anvil.cs" />
     <Compile Include="src\Component\Collectible\GoldenNut.cs" />
     <Compile Include="src\Component\Collectible\Nut.cs" />
     <Compile Include="src\Component\Collectible\Pine.cs" />

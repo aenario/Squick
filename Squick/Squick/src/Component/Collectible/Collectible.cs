@@ -30,7 +30,7 @@ namespace Squick.Component.Collectible
             _destroyed = false;
         }
 
-        new public void Update(GameTime gameTime)
+        override public void Update(GameTime gameTime)
         {
             _boundingBox.X = (int)_pos.X;
             _boundingBox.Y = (int)_pos.Y; 

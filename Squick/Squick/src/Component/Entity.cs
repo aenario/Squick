@@ -63,7 +63,7 @@ namespace Squick.Component
             return _boundingBox.Intersects(e.GetBoundingBox());
         }
 
-        public void Update(GameTime gameTime){
+        public virtual void Update(GameTime gameTime){
             var t = gameTime.ElapsedGameTime.Milliseconds / 1000f;
             if (!_speed.Equals(Vector2.Zero)) _pos = Vector2.Add(_pos, (new Vector2(_speed.X * t, _speed.Y * t)));
         }
