@@ -169,9 +169,9 @@ namespace Squick.Scene.Levels
                 _gameEventMessage.SetMode(Message.DISPLAY_BLINK, 250);
             }
             // Wave 2
-            if (time == (double)Level1CollectibleFactory.WAVE_2 - 3)
+            if (time == (double)Level1CollectibleFactory.WAVE_2 - 1)
                 _gameEventMessage.SetText("     Warning!!");
-            if (time == (double)Level1CollectibleFactory.WAVE_2)
+            if (time == (double)Level1CollectibleFactory.WAVE_2 + 2)
                 _gameEventMessage.SetText("");
             // Wave 3
             if (time == (double)Level1CollectibleFactory.WAVE_3 - 3)

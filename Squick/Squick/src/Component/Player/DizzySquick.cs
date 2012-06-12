@@ -74,7 +74,8 @@ namespace Squick.Component.Player
             _boundingBox = _bodyTexBox;
             _boundingBox.Inflate(-60, -60);
             _boundingBox.X += 20;
-            _boundingBox.Height += 20;
+            _boundingBox.Y -= 20;
+            _boundingBox.Height += 40;
             
         }
 
@@ -116,7 +117,7 @@ namespace Squick.Component.Player
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_head, _bodyTexBox, Color.White);
 
             // Debug 
-            // RenderManager.DrawBox(_boundingBox);
+            RenderManager.DrawBox(_boundingBox);
         }
 
     }

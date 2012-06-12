@@ -16,13 +16,13 @@ namespace Squick.Scene.Levels
         private static double maxTime;
 
         public const double WAVE_1 = 7.0f;
-        public const double WAVE_2 = 35.0f;
-        public const double WAVE_3 = 68.0f;
-        public const double WAVE_4 = 100.0f;
-        public const double WAVE_5 = 146.0f;
+        public const double WAVE_2 = 27.0f; 
+        public const double WAVE_3 = 60.0f;
+        public const double WAVE_4 = 93.0f;
+        public const double WAVE_5 = 138.0f;
 
-        private const int SPEED_1 = 50;
-        private const int SPEED_2 = 100;
+        private const int SPEED_1 = 70;
+        private const int SPEED_2 = 120;
         private const int SPEED_3 = 200;
 
         private static EntityFactory[] spawn = new EntityFactory[]{
@@ -31,9 +31,9 @@ namespace Squick.Scene.Levels
             // . Level1
             // ~ ReadySetGo (takes 5 seconds to appear)
             new EntityFactory(WAVE_1 + 0, EntityFactory.BONUS_NUT, 350,SPEED_1),  
-            new EntityFactory(WAVE_1 + 8, EntityFactory.BONUS_NUT, 150,SPEED_1), 
-            new EntityFactory(WAVE_1 + 16, EntityFactory.BONUS_NUT, 550,SPEED_1), 
-            new EntityFactory(WAVE_1 + 24, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_1), 
+            new EntityFactory(WAVE_1 + 5, EntityFactory.BONUS_NUT, 150,SPEED_1),
+            new EntityFactory(WAVE_1 + 10, EntityFactory.BONUS_NUT, 550,SPEED_1), 
+            new EntityFactory(WAVE_1 + 15, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_1), 
             // . Level 2
             // ~ /!\ Warning /!\
             new EntityFactory(WAVE_2 + 0, EntityFactory.MALUS_PINE, 350,SPEED_1),  
@@ -63,9 +63,9 @@ namespace Squick.Scene.Levels
             new EntityFactory(WAVE_3 + 22, EntityFactory.BONUS_NUT, 400,SPEED_2),
             new EntityFactory(WAVE_3 + 24, EntityFactory.BONUS_NUT, 350,SPEED_2),
 
-            new EntityFactory(WAVE_3 + 30, EntityFactory.BONUS_GOLDEN_NUT, 150,SPEED_1),
-            new EntityFactory(WAVE_3 + 30, EntityFactory.BONUS_GOLDEN_NUT, 550,SPEED_1),
-            new EntityFactory(WAVE_3 + 32, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_1),
+            new EntityFactory(WAVE_3 + 25, EntityFactory.BONUS_GOLDEN_NUT, 150,SPEED_1),
+            new EntityFactory(WAVE_3 + 25, EntityFactory.BONUS_GOLDEN_NUT, 550,SPEED_1),
+            new EntityFactory(WAVE_3 + 25, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_1),
 
             // . Level 4
             // ~ /!\ Stay focused /!\
@@ -171,8 +171,8 @@ namespace Squick.Scene.Levels
             new EntityFactory(WAVE_4 + 38, EntityFactory.MALUS_PINE, 300,SPEED_2),
             new EntityFactory(WAVE_4 + 38, EntityFactory.MALUS_PINE, 400,SPEED_2),
             new EntityFactory(WAVE_4 + 38, EntityFactory.MALUS_PINE, 450,SPEED_2),
-            new EntityFactory(WAVE_4 + 40, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_2),
             new EntityFactory(WAVE_4 + 41, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_2),
+            new EntityFactory(WAVE_4 + 42, EntityFactory.BONUS_GOLDEN_NUT, 350,SPEED_2),
 
             // Wave 5
             // ~ /!\ Warning /!\

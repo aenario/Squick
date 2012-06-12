@@ -16,7 +16,7 @@ namespace Squick.Component.Collectible
             _bonus = -500;
             _speedFactor = 0.5f;
             _movementPattern = MOVEMENT_FALL;
-            _boundingBox = ResourceManager.tex_bomb.Bounds;
+           // _boundingBox = ResourceManager.tex_bomb.Bounds;
         }
 
         public override void Render(Microsoft.Xna.Framework.GameTime gameTime)
