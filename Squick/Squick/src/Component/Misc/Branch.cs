@@ -133,7 +133,7 @@ namespace Squick.Component.Misc
         }
         
         public override void Render(GameTime gameTime){
-            float alpha = _active ? 0.5f : 1f;
+            float alpha = _active ? 0f : 1f;
             if (_active) RenderManager.DrawLine(_pos2, _posM, Color.Gold);
             RenderManager.Draw2DTexture(_texture, _pos, Color.White * alpha, _angle, branchOrigin, new Vector2(_scale, 1));
             

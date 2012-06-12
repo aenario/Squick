@@ -24,7 +24,7 @@ namespace Squick.Scene.Levels
     public class Level2 : Scene{
 
         /* GAMEPLAY */
-        private const float goal = 30000;
+        private const float goal = 50000;
         private static float gravity = 85;
         private static double friction = 0.9d;
         private static float impactTrigger = 0.05f; // squick will bounce 0.05s before hitting branch
@@ -32,7 +32,7 @@ namespace Squick.Scene.Levels
         private int nbOfLives = 5;
         private float newSpeed(float oldSpeed, float bounceLength)
         {
-            return MathHelper.Clamp(2 * oldSpeed + 7 * (200 - bounceLength), 300, 1200);
+            return MathHelper.Clamp(2 * oldSpeed + 5 * (200 - bounceLength), 300, 900);
         }
         private float score(float time)
         {
@@ -89,15 +89,16 @@ namespace Squick.Scene.Levels
 
         public override void Update(GameTime gameTime, KinectInterface gameInput)
         {
-            hc.Update(gameTime, gameInput);
+            
             if(beginLevel.TotalMilliseconds == 0) beginLevel = gameTime.TotalGameTime;
             
-            // 10s with the branch only, for the user to test
             if (gameTime.TotalGameTime.Subtract(beginLevel).TotalSeconds < 10d)
             {
+                hc.Update(gameTime, gameInput);
                 activeBranch.Update(gameTime);
                 return;
             }
+            else hc = null;
             /* Update everything */
             squick.Update(gameTime);
             gauge.Update(cameraOffset);
@@ -176,7 +177,7 @@ namespace Squick.Scene.Levels
                 if (nbOfLives == 1) // was the last life
                 {
                     _sceneFinished = true;
-                    _nextScene = new GameOverMenu(2);
+                    _nextScene = new GameOverMenu(2, _level1Score);
                     return;
                 }
                 nbOfLives--;
@@ -244,6 +245,7 @@ namespace Squick.Scene.Levels
                 RenderManager.Draw2DTexture(ResourceManager.tex_squick_headCut, b, Color.White);
             }
             
+            if(hc != null) hc.Render(gameTime);
 
         }
 
