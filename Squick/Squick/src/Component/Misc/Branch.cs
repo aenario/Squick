@@ -14,6 +14,7 @@ namespace Squick.Component.Misc
     {
         private static Vector2 branchOrigin = new Vector2(33, 88);
         private static Vector2 branchEnd = new Vector2(472, 94);
+        private static Rectangle branchExtremity;
         private static int branchLength = 436;
 
         private Texture2D _texture;
@@ -21,6 +22,7 @@ namespace Squick.Component.Misc
 
         private bool _fromLeftTrunk = true;
         private bool _active = true;
+        private TimeSpan _fixTime;
         private bool firstHit = true;
         public bool Destroyable { get { return !firstHit; } }
         private float _coefDir;
@@ -46,11 +48,16 @@ namespace Squick.Component.Misc
         {
             _gameInput = gameInput;
             _texture = ResourceManager.tex_branch;
+            branchExtremity = new Rectangle(64, 0, 0, _texture.Height);
         }
 
-        public bool HitAndBreak()
+        public bool HitAndBreak(GameTime gameTime)
         {
-            if(_active) return _active = false;
+            if (_active)
+            {
+                _fixTime = gameTime.TotalGameTime;
+                return _active = false;
+            }
             if (firstHit) return firstHit = false;
             return true;
         }
@@ -133,9 +140,20 @@ namespace Squick.Component.Misc
         }
         
         public override void Render(GameTime gameTime){
-            float alpha = _active ? 0f : 1f;
-            if (_active) RenderManager.DrawLine(_pos2, _posM, Color.Gold);
-            RenderManager.Draw2DTexture(_texture, _pos, Color.White * alpha, _angle, branchOrigin, new Vector2(_scale, 1));
+            if (_active)
+            {
+                branchExtremity.Width = (int) (BounceLength / _scale);
+                branchExtremity.X = branchLength - branchExtremity.Width + (int) branchOrigin.X;
+                RenderManager.Draw2DTexture(_texture, branchExtremity, _posM, Color.White * 0.4f, _angle, new Vector2(0, branchOrigin.Y), new Vector2(_scale, 1));
+            }
+            else
+            {
+                float scale;
+                if (gameTime.TotalGameTime.Subtract(_fixTime).TotalMilliseconds < 100)
+                    scale = _scale * ((float)gameTime.TotalGameTime.Subtract(_fixTime).TotalMilliseconds / 100f);
+                else scale = _scale;
+                RenderManager.Draw2DTexture(_texture, _pos, Color.White, _angle, branchOrigin, new Vector2(scale, 1));
+            }
             
         }
     }

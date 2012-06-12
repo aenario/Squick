@@ -102,6 +102,10 @@ namespace Squick.Utility
         {
             _spriteBatch.Draw(tex, pos, null, color, armAngle, origin, scale, SpriteEffects.None, 0);
         }
+        public static void Draw2DTexture(Texture2D tex, Rectangle source, Vector2 pos, Color color, float armAngle, Vector2 origin, Vector2 scale)
+        {
+            _spriteBatch.Draw(tex, pos, source, color, armAngle, origin, scale, SpriteEffects.None, 0);
+        }
 
      /*   public static void DrawEntity(Entity entity)
         {

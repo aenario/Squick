@@ -27,7 +27,7 @@ namespace Squick.Scene.Levels
         private const float goal = 50000;
         private static float gravity = 85;
         private static double friction = 0.9d;
-        private static float impactTrigger = 0.05f; // squick will bounce 0.05s before hitting branch
+        private static float impactTrigger = 0.1f; // squick will bounce 0.05s before hitting branch
         private static float distanceToTop = 150;
         private int nbOfLives = 5;
         private float newSpeed(float oldSpeed, float bounceLength)
@@ -200,7 +200,7 @@ namespace Squick.Scene.Levels
             squick.Speed = Vector2.Multiply(Vector2.Normalize(direction),
                 newSpeed(oldSpeed, b.BounceLength));
 
-            b.HitAndBreak();
+            b.HitAndBreak(gameTime);
             if (b.Equals(activeBranch))
             {
                 oldBranches.Add(activeBranch);
