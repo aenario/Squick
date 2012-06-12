@@ -38,6 +38,18 @@ namespace Squick.Utility
         public static Texture2D tex_goldenNut;
         public static Texture2D tex_pine;
         public static Texture2D tex_branch;
+        public static Texture2D tex_bomb1;
+        public static Texture2D tex_bomb2;
+        public static Texture2D tex_bomb3;
+        public static Texture2D tex_bomb4;
+        public static Texture2D tex_fuse1;
+        public static Texture2D tex_fuse2;
+        public static Texture2D tex_fuse3;
+        public static Texture2D tex_fuse4;
+        public static Texture2D tex_fuse5;
+        public static Texture2D tex_fuse6;
+        public static Texture2D tex_fuse7;
+
         //public static Texture2D tex_background_level2;
         //public static Texture2D tex_background_level3;
 
@@ -54,7 +66,6 @@ namespace Squick.Utility
             // Textures
             // . Global 
             tex_squick_head_normal = _content.Load<Texture2D>("Textures\\teteCut");
-
             tex_squick_body = _content.Load<Texture2D>("Textures\\body");
             tex_squick_leftArm = _content.Load<Texture2D>("Textures\\leftArm");
             tex_squick_rightArm = _content.Load<Texture2D>("Textures\\rightArm");
@@ -69,7 +80,18 @@ namespace Squick.Utility
             tex_nut = _content.Load<Texture2D>("Textures\\nut");
             tex_goldenNut = _content.Load<Texture2D>("Textures\\goldenNut");
             tex_pine = _content.Load<Texture2D>("Textures\\pine");
-            
+            tex_bomb1 = _content.Load<Texture2D>("Textures\\bomb1");
+            tex_bomb2 = _content.Load<Texture2D>("Textures\\bomb2");
+            tex_bomb3 = _content.Load<Texture2D>("Textures\\bomb3");
+            tex_bomb4 = _content.Load<Texture2D>("Textures\\bomb4");
+            tex_fuse1 = _content.Load<Texture2D>("Textures\\fuse1");
+            tex_fuse2 = _content.Load<Texture2D>("Textures\\fuse2");
+            tex_fuse3 = _content.Load<Texture2D>("Textures\\fuse3");
+            tex_fuse4 = _content.Load<Texture2D>("Textures\\fuse4");
+            tex_fuse5 = _content.Load<Texture2D>("Textures\\fuse5");
+            tex_fuse6 = _content.Load<Texture2D>("Textures\\fuse6");
+            tex_fuse7 = _content.Load<Texture2D>("Textures\\fuse7");
+
             // . Level 2
             tex_background_level2 = _content.Load<Texture2D>("Textures\\Background_level_2");
             tex_branch = _content.Load<Texture2D>("Textures\\branch");
