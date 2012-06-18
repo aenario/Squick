@@ -158,8 +158,12 @@ namespace Squick.Scene.Levels
             /* Make squick bump */
             if ((squick.Pos.X < 36 && squick.Speed.X < leftBound)
                  || (squick.Pos.X + squick.Width > rightBound && squick.Speed.X > 0))
-                        squick.SpeedX *= -1;
-            
+            {
+                // Bounce
+                squick.SpeedX *= -1;
+                // Sound
+                AudioManager.PlaySound(AudioManager.sound_bounce);
+            }
             /* INGAME EVENTS */
             double time = Math.Round(gameTime.TotalGameTime.TotalSeconds - _eventTimer, 2);
             // Wave 1
