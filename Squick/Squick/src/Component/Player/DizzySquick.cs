@@ -30,6 +30,7 @@ namespace Squick.Component.Player
         private static Vector2 leftLegPos = new Vector2(90, 140);
         private static Vector2 rightLegOrigin = new Vector2(9, 7);
         private static Vector2 rightLegPos = new Vector2(125, 135);
+        private static Vector2 headPos = new Vector2(-10, 0);
 
 
         private KinectInterface _gameInput;
@@ -89,6 +90,7 @@ namespace Squick.Component.Player
             Vector2 _leftLegPos = Vector2.Add(_pos, leftLegPos);
             Vector2 _rightLegPos = Vector2.Add(_pos, rightLegPos);
             Vector2 _tailPos = Vector2.Add(_pos, tailPos);
+            Vector2 _headPos = Vector2.Add(_pos, headPos);
             float tailAngle = MathHelper.Clamp(-maxAngle / 2, -Speed.X * coefTailAngle, maxAngle / 2);
 
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_tail, _tailPos, Color.White, 
@@ -114,7 +116,7 @@ namespace Squick.Component.Player
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightLeg, _rightLegPos, Color.White, 
                 0, rightLegOrigin);
 
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_head, _bodyTexBox, Color.White);
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_head, _headPos, Color.White);
 
             // Debug 
             //RenderManager.DrawBox(_boundingBox);
