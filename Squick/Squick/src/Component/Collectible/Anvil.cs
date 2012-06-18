@@ -25,7 +25,6 @@ namespace Squick.Component.Collectible
         override public void Update(GameTime gameTime)
         {
             // Increase speed every 0.5 seconds
-            Console.WriteLine(gameTime.TotalGameTime.TotalMilliseconds + " and " + _speedTimer);
             if (gameTime.TotalGameTime.TotalMilliseconds - _speedTimer >= 50)
             {
                 _speed.Y += 1;
