@@ -20,6 +20,9 @@ namespace Squick.Component.Collectible
             _movementPattern = MOVEMENT_FALL;
             _speedTimer = 0;
             _boundingBox = ResourceManager.tex_anvil.Bounds;
+
+            // Play a sound at startup
+            AudioManager.PlaySound(AudioManager.sound_fall);
         }
 
         override public void Update(GameTime gameTime)

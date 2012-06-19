@@ -69,7 +69,7 @@ namespace Squick.Scene.Levels
             squick.Pos = new Vector2(400, 400);
 
             _gameEventMessage = new Message("Ready?  Set...  Go!", new Vector2(20, 220),2.0f,Message.DISPLAY_LBL,250);
-            _gameScoreMessage = new Message("",new Vector2(10,160),1.0f,Message.DISPLAY_LBL,400);
+            _gameScoreMessage = new Message("",new Vector2(10,160),1.0f,Message.DISPLAY_LBL,1000);
 
             
             // Level score

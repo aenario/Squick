@@ -72,7 +72,7 @@ namespace Squick.Scene.Effects
                 // Update timer
                 _stepTimer = gameTime.TotalGameTime.TotalMilliseconds;
 
-                Console.WriteLine(_step);
+                //Console.WriteLine(_step);
             }
         }
         public void Render(GameTime gameTime)
