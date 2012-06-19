@@ -198,17 +198,26 @@ namespace Squick.Scene.Levels
             if (time == (double)Level1CollectibleFactory.WAVE_3)
                 _gameEventMessage.SetText("");
             // Wave 4
-            if (time == (double)Level1CollectibleFactory.WAVE_4 - 3)
-                _gameEventMessage.SetText("     Stay focused!");
-            if (time == (double)Level1CollectibleFactory.WAVE_4)
+            if (time == (double)Level1CollectibleFactory.WAVE_4 - 1)
+                _gameEventMessage.SetText("     Warning!");
+            if (time == (double)Level1CollectibleFactory.WAVE_4 + 2)
                 _gameEventMessage.SetText("");
             // Wave 5
-            /* TO UNCOMMENT IF WAVE 5 ADDED
             if (time == (double)Level1CollectibleFactory.WAVE_5 - 3)
-                _gameEventMessage.SetText("     Warning!!");
+                _gameEventMessage.SetText("     Stay focused!");
             if (time == (double)Level1CollectibleFactory.WAVE_5)
                 _gameEventMessage.SetText("");
-            */
+            // Wave 6
+            if (time == (double)Level1CollectibleFactory.WAVE_6 - 1)
+                _gameEventMessage.SetText("     Warning!");
+            if (time == (double)Level1CollectibleFactory.WAVE_6 + 2)
+                _gameEventMessage.SetText("");
+            // Wave 7
+            if (time == (double)Level1CollectibleFactory.WAVE_7 - 3)
+                _gameEventMessage.SetText("     Speed-up!");
+            if (time == (double)Level1CollectibleFactory.WAVE_7)
+                _gameEventMessage.SetText("");
+           
 
 
             // HUD update

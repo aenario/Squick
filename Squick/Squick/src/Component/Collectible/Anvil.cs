@@ -15,7 +15,7 @@ namespace Squick.Component.Collectible
         public Anvil()
         {
             // Default properties
-            _bonus = -1000;
+            _bonus = -300;
             _speedFactor = 1.0f;
             _movementPattern = MOVEMENT_FALL;
             _speedTimer = 0;

@@ -35,6 +35,10 @@ namespace Squick.Scene.Levels
         {
             return MathHelper.Clamp(2 * oldSpeed + 7 * (250 - bounceLength), 300, 900);
         }
+        private float newSpeedItem(float oldSpeed, float bounceLength)
+        {
+            return MathHelper.Clamp(2 * oldSpeed + 7 * (250 - bounceLength), 300, 900);
+        }
         private float score(float time)
         {
             return MathHelper.Clamp(9999f - 40f * (time - 30f), 0, 9999);
@@ -98,12 +102,20 @@ namespace Squick.Scene.Levels
                 return;
             }
             else hc = null;
+
+            if (cameraOffset > goal)
+            {
+                _sceneFinished = true;
+                ScoreHolder.Level2 = (int)score((float)gameTime.TotalGameTime.Subtract(beginLevel).TotalSeconds);
+                _nextScene = new VictoryMenu();
+            }
+
             /* Update everything */
             squick.Update(gameTime);
             gauge.Update(cameraOffset);
             activeBranch.Update(gameTime);
-            foreach (Collectible i in items) i.Update(gameTime);
             oldBranches.RemoveAll(destroyable);
+            foreach (Collectible i in items) i.Update(gameTime);
             foreach (Branch b in oldBranches) b.Update(gameTime);
 
             /* gravity & friction & bounce */
@@ -141,12 +153,7 @@ namespace Squick.Scene.Levels
 
                 cameraOffset -= delta;
 
-                if (cameraOffset > goal)
-                {
-                    _sceneFinished = true;
-                    ScoreHolder.Level2 = (int) score((float) gameTime.TotalGameTime.Subtract(beginLevel).TotalSeconds);
-                    _nextScene = new VictoryMenu();
-                }
+
 
             }
 
@@ -213,7 +220,12 @@ namespace Squick.Scene.Levels
         private void bounceAgainstWalls(Entity e)
         {
             Rectangle b = e.GetBoundingBox();
-            if (b.X < 40 && e.SpeedX < 0 || b.X + b.Width > 700 && e.SpeedX > 0) e.SpeedX = -e.SpeedX;
+            if (b.X < 40 && e.SpeedX < 0 || b.X + b.Width > 700 && e.SpeedX > 0)
+            {
+                AudioManager.PlaySound(AudioManager.sound_bounce);
+                e.SpeedX = -e.SpeedX;
+
+            }
         }
 
         public override void Render(GameTime gameTime)

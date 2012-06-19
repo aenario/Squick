@@ -91,25 +91,26 @@ namespace Squick.Component.Player
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightArm, _rightArmPos, Color.White,
                 -limbAngle, rightArmOrigin);
 
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_body, _pos, Color.White);
-
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftArm, _leftArmPos, Color.White,
-                limbAngle, leftArmOrigin);
-
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftLeg, _leftLegPos, Color.White,
                 limbAngle, leftLegOrigin);
 
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightLeg, _rightLegPos, Color.White,
                 -limbAngle, rightLegOrigin);
 
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_body, _pos, Color.White);
+
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftArm, _leftArmPos, Color.White,
+                limbAngle, leftArmOrigin);
+
+
             if (is_dizzy)
             {
                 RenderManager.Draw2DTexture(ResourceManager.tex_squick_headNoEyes, _headPos, Color.White,
                     0, headOrigin);
                 RenderManager.Draw2DTexture(ResourceManager.tex_squick_spirals, _leftEyePos, Color.White,
-                    gameTime.ElapsedGameTime.Milliseconds * eyesSpeed, eyeOrigin);
+                    gameTime.TotalGameTime.Milliseconds * eyesSpeed, eyeOrigin);
                 RenderManager.Draw2DTexture(ResourceManager.tex_squick_spirals, _rightEyePos, Color.White,
-                    gameTime.ElapsedGameTime.Milliseconds * eyesSpeed, eyeOrigin);
+                    gameTime.TotalGameTime.Milliseconds * eyesSpeed, eyeOrigin);
             }
             else
             {

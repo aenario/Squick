@@ -30,7 +30,13 @@ namespace Squick.Component.Player
         private static Vector2 leftLegPos = new Vector2(90, 140);
         private static Vector2 rightLegOrigin = new Vector2(9, 7);
         private static Vector2 rightLegPos = new Vector2(125, 135);
-        private static Vector2 headPos = new Vector2(-10, 0);
+        private static Vector2 headOrigin = new Vector2(56, 100);
+        private static Vector2 headPos = new Vector2(108, 100);
+        private static Vector2 eyeOrigin = new Vector2(10, 10);
+        private static Vector2 leftEyePos = new Vector2(40, 68);
+        private static Vector2 rightEyePos = new Vector2(75, 68);
+        private static float eyesSpeed = MathHelper.Pi * 2 / 1000;
+
 
 
         private KinectInterface _gameInput;
@@ -73,8 +79,8 @@ namespace Squick.Component.Player
 
             // Adjust boundingBox
             _boundingBox = _bodyTexBox;
-            _boundingBox.Inflate(-60, -60);
-            _boundingBox.X += 20;
+            _boundingBox.Inflate(-65, -65);
+            _boundingBox.X += 10;
             _boundingBox.Y -= 20;
             _boundingBox.Height += 40;
             
@@ -91,6 +97,8 @@ namespace Squick.Component.Player
             Vector2 _rightLegPos = Vector2.Add(_pos, rightLegPos);
             Vector2 _tailPos = Vector2.Add(_pos, tailPos);
             Vector2 _headPos = Vector2.Add(_pos, headPos);
+            Vector2 _leftEyePos = Vector2.Add(Vector2.Subtract(_headPos, headOrigin), leftEyePos);
+            Vector2 _rightEyePos = Vector2.Add(Vector2.Subtract(_headPos, headOrigin), rightEyePos);
             float tailAngle = MathHelper.Clamp(-maxAngle / 2, -Speed.X * coefTailAngle, maxAngle / 2);
 
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_tail, _tailPos, Color.White, 
@@ -110,13 +118,12 @@ namespace Squick.Component.Player
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftArm, _leftArmPos, Color.White, 
                 armAngle, leftArmOrigin);
 
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftLeg, _leftLegPos, Color.White, 
-                0, leftLegOrigin);
-
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_rightLeg, _rightLegPos, Color.White, 
-                0, rightLegOrigin);
-
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_head, _headPos, Color.White);
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_headNoEyes, _headPos, Color.White,
+                    0, headOrigin);
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_spirals, _leftEyePos, Color.White,
+                gameTime.ElapsedGameTime.Milliseconds * eyesSpeed, eyeOrigin);
+            RenderManager.Draw2DTexture(ResourceManager.tex_squick_spirals, _rightEyePos, Color.White,
+                gameTime.ElapsedGameTime.Milliseconds * eyesSpeed, eyeOrigin);
 
             // Debug 
             //RenderManager.DrawBox(_boundingBox);
