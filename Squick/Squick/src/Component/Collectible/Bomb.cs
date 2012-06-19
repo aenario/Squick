@@ -26,8 +26,8 @@ namespace Squick.Component.Collectible
         public Bomb()
         {
             // Default properties
-            _bonus = -500;
-            _speedFactor = 0.5f;
+            _bonus = -200;
+            _speedFactor = 1.0f;
             _movementPattern = MOVEMENT_FALL;
             _animationTimer = 0;
             _animationFrame = 0;
@@ -53,6 +53,9 @@ namespace Squick.Component.Collectible
             _fuseTex = ResourceManager.tex_fuse1;
             // Bounding box
             _boundingBox = ResourceManager.tex_bomb1.Bounds;
+
+            // Play a sound at startup
+            AudioManager.PlaySound(AudioManager.sound_fuse);
         }
 
         public override void Render(Microsoft.Xna.Framework.GameTime gameTime)

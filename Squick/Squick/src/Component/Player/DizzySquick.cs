@@ -73,8 +73,8 @@ namespace Squick.Component.Player
 
             // Adjust boundingBox
             _boundingBox = _bodyTexBox;
-            _boundingBox.Inflate(-60, -60);
-            _boundingBox.X += 20;
+            _boundingBox.Inflate(-65, -65);
+            _boundingBox.X += 10;
             _boundingBox.Y -= 20;
             _boundingBox.Height += 40;
             
