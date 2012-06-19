@@ -23,7 +23,7 @@ namespace Squick.Component.Collectible
 
         public override void Render(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            RenderManager.Draw2DTexture(ResourceManager.tex_pine, _boundingBox, Color.Red);
+            RenderManager.Draw2DTexture(ResourceManager.tex_bomb1, _boundingBox, Color.Red);
         }
 
         public override void Destroy(){}

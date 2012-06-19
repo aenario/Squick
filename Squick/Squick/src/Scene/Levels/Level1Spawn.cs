@@ -28,7 +28,7 @@ namespace Squick.Scene.Levels
         private static EntityFactory[] spawn = new EntityFactory[]{
 
             // Test
-            new EntityFactory(WAVE_1 + 0, EntityFactory.MALUS_ANVIL, 350,SPEED_3),  
+           /* new EntityFactory(WAVE_1 + 0, EntityFactory.MALUS_ANVIL, 350,SPEED_3),  */
 
             // Tutorial waves
             // . Level1

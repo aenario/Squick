@@ -145,6 +145,7 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="src\Scene\SceneManager.cs" />
     <Compile Include="src\Squick.cs" />
+    <Compile Include="src\Utility\ScoreHolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SquickContent\SquickContent.contentproj">

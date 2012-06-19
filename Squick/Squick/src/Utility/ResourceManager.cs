@@ -66,12 +66,12 @@ namespace Squick.Utility
 
             // Textures
             // . Global 
-            tex_squick_head_normal = _content.Load<Texture2D>("Textures\\teteCut");
+            tex_squick_head_normal = _content.Load<Texture2D>("Textures\\cutHead");
             tex_squick_body = _content.Load<Texture2D>("Textures\\body");
             tex_squick_leftArm = _content.Load<Texture2D>("Textures\\leftArm");
             tex_squick_rightArm = _content.Load<Texture2D>("Textures\\rightArm");
             tex_squick_head = _content.Load<Texture2D>("Textures\\head");
-            tex_squick_headCut = _content.Load<Texture2D>("Textures\\teteCut");
+            tex_squick_headCut = _content.Load<Texture2D>("Textures\\cutHead");
             tex_squick_tail = _content.Load<Texture2D>("Textures\\tail");
             tex_squick_leftLeg = _content.Load<Texture2D>("Textures\\leftLeg");
             tex_squick_rightLeg = _content.Load<Texture2D>("Textures\\rightLeg");

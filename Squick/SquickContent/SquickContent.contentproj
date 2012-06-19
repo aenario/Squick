@@ -74,8 +74,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\teteCut.png">
-      <Name>teteCut</Name>
+    <Compile Include="Textures\cutHead.png">
+      <Name>cutHead</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -230,6 +230,13 @@
     </Compile>
     <Compile Include="Textures\fuse7.png">
       <Name>fuse7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\cutHeadNoEye.png">
+      <Name>cutHeadNoEye</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

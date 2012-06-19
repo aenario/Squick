@@ -18,6 +18,7 @@ using Squick.Utility;
 using Squick.Scene.Menus;
 using Squick.Component.Collectible;
 using Squick.UI;
+using Squick.src.Utility;
 
 namespace Squick.Scene.Levels
 {
@@ -32,7 +33,7 @@ namespace Squick.Scene.Levels
         private int nbOfLives = 5;
         private float newSpeed(float oldSpeed, float bounceLength)
         {
-            return MathHelper.Clamp(2 * oldSpeed + 5 * (200 - bounceLength), 300, 900);
+            return MathHelper.Clamp(2 * oldSpeed + 7 * (250 - bounceLength), 300, 900);
         }
         private float score(float time)
         {
@@ -41,7 +42,6 @@ namespace Squick.Scene.Levels
 
 
         /* MISC */
-        private int _level1Score;
         private float cameraOffset = 0;
         private TimeSpan beginLevel = new TimeSpan();
 
@@ -70,10 +70,9 @@ namespace Squick.Scene.Levels
 
         
 
-        public Level2(KinectInterface gameInput, int level1Score = -1)
+        public Level2(KinectInterface gameInput)
         {
             _levelBackground = ResourceManager.tex_background_level2;
-            _level1Score = level1Score;
             squick = new JumpingSquick(gameInput);
             squick.Pos = new Vector2(400, 800);
             squick.Speed = new Vector2(0,-600);
@@ -145,8 +144,8 @@ namespace Squick.Scene.Levels
                 if (cameraOffset > goal)
                 {
                     _sceneFinished = true;
-                    float level2Score = score((float) gameTime.TotalGameTime.Subtract(beginLevel).TotalSeconds);
-                    _nextScene = new VictoryMenu(_level1Score, level2Score);
+                    ScoreHolder.Level2 = (int) score((float) gameTime.TotalGameTime.Subtract(beginLevel).TotalSeconds);
+                    _nextScene = new VictoryMenu();
                 }
 
             }
@@ -177,7 +176,7 @@ namespace Squick.Scene.Levels
                 if (nbOfLives == 1) // was the last life
                 {
                     _sceneFinished = true;
-                    _nextScene = new GameOverMenu(2, _level1Score);
+                    _nextScene = new GameOverMenu(2);
                     return;
                 }
                 nbOfLives--;

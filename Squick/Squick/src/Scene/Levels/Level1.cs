@@ -18,6 +18,7 @@ using Squick.Scene;
 using Squick.Utility;
 using Squick.UI;
 using Squick.Scene.Menus;
+using Squick.src.Utility;
 
 namespace Squick.Scene.Levels
 {
@@ -94,14 +95,9 @@ namespace Squick.Scene.Levels
             }
             if (Level1CollectibleFactory.doneSince(gameTime) > 15)
             {
-                if (_modeAdventure)
-                {
-                    _nextScene = new Level2(gameInput, _score);
-                }
-                else
-                {
-                    _nextScene = new VictoryMenu(_score);
-                }
+                ScoreHolder.Level1 = _score;
+                if (_modeAdventure) _nextScene = new Level2(gameInput);
+                else _nextScene = new VictoryMenu();
                 _sceneFinished = true;
             }
 

@@ -20,7 +20,6 @@ D:\Squick\Squick\Squick\bin\x86\Debug\Content\Fonts\MainFont.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\GameThumbnail.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\Background_level_1.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\Squick_head_normal.xnb
-D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\teteCut.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\rightArm.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\leftArm.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\body.xnb
@@ -36,3 +35,17 @@ D:\Squick\Squick\Squick\bin\x86\Debug\Content\Fonts\BigFont.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Fonts\MessageFont.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Fonts\ScoreFont.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\goldenNut.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\bomb1.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\bomb2.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\bomb3.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\bomb4.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\anvil.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\fuse1.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\fuse2.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\fuse3.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\fuse4.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\fuse5.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\fuse6.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\fuse7.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\cutHead.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\cutHeadNoEye.xnb

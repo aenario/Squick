@@ -13,6 +13,7 @@ using Squick.Control;
 using Squick.UI;
 using Squick.Utility;
 using Squick.Scene.Levels;
+using Squick.src.Utility;
 
 namespace Squick.Scene.Menus
 {
@@ -50,13 +51,22 @@ namespace Squick.Scene.Menus
             _quitBtn.Update(gameTime, gameInput);
         
             // Action
-            if (_level1Btn.IsPressed() || _aventureBtn.IsPressed())
-            {
-                _nextScene = new Level1(gameInput, _aventureBtn.IsPressed()); 
+            if (_level1Btn.IsPressed()){
+                ScoreHolder.clearLevel1();
+                ScoreHolder.clearLevel2();
+                _nextScene = new Level1(gameInput);
+                _sceneFinished = true;
+            
+            }else if(_aventureBtn.IsPressed()){
+                ScoreHolder.clearLevel1();
+                ScoreHolder.clearLevel2();
+                _nextScene = new Level1(gameInput, true); 
                 _sceneFinished = true;
             }
             else if (_level2Btn.IsPressed())
             {
+                ScoreHolder.clearLevel1();
+                ScoreHolder.clearLevel2();
                 _nextScene = new Level2(gameInput);
                 _sceneFinished = true;
             }

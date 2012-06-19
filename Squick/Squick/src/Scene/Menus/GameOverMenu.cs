@@ -30,12 +30,10 @@ namespace Squick.Scene.Menus
         private HandCursors _hc;
 
         private int _fromLevel = 1;
-        private int _level1Score;
 
-        public GameOverMenu(int fromLevel, int level1Score = -1)
+        public GameOverMenu(int fromLevel)
         {
             _fromLevel = fromLevel;
-            _level1Score = level1Score;
             _background = ResourceManager.tex_background_level1;
             _gameOverMsg = new TextBox("Game Over", new Rectangle(100, 50, 600, 100));
             _backToMenuBtn = new TextButton("Back to Menu", new Rectangle(100, 250, 200, 100));
@@ -68,7 +66,7 @@ namespace Squick.Scene.Menus
                 {
                     case 1: _nextScene = new Level1(gameInput);
                         break;
-                    case 2: _nextScene = new Level2(gameInput, _level1Score);
+                    case 2: _nextScene = new Level2(gameInput);
                         break;
                     default: _nextScene = null;
                         break;
