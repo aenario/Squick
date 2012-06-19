@@ -26,10 +26,13 @@ namespace Squick.Component.Collectible
 
         public override void Destroy()
         {
-            if (_destroyed)
+            /*if (_destroyed)
                 return; 
             _destroyed = true;
+            */
 
+            if (_collideWithPlayer)
+                AudioManager.PlaySound(AudioManager.sound_jump);
             
 
         }

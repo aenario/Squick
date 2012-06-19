@@ -22,6 +22,7 @@ namespace Squick.Utility
         public static SoundEffect sound_bounce;
         public static SoundEffect sound_hurt;
         public static SoundEffect sound_jump;
+        public static SoundEffect sound_bonus;
 
       
         public static void Initialize(ContentManager content)
@@ -34,6 +35,7 @@ namespace Squick.Utility
             sound_bounce = _content.Load<SoundEffect>("Sounds\\bounce");
             sound_hurt = _content.Load<SoundEffect>("Sounds\\hurt");
             sound_jump = _content.Load<SoundEffect>("Sounds\\jump");
+            sound_bonus = _content.Load<SoundEffect>("Sounds\\bonus");
 
             // Musics
 

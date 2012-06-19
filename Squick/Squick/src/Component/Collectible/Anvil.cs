@@ -38,6 +38,9 @@ namespace Squick.Component.Collectible
             RenderManager.Draw2DTexture(ResourceManager.tex_anvil, _boundingBox, Color.White);
         }
 
-        public override void Destroy() { }
+        public override void Destroy() {
+            if (_collideWithPlayer)
+                AudioManager.PlaySound(AudioManager.sound_hurt);
+        }
     }
 }

@@ -92,6 +92,9 @@ namespace Squick.Component.Collectible
             RenderManager.Draw2DTexture(this._fuseTex, _fusePos, Color.White);
         }
 
-        public override void Destroy(){}
+        public override void Destroy(){
+            if(_collideWithPlayer)
+                AudioManager.PlaySound(AudioManager.sound_boom);
+        }
     }
 }

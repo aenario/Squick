@@ -18,6 +18,7 @@ namespace Squick.Component.Collectible
         protected int _bonus;
         protected float _speedFactor;
         protected int _movementPattern;
+        protected Boolean _collideWithPlayer;
         public int MovementPattern
         {
             get{ return _movementPattern;}
@@ -28,6 +29,7 @@ namespace Squick.Component.Collectible
         public Collectible()
         {
             _destroyed = false;
+            _collideWithPlayer = false;
         }
 
         override public void Update(GameTime gameTime)
@@ -45,6 +47,8 @@ namespace Squick.Component.Collectible
         }
 
         public int GetBonus() { return _bonus; }
+
+        public void CollideWithPlayer(Boolean state) { _collideWithPlayer = state; }
 
         public abstract void Destroy();
 

@@ -134,6 +134,9 @@ namespace Squick.Scene.Levels
                 // Collisions
                 if (item.GetBoundingBox().Intersects(squick.GetBoundingBox()))
                 {
+                    // Update internal state
+                    item.CollideWithPlayer(true);
+
                     // BONUS
                     if (item.GetBonus() > 0)
                     {
@@ -156,7 +159,6 @@ namespace Squick.Scene.Levels
                     // . Bomb effect
                     if (item is Bomb)
                     {
-                        AudioManager.PlaySound(AudioManager.sound_boom);
                         _bombEffect.Start(Fade.EFFECT.FADE_OUT, Color.White, 200.0f);
                     }
 
@@ -170,7 +172,7 @@ namespace Squick.Scene.Levels
                 
             }
 
-            foreach(Collectible i in toBeDestroy) items.Remove(i);
+            foreach (Collectible i in toBeDestroy) { i.Destroy(); items.Remove(i); }
             
             /* Make squick bump */
             if ((squick.Pos.X < 36 && squick.Speed.X < leftBound)
