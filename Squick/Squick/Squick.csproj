@@ -121,6 +121,7 @@
     <Compile Include="src\Component\Entity.cs" />
     <Compile Include="src\Component\Player\DizzySquick.cs" />
     <Compile Include="src\Control\EdgeDetector.cs" />
+    <Compile Include="src\Scene\Effects\Fade.cs" />
     <Compile Include="src\Scene\Levels\Level2Spawn.cs" />
     <Compile Include="src\Scene\Menus\VictoryMenu.cs" />
     <Compile Include="src\Scene\Menus\MainMenu.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="src\Scene\Levels\Level2.cs" />
     <Compile Include="src\Component\EntityFactory.cs" />
     <Compile Include="src\UI\TextButton.cs" />
+    <Compile Include="src\Utility\AudioManager.cs" />
     <Compile Include="src\Utility\ResourceManager.cs" />
     <Compile Include="src\Utility\RenderManager.cs" />
     <Compile Include="src\Scene\Scene.cs" />

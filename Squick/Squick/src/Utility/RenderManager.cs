@@ -46,7 +46,7 @@ namespace Squick.Utility
             if (_isRendering)
                 return;
             _isRendering = true;
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.Immediate,BlendState.AlphaBlend);
         }
 
         public static void EndRendering()
@@ -68,9 +68,9 @@ namespace Squick.Utility
             DrawBox(box, Color.Red);
         }
 
-        public static void DrawBox(Rectangle box, Color color)
+        public static void DrawBox(Rectangle box, Color color, float transparency = 1.0f )
         {
-            _spriteBatch.Draw(ResourceManager.tex_pixel, box, color);
+            _spriteBatch.Draw(ResourceManager.tex_pixel, box, color * transparency);
         }
 
         public static void DrawLine(Vector2 point1, Vector2 point2, Color color)

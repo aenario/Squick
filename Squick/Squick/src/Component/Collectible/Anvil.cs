@@ -20,12 +20,14 @@ namespace Squick.Component.Collectible
             _movementPattern = MOVEMENT_FALL;
             _speedTimer = 0;
             _boundingBox = ResourceManager.tex_anvil.Bounds;
+
+            // Play a sound at startup
+            AudioManager.PlaySound(AudioManager.sound_fall);
         }
 
         override public void Update(GameTime gameTime)
         {
             // Increase speed every 0.5 seconds
-            Console.WriteLine(gameTime.TotalGameTime.TotalMilliseconds + " and " + _speedTimer);
             if (gameTime.TotalGameTime.TotalMilliseconds - _speedTimer >= 50)
             {
                 _speed.Y += 1;
@@ -39,6 +41,9 @@ namespace Squick.Component.Collectible
             RenderManager.Draw2DTexture(ResourceManager.tex_anvil, _boundingBox, Color.White);
         }
 
-        public override void Destroy() { }
+        public override void Destroy() {
+            if (_collideWithPlayer)
+                AudioManager.PlaySound(AudioManager.sound_hurt);
+        }
     }
 }

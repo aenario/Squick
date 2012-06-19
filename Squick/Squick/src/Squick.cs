@@ -57,6 +57,7 @@ namespace Squick
             // Managers (singleton static classes)
             RenderManager.Initialize(GraphicsDevice);
             ResourceManager.Initialize(Content,GraphicsDevice);
+            AudioManager.Initialize(Content);
 
             // Initialize Kinect and its interface
             _kinectsManager = new KinectManager();

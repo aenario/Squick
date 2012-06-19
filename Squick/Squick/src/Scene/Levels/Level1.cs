@@ -15,6 +15,7 @@ using Squick.Component;
 using Squick.Component.Player;
 using Squick.Component.Collectible;
 using Squick.Scene;
+using Squick.Scene.Effects;
 using Squick.Utility;
 using Squick.UI;
 using Squick.Scene.Menus;
@@ -35,6 +36,9 @@ namespace Squick.Scene.Levels
         private TextButton _backToMenu;
         private Message _gameEventMessage;
         private Message _gameScoreMessage;
+
+        // Special effects
+        private Fade _bombEffect;
         
         // Game components
         private Texture2D _levelBackground;
@@ -57,6 +61,8 @@ namespace Squick.Scene.Levels
             _levelBackground = ResourceManager.tex_background_level1;
             _modeAdventure = modeAdventure;
 
+            _bombEffect = new Fade();
+
             _HUD_score = new Score(new Vector2(10,0));
             _backToMenu = new TextButton("Menu", new Vector2(690, 10));
 
@@ -64,7 +70,7 @@ namespace Squick.Scene.Levels
             squick.Pos = new Vector2(400, 400);
 
             _gameEventMessage = new Message("Ready?  Set...  Go!", new Vector2(20, 220),2.0f,Message.DISPLAY_LBL,250);
-            _gameScoreMessage = new Message("",new Vector2(10,160),1.0f,Message.DISPLAY_LBL,400);
+            _gameScoreMessage = new Message("",new Vector2(10,160),1.0f,Message.DISPLAY_LBL,1000);
 
             
             // Level score
@@ -124,6 +130,10 @@ namespace Squick.Scene.Levels
                 // Collisions
                 if (item.GetBoundingBox().Intersects(squick.GetBoundingBox()))
                 {
+                    // Update internal state
+                    item.CollideWithPlayer(true);
+
+                    // BONUS
                     if (item.GetBonus() > 0)
                     {
                         _bonusChain++;
@@ -140,6 +150,15 @@ namespace Squick.Scene.Levels
                         _gameScoreMessage.SetText("");
                         _score += item.GetBonus();
                     }
+
+                    // ADDITIONAL EFFECTS
+                    // . Bomb effect
+                    if (item is Bomb)
+                    {
+                        _bombEffect.Start(Fade.EFFECT.FADE_OUT, Color.White, 200.0f);
+                    }
+
+                    // Destroy item
                     toBeDestroy.Add(item);
                 }
 
@@ -149,13 +168,17 @@ namespace Squick.Scene.Levels
                 
             }
 
-            foreach(Collectible i in toBeDestroy) items.Remove(i);
+            foreach (Collectible i in toBeDestroy) { i.Destroy(); items.Remove(i); }
             
             /* Make squick bump */
             if ((squick.Pos.X < 36 && squick.Speed.X < leftBound)
                  || (squick.Pos.X + squick.Width > rightBound && squick.Speed.X > 0))
-                        squick.SpeedX *= -1;
-            
+            {
+                // Bounce
+                squick.SpeedX *= -1;
+                // Sound
+                AudioManager.PlaySound(AudioManager.sound_bounce);
+            }
             /* INGAME EVENTS */
             double time = Math.Round(gameTime.TotalGameTime.TotalSeconds - _eventTimer, 2);
             // Wave 1
@@ -193,6 +216,9 @@ namespace Squick.Scene.Levels
             _gameEventMessage.Update(gameTime);
             _gameScoreMessage.Update(gameTime);
 
+            // Special effects
+            _bombEffect.Update(gameTime);
+
             squick.Update(gameTime);
         }
 
@@ -214,6 +240,9 @@ namespace Squick.Scene.Levels
             _HUD_score.Render(gameTime);
             _gameEventMessage.Render(gameTime);
             _gameScoreMessage.Render(gameTime);
+
+            // Special effects
+            _bombEffect.Render(gameTime);
         }
 
         public int ComputeBonus(int bonusChain)
