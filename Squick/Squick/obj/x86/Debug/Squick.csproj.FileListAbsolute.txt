@@ -49,3 +49,10 @@ D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\fuse6.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\fuse7.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\cutHead.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\cutHeadNoEye.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Textures\spiral.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\boom.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\bounce.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\hurt.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\jump.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\bonus.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\fall.xnb

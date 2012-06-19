@@ -162,6 +162,7 @@ namespace Squick.Scene.Levels
                     {
                         squick.SpeedY = Math.Min(squick.SpeedY - 6 * impact, 0);
                     }
+                    squick.makeDizzy();
                     toBeDestroy.Add(i);
                 }
 
