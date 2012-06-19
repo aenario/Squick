@@ -56,3 +56,4 @@ D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\hurt.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\jump.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\bonus.xnb
 D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\fall.xnb
+D:\Squick\Squick\Squick\bin\x86\Debug\Content\Sounds\fuse.xnb

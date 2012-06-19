@@ -158,9 +158,9 @@ namespace Squick.Scene.Levels
             }
 
             
-            foreach (Entity i in items)
+            foreach (Collectible i in items)
                 if(squick.Collide(i)){
-                    int impact = ((Collectible) i).GetBonus();
+                    int impact = i.GetBonus();
                     if (impact > 300) // golden nuts = life
                     {
                         nbOfLives++;
@@ -170,6 +170,7 @@ namespace Squick.Scene.Levels
                         squick.SpeedY = Math.Min(squick.SpeedY - 6 * impact, 0);
                     }
                     squick.makeDizzy();
+                    i.Destroy();
                     toBeDestroy.Add(i);
                 }
 
@@ -199,7 +200,9 @@ namespace Squick.Scene.Levels
             var later = Vector2.Add(squick.Bottom, Vector2.Multiply(squick.Speed, impactTrigger));
             bool aboutToCross = b.isBelow(squick.Bottom) && b.isAbove(later);
 
-            if (!aboutToCross) return; 
+            if (!aboutToCross) return;
+
+            AudioManager.PlaySound(AudioManager.sound_jump);
 
             float oldSpeed = squick.Speed.Length();
             Vector2 direction = Vector2.Reflect(squick.Speed, b.Normal);

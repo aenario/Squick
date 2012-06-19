@@ -165,6 +165,10 @@ namespace Squick.Scene.Levels
 
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(100, 34000)),
 
+            new EntityFactory(0, EntityFactory.MALUS_ANVIL, new Vector2(300, 34500)),
+
+            new EntityFactory(0, EntityFactory.MALUS_ANVIL, new Vector2(500, 32500)),
+
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(300, 35000)),
 
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(500, 36000)),

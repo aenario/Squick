@@ -1,11 +1,7 @@
 Content\Fonts\MainFont.xnb
-Content\Fonts\BigFont.xnb
-Content\Fonts\MessageFont.xnb
-Content\Fonts\ScoreFont.xnb
 Content\GameThumbnail.xnb
 Content\Textures\Background_level_1.xnb
 Content\Textures\Squick_head_normal.xnb
-Content\Textures\teteCut.xnb
 Content\Textures\rightArm.xnb
 Content\Textures\leftArm.xnb
 Content\Textures\body.xnb
@@ -17,6 +13,9 @@ Content\Textures\Background_level_2.xnb
 Content\Textures\pine.xnb
 Content\Textures\nut.xnb
 Content\Textures\branch.xnb
+Content\Fonts\BigFont.xnb
+Content\Fonts\MessageFont.xnb
+Content\Fonts\ScoreFont.xnb
 Content\Textures\goldenNut.xnb
 Content\Textures\bomb1.xnb
 Content\Textures\bomb2.xnb
@@ -30,6 +29,9 @@ Content\Textures\fuse4.xnb
 Content\Textures\fuse5.xnb
 Content\Textures\fuse6.xnb
 Content\Textures\fuse7.xnb
+Content\Textures\cutHead.xnb
+Content\Textures\cutHeadNoEye.xnb
+Content\Textures\spiral.xnb
 Content\Sounds\boom.xnb
 Content\Sounds\bounce.xnb
 Content\Sounds\hurt.xnb
