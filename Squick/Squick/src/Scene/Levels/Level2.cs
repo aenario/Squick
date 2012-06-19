@@ -26,8 +26,8 @@ namespace Squick.Scene.Levels
     public class Level2 : Scene{
 
         /* GAMEPLAY */
-        //private const float goal = 50000;
-        private const float goal = 10000; // debug only
+        private const float goal = 50000;
+        //private const float goal = 10000; // debug only
         private static float gravity = 85;
         private static double friction = 0.9d;
         private static float impactTrigger = 0.1f; // squick will bounce 0.05s before hitting branch
@@ -39,10 +39,13 @@ namespace Squick.Scene.Levels
         }
         private Vector2 newSpeedItem(Vector2 oldSpeed, int impact)
         {
-            return new Vector2(
-                    oldSpeed.X,
-                    Math.Min(oldSpeed.Y - 6 * (impact-50), 0)
-                );
+            float newSpeed = oldSpeed.Y - 6 * (impact-50);
+            float clamped = impact > 0 ^ oldSpeed.Y > 0 ?
+                MathHelper.Clamp(newSpeed, float.MinValue, oldSpeed.Y) : 
+                MathHelper.Clamp(newSpeed, oldSpeed.Y, 0);
+            
+            return new Vector2(oldSpeed.X, clamped);
+
         }
         private float score(float time)
         {

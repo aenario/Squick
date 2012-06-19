@@ -29,8 +29,8 @@ namespace Squick.Scene
 
             //_currentScene = new Level1(gameInput); // Change with your level
             //_currentScene = new DebugMenu(); // For testing purpose
-            _currentScene = new VictoryMenu(); // For testing purpose
-            //_currentScene = new MainMenu(); 
+            //_currentScene = new VictoryMenu(); // For testing purpose
+            _currentScene = new MainMenu(); 
 
         }
 

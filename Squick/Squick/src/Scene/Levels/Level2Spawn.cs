@@ -52,6 +52,10 @@ namespace Squick.Scene.Levels
 
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(100, 6525)), 
 
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(400, 6700)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(500, 6700)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(600, 6700)),
+
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(500, 7000)),
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(600, 7050)), 
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(700, 7050)),
@@ -71,6 +75,8 @@ namespace Squick.Scene.Levels
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(500, 9200)),
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(600, 9500)),
 
+
+
             new EntityFactory(0, EntityFactory.MALUS_ANVIL, new Vector2(100, 10000)), 
             new EntityFactory(0, EntityFactory.MALUS_ANVIL, new Vector2(200, 10000)),
             new EntityFactory(0, EntityFactory.MALUS_ANVIL, new Vector2(300, 10000)),
@@ -81,6 +87,10 @@ namespace Squick.Scene.Levels
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(300, 12000)),
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(600, 13000)),
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(100, 13000)),
+
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(400, 13500)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(500, 13500)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(600, 13500)),
 
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(100, 14000)), 
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(300, 15000)),
@@ -107,6 +117,10 @@ namespace Squick.Scene.Levels
 
             new EntityFactory(0, EntityFactory.MALUS_ANVIL, new Vector2(400, 23000)),
 
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(200, 13500)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(300, 13600)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(400, 13700)),
+
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(100, 24000)), 
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(300, 24000)),
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(500, 24000)),
@@ -129,6 +143,10 @@ namespace Squick.Scene.Levels
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(100, 27000)), 
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(300, 27050)),
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(100, 27100)),
+
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(200, 27500)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(300, 27600)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(400, 27700)),
 
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(650, 27000)), 
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(550, 27050)),
@@ -173,6 +191,10 @@ namespace Squick.Scene.Levels
 
             new EntityFactory(0, EntityFactory.MALUS_ANVIL, new Vector2(500, 32500)),
 
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(200, 35500)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(400, 36600)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(600, 35700)),
+
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(300, 35000)),
 
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(500, 36000)),
@@ -194,6 +216,10 @@ namespace Squick.Scene.Levels
             new EntityFactory(0, EntityFactory.BONUS_GOLDEN_NUT, new Vector2(350, 38000)),
 
             new EntityFactory(0, EntityFactory.BONUS_NUT, new Vector2(200, 28500)), 
+
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(400, 38500)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(500, 38600)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(600, 38700)),
  
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(200, 40000)), 
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(400, 40000)),
