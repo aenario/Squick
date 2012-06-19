@@ -157,7 +157,7 @@ namespace Squick.Scene.Levels
                     // . Bomb effect
                     if (item is Bomb)
                     {
-                        _bombEffect.Start(Fade.EFFECT.FADE_OUT, Color.White, 200.0f);
+                        _bombEffect.Start(Fade.EFFECT.FADE_OUT, Color.White, 300.0f);
                     }
 
                     // Destroy item
@@ -200,9 +200,9 @@ namespace Squick.Scene.Levels
             if (time == (double)Level1CollectibleFactory.WAVE_3)
                 _gameEventMessage.SetText("");
             // Wave 4
-            if (time == (double)Level1CollectibleFactory.WAVE_4 - 1)
+            if (time == (double)Level1CollectibleFactory.WAVE_4 - 2)
                 _gameEventMessage.SetText("     Warning!");
-            if (time == (double)Level1CollectibleFactory.WAVE_4 + 2)
+            if (time == (double)Level1CollectibleFactory.WAVE_4 + 3)
                 _gameEventMessage.SetText("");
             // Wave 5
             if (time == (double)Level1CollectibleFactory.WAVE_5 - 3)
