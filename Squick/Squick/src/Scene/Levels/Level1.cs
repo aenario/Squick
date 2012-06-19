@@ -94,10 +94,12 @@ namespace Squick.Scene.Levels
                 justStarted = false;
                 _eventTimer = gameTime.TotalGameTime.TotalSeconds;
             }
-            if (Level1CollectibleFactory.doneSince(gameTime) > 10 & Level1CollectibleFactory.doneSince(gameTime) < 10.5)
+            if (Level1CollectibleFactory.doneSince(gameTime) > 10 & Level1CollectibleFactory.doneSince(gameTime) < 10.1)
             {
                 _gameEventMessage.SetText("LEVEL CLEAR");
+                squick.isDizzy = false;
                 if(_modeAdventure) squick.SpeedY = -600;
+                _bombEffect.Start(Fade.EFFECT.FADE_IN, Color.Black, 4000.0f);
             }
             if (Level1CollectibleFactory.doneSince(gameTime) > 15)
             {

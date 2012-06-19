@@ -8,6 +8,7 @@ using Squick.Control;
 using Squick.Scene.Menus;
 using Squick.Scene.Levels;
 using Squick.Utility;
+using Squick.src.Utility;
 
 namespace Squick.Scene
 {
@@ -22,9 +23,14 @@ namespace Squick.Scene
             _game = game;
             _gameInput = gameInput;
 
-            //_currentScene = new Level1(gameInput); // Change with your level, you bitch
+
+            ScoreHolder.Level1 = 10000;
+            ScoreHolder.Level2 = 12000;
+
+            //_currentScene = new Level1(gameInput); // Change with your level
             //_currentScene = new DebugMenu(); // For testing purpose
-            _currentScene = new MainMenu(); // For testing purpose
+            _currentScene = new VictoryMenu(); // For testing purpose
+            //_currentScene = new MainMenu(); 
 
         }
 

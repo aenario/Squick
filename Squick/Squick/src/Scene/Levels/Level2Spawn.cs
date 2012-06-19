@@ -31,11 +31,15 @@ namespace Squick.Scene.Levels
 
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(200, 5300)),
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(400, 5300)),
-            new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(600, 5300)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(600, 5300)),
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(800, 5300)),
 
             new EntityFactory(0, EntityFactory.BONUS_GOLDEN_NUT, new Vector2(100, 5500)),
             
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(400, 5500)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(500, 5500)),
+            new EntityFactory(0, EntityFactory.MALUS_BOMB, new Vector2(600, 5500)),
+
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(200, 6000)),
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(100, 6050)), 
             new EntityFactory(0, EntityFactory.MALUS_PINE, new Vector2(300, 6050)),

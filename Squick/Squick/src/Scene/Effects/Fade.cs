@@ -12,7 +12,7 @@ namespace Squick.Scene.Effects
 {
     public class Fade
     {
-        public enum EFFECT{ FADE_OUT };
+        public enum EFFECT{ FADE_OUT, FADE_IN };
 
         private Boolean _hasFinished = false;
         private Boolean _isRunning = false;

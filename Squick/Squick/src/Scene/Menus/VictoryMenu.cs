@@ -29,23 +29,22 @@ namespace Squick.Scene.Menus
 
         private HandCursors _hc;
 
-        private int _level1Score;
+       
         private TextBox _level1Box;
-        private double _level2Score;
         private TextBox _level2Box;
         private TextBox _levelTotal;
 
 
         public VictoryMenu()
         {
-            _level1Score = ScoreHolder.Level1;
-            _level2Score = ScoreHolder.Level2;
             _background = ResourceManager.tex_background_level1;
             _hc = new HandCursors();
             _victoryMsg = new TextBox("Thanks for playing", new Rectangle(100, 50, 600, 100));
-            if (_level1Score != -1) _level1Box = new TextBox("Level 1 : " + _level1Score.ToString("000000"), new Rectangle(350, 200, 350, 50));
-            if (_level2Score != -1d) _level2Box = new TextBox("Level 2 : " + _level2Score.ToString("000000"), new Rectangle(350, 275, 350, 50));
-            if (_level2Score != -1d && _level1Score != -1) _levelTotal = new TextBox("Total : " + (_level2Score + _level2Score).ToString("000000"), new Rectangle(350, 275, 350, 50));
+
+            if (ScoreHolder.hasLevel1) _level1Box = new TextBox("Level 1 : " + ScoreHolder.Level1.ToString("000000"), new Rectangle(350, 200, 350, 50));
+            if (ScoreHolder.hasLevel2) _level2Box = new TextBox("Level 2 : " + ScoreHolder.Level2.ToString("000000"), new Rectangle(350, 275, 350, 50));
+            if (ScoreHolder.hasLevel1 && ScoreHolder.hasLevel2) 
+                _levelTotal = new TextBox("Total   : " + ScoreHolder.Total.ToString("000000"), new Rectangle(350, 350, 350, 50));
             _backToMenuBtn = new TextButton("Back to Menu", new Rectangle(100, 200, 200, 100));
             _quitBtn = new TextButton("Quit", new Rectangle(500, 450, 150, 100));
         }
@@ -58,9 +57,9 @@ namespace Squick.Scene.Menus
             _backToMenuBtn.Update(gameTime, gameInput);
             _quitBtn.Update(gameTime, gameInput);
 
-            if (_level1Score != -1) _level1Box.Update(gameTime, gameInput);
-            if (_level2Score != -1d) _level2Box.Update(gameTime, gameInput);
-            if (_level2Score != -1d && _level1Score != -1) _levelTotal.Update(gameTime, gameInput);
+            if (ScoreHolder.hasLevel1) _level1Box.Update(gameTime, gameInput);
+            if (ScoreHolder.hasLevel2) _level2Box.Update(gameTime, gameInput);
+            if (ScoreHolder.hasLevel1 && ScoreHolder.hasLevel2) _levelTotal.Update(gameTime, gameInput);
 
             _hc.Update(gameTime, gameInput);
         
@@ -89,9 +88,9 @@ namespace Squick.Scene.Menus
             _backToMenuBtn.Render(gameTime);
             _quitBtn.Render(gameTime);
 
-            if (_level1Score != -1) _level1Box.Render(gameTime);
-            if (_level2Score != -1d) _level2Box.Render(gameTime);
-            if (_level2Score != -1d && _level1Score != -1) _levelTotal.Render(gameTime);
+            if (ScoreHolder.hasLevel1) _level1Box.Render(gameTime);
+            if (ScoreHolder.hasLevel2) _level2Box.Render(gameTime);
+            if (ScoreHolder.hasLevel1 && ScoreHolder.hasLevel2) _levelTotal.Render(gameTime);
 
             _hc.Render(gameTime);
         }

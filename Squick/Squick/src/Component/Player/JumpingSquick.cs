@@ -33,7 +33,7 @@ namespace Squick.Component.Player
         private static Vector2 bottom = new Vector2(100, 180);
         private static float eyesSpeed = MathHelper.Pi * 2 / 1000;
 
-        private bool is_dizzy;
+        private bool is_dizzy = false;
         public Boolean isDizzy{
             get { return is_dizzy;}
             set { is_dizzy = value;}

@@ -41,6 +41,17 @@ namespace Squick.Component.Player
 
         private KinectInterface _gameInput;
         private float armAngle;
+        private bool is_dizzy = true;
+        public Boolean isDizzy
+        {
+            get { return is_dizzy; }
+            set { is_dizzy = value; }
+        }
+        public void makeDizzy()
+        {
+            is_dizzy = true;
+        }
+
         private Rectangle _bodyTexBox;
         public int Width { get { return _bodyTexBox.Width; } }
         public int Height { get { return _bodyTexBox.Height; } }
@@ -118,15 +129,22 @@ namespace Squick.Component.Player
             RenderManager.Draw2DTexture(ResourceManager.tex_squick_leftArm, _leftArmPos, Color.White, 
                 armAngle, leftArmOrigin);
 
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_headNoEyes, _headPos, Color.White,
+            if (is_dizzy)
+            {
+                RenderManager.Draw2DTexture(ResourceManager.tex_squick_headNoEyes, _headPos, Color.White,
                     0, headOrigin);
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_spirals, _leftEyePos, Color.White,
-                gameTime.ElapsedGameTime.Milliseconds * eyesSpeed, eyeOrigin);
-            RenderManager.Draw2DTexture(ResourceManager.tex_squick_spirals, _rightEyePos, Color.White,
-                gameTime.ElapsedGameTime.Milliseconds * eyesSpeed, eyeOrigin);
+                RenderManager.Draw2DTexture(ResourceManager.tex_squick_spirals, _leftEyePos, Color.White,
+                    gameTime.TotalGameTime.Milliseconds * eyesSpeed, eyeOrigin);
+                RenderManager.Draw2DTexture(ResourceManager.tex_squick_spirals, _rightEyePos, Color.White,
+                    gameTime.TotalGameTime.Milliseconds * eyesSpeed, eyeOrigin);
+            }
+            else
+            {
+                RenderManager.Draw2DTexture(ResourceManager.tex_squick_headCut, _headPos, Color.White,
+                    0, headOrigin);
+            }
 
-            // Debug 
-            //RenderManager.DrawBox(_boundingBox);
+
         }
 
     }
